@@ -91,25 +91,25 @@ class About extends Component {
                                </Flex.Item>
                            </Flex>
                        </HomeWrapper>
-                       {/**/}
-                       <AboutList>
-                           <List className="my-list">
-                               {
-                                   list.map((item,key)=>(
-                                       <Link to={item.path} key={key}>
-                                           <Item
-                                               arrow="horizontal"
-                                               thumb={item.thumb}
-                                               multipleLine
-                                           >
-                                               {item.title}
-                                           </Item>
-                                       </Link>
-                                   ))
-                               }
-                           </List>
-                       </AboutList>
                    </AboutDtae>
+                    {/**/}
+                    <AboutList>
+                        <List className="my-list">
+                            {
+                                list.map((item,key)=>(
+                                    <Link to={item.path} key={key}>
+                                        <Item
+                                            arrow="horizontal"
+                                            thumb={item.thumb}
+                                            multipleLine
+                                        >
+                                            {item.title}
+                                        </Item>
+                                    </Link>
+                                ))
+                            }
+                        </List>
+                    </AboutList>
                 </AboutWrapper>
             </Fragment>
         )

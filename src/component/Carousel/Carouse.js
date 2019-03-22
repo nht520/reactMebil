@@ -13,26 +13,29 @@ class Carouse extends Component{
                     id:1,
                     src:Banner,
                     alt:"1",
-                    path:"/Login/",
+                    path:"CarouseDts",
                 },
                 {
                     id:2,
                     src:Banner,
                     alt:"2",
-                    path:"/Login/",
+                    path:"CarouseDts",
                 },
                 {
                     id:10,
                     src:Banner,
                     alt:"6",
-                    path:"/Login/",
+                    path:"CarouseDts",
                 },
             ],
             imgHeight: 176,
         })
     }
+    componentDidMount(){
+        console.log(this.props.list+"222");
+    }
     render(){
-        const { banner } = this.state;
+        const { list } = this.props;
         return(
             <Fragment>
                 <CarouseWrapper>
@@ -41,11 +44,11 @@ class Carouse extends Component{
                             // autoplay={true}
                             infinite
                         >
-                            {banner.map((item,key) => (
+                            {list.map((item,key) => (
                                 <Link
-                                    // to={{ pathname:`/CarouseDts`, state:{id:item.id}  }}
+                                    // to={{ pathname:item.path,${item.id}  }}
                                     key={key}
-                                    to={`/CarouseDts/${item.id}`}
+                                    to={`${item.path}${item.id}`}
                                 >
                                     <img src={item.src}  alt="11"/>
                                 </Link>

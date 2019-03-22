@@ -67,9 +67,6 @@ class Inventory extends Component{
         )
     }
     componentDidMount (){
-        //获取动态路由传值
-        let _id = this.props.match.params.id;
-        console.log(_id);
         document.title = this.state.title;
     }
 }

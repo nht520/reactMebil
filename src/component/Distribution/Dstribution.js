@@ -62,7 +62,7 @@ class Dstribution extends Component {
                     ]
                 },
                 {
-                    id:2,
+                    id:3,
                     number:"16546454",
                     states:"已完成",
                     freight:"9999",
@@ -126,7 +126,7 @@ class Dstribution extends Component {
                     ]
                 },
                 {
-                    id:2,
+                    id:3,
                     number:"16546454",
                     states:"待付款",
                     freight:"9999",
@@ -190,7 +190,7 @@ class Dstribution extends Component {
                     ]
                 },
                 {
-                    id:2,
+                    id:3,
                     number:"16546454",
                     states:"待发货",
                     freight:"9999",
@@ -254,7 +254,7 @@ class Dstribution extends Component {
                     ]
                 },
                 {
-                    id:2,
+                    id:3,
                     number:"16546454",
                     states:"已完成",
                     freight:"9999",

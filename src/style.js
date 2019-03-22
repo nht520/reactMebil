@@ -1,7 +1,8 @@
 //styled-components 只引用自己需要的样式
-import {createGlobalStyle} from 'styled-components'
-createGlobalStyle`
-        /* http://meyerweb.com/eric/tools/css/reset/ 
+import { createGlobalStyle } from 'styled-components'
+// export const GlobalStyle= createGlobalStyle`
+export const Globalstyle = createGlobalStyle`
+     /* http://meyerweb.com/eric/tools/css/reset/ 
            v2.0 | 20110126
            License: none (public domain)
         */
@@ -25,13 +26,16 @@ createGlobalStyle`
             font: inherit;
             vertical-align: baseline;
         }
+        *{ touch-action: pan-y; }
         /* HTML5 display-role reset for older browsers */
         article, aside, details, figcaption, figure, 
         footer, header, hgroup, menu, nav, section {
             display: block;
         }
-        body {
+        body{
             line-height: 1;
+            background:#ffffff;
+            background: #ffffff !important;
         }
         ol, ul {
             list-style: none;
@@ -48,4 +52,5 @@ createGlobalStyle`
             border-collapse: collapse;
             border-spacing: 0;
         }
+         *{ touch-action: pan-y; }    
 `;

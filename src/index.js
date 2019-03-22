@@ -2,9 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
-//引用style全局样式
-import './statics/style.js';
 //引用公用接口文件
 import './statics/config.js'
 import './statics/storage'

@@ -4,11 +4,12 @@ import Carouse from "../Carousel/Carouse";
 import {Link } from "react-router-dom";
 //
 import { HomeWrapper,HomeList} from "../style";
-import banner from "../../statics/asstas/banner.png"
+import banner from "../../statics/asstas/bna1.png"
 // import {
 //      Flex
 // } from 'antd-mobile';
 import storage from "../../statics/storage";
+import Banner from "../../statics/asstas/banner.png";
 // import store from "../../store"
 class Home extends Component {
     constructor(props){
@@ -17,29 +18,49 @@ class Home extends Component {
         this.state=({
             title:"Nai he,tian",
             name:"",
+            banner: [
+                {
+                    id:1,
+                    src:banner,
+                    alt:"1",
+                    path:"CarouseDts/",
+                },
+                {
+                    id:2,
+                    src:banner,
+                    alt:"2",
+                    path:"CarouseDts/",
+                },
+                {
+                    id:10,
+                    src:banner,
+                    alt:"6",
+                    path:"CarouseDts/",
+                },
+            ],
             list:[
                 {
                     id:1,
                     title:"粉色小蛋糕",
-                    url_img:banner,
+                    url_img:Banner,
                     content:"樱桃酒味从巧克力卷的缝隙飘..."
                 },
                 {
                     id:2,
                     title:"好久没吃到草莓了",
-                    url_img:banner,
+                    url_img:Banner,
                     content:"色泽鲜艳,肉嫩多汁,酸甜可口。"
                 },
                 {
                     id:3,
                     title:"好久没吃到草莓了",
-                    url_img:banner,
+                    url_img:Banner,
                     content:"鸡肉有增强体力、强壮身体的..."
                 },
                 {
                     id:4,
                     title:"好久没吃到草莓了",
-                    url_img:banner,
+                    url_img:Banner,
                     content:"有丰富的柠檬酸，因此被誉为“..."
                 }
             ]
@@ -75,10 +96,11 @@ class Home extends Component {
         this.homeDate();
         document.title = "健简";
         // this.reduxDate();
+        console.log(this.state.title)
     }
 
     render(){
-        const { list } = this.state;
+        const { list,banner } = this.state;
         return(
             <Fragment>
                 <HomeWrapper>
@@ -91,7 +113,7 @@ class Home extends Component {
                         {/*</Flex.Item>*/}
                     {/*</Flex>*/}
                     {/*引用轮播*/}
-                    <Carouse/>
+                    <Carouse list={banner} />
                 </HomeWrapper>
                 <HomeList>
                     {/*套餐列表*/}

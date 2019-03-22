@@ -20,7 +20,7 @@ class FxDateils extends Component{
             <Fragment>
                 {/*<IndentWrapper>*/}
                 <IndentDts>
-                    <Flex className="title">
+                    <Flex className="indentHeader">
                         <Flex.Item>供货商：<span>华佗医药</span></Flex.Item>
                         <Flex.Item className="religion">待收货</Flex.Item>
                     </Flex>

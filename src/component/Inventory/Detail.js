@@ -14,7 +14,10 @@ class Detail extends Component{
         })
     }
     componentDidMount(){
-        document.title="库存明细"
+        document.title="库存明细";
+        //获取动态路由传值
+        let _id = this.props.match.params.id;
+        console.log(_id);
     }
     render(){
         return(

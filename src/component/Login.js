@@ -26,13 +26,19 @@ class Login extends Component{
                 <LoginWrapper>
                     <h1>登录</h1>
                     <input type="text" onChange={this.username} placeholder="请输入账号"/>
-                    <input type="password" onChange={this.password} placeholder="请输入密码"/>
+                    <input type="password" onKeyDown={this.inputKeyDown} onChange={this.password} placeholder="请输入密码"/>
                     <h5>忘记密码？</h5>
-                    <Button className="logButton" onClick={this.handChang}>登录</Button>
+                    <Button className="logButton"  onClick={this.handChang}>登录</Button>
                 </LoginWrapper>
             </Fragment>
         )
     }
+    //判断是否按下了回车
+    inputKeyDown = (e) =>{
+        if (e.keyCode === 13) {
+            this.handChang()
+        }
+    };
     username = (e) =>{
         this.setState({
             username:e.target.value

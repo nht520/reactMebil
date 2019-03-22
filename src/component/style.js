@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 //登录
 export const HomeWrapper = styled.div`
-     padding:5% 4% 3% 4%;
+     padding:6% 5% 6% 5%;
      h1{
         color:#252433;
         margin:0px;
-        font-size:bold;
+        font-weight: bold;
      }
      .am-wingblank.am-wingblank-lg{
         margin:0px;
@@ -24,6 +24,10 @@ export const HomeWrapper = styled.div`
      h3{
         color:#8f8f8f;
         font-weight: 500;
+        margin-top: 10%;
+     }
+     .About{
+        margin-top:6%;
      }
      .About h4{
         color:#292b33;
@@ -32,7 +36,8 @@ export const HomeWrapper = styled.div`
         font-weight: 500;
      }
       .About h2{
-        margin:10px 0px 0px; 0px
+        margin:10px 0px 0px 0px;
+        font-size: 18px;
         font-weight:bold;
         color:#292b33;
      }
@@ -43,7 +48,7 @@ export const HomeWrapper = styled.div`
         float: right;
         text-align: center;
         border-radius: 20px 0px 0px 20px;
-        font-size: 12px;
+        font-size: 12px;s
      }
      .am-tabs-content-wrap{
         margin-top:8% !important;
@@ -73,8 +78,9 @@ export const HomeList = styled.div`
      ul li h3{
         margin:10px 0px 8px 0px;
         color:#252433;
-            overflow: hidden;
+        overflow: hidden;
         text-overflow: ellipsis;
+        font-weight: bold;
         white-space: nowrap;
         font-size: 14px;
      }
@@ -179,7 +185,6 @@ export const AboutWrapper = styled.div`
     margin-top: 5%;
 `;
 export const AboutDtae = styled.div`
-    height: 180px;
     border-radius: 5px ;
     box-shadow:2px 4px 21px #efefef;
 `;
@@ -240,10 +245,14 @@ export const OrderList= styled.div`
     .title{
         color:#252433;
     }
+    .header{
+        margin-bottom:5%;
+        font-weight: bold;
+    }
 `;
 export const OrdeItem  = styled.li`
     list-style: none;
-    margin-bottom: 3%;
+    margin: 0% 0% 5% 0%;
     width: 100%;
     float: left;
 `;
@@ -305,8 +314,9 @@ export const LoginWrapper = styled.div`
         border-radius: 100px;
     }
     h1{
-        margin-top: 28%;
+        margin-top: 30%;
         margin-bottom:8%;
+        font-weight: bold;
     }
     .logButton{
         background:#292b33;
@@ -340,9 +350,11 @@ export const DaetilsList = styled.div`
     h3{
         margin:0px;
         color:#252433;
+        font-weight: bold;
+        font-size: 16px;
+        margin: 3% 0%;
     }
     h5{
-        margin-top:8px;
         color:#8f8f8f;
         font-weight: 100;
         line-height: 21px;
@@ -356,6 +368,9 @@ export const DaetilsList = styled.div`
         margin-left:4%;
         color:#f00;
         font-size:18px;
+    }
+    .headline{
+        margin-top:5%;
     }
 `;
 export const DatilHeadline =styled.div`
@@ -398,12 +413,29 @@ export const DateilsButton = styled.div`
         color:#252433;
          // border: 1px solid #e5e5e5 !important;
      }
+     .shipments{
+         font-weight: bold;
+         color:#f00;
+     }
+`;
+//订货
+export const ImdeAdd =styled.div`
+    width:80%;
+    float:right;
+    ul li{
+       width:25%;
+       float:left; 
+    }
 `;
 //订单详情
 export const IndentDts = styled.div`
     padding:4% 5%;
     .title{
         color: #252433;
+        font-weight: bold;
+    }
+    .indentHeader{
+        line-height:40px;
         font-weight: bold;
     }
     .state{
@@ -534,6 +566,10 @@ export const ImdeRight = styled.div`
     box-sizing: border-box;
     .title{
         font-weight: bold;
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 `;
 export const ImdeLimit = styled.div`
@@ -573,15 +609,18 @@ export const LoactionWrapper = styled.div`
        list-style: none;
        line-height:20px;
        margin-top:4%;
+       font-size: 16px;
     }
     h3{
         color:#292b33;
+        font-weight: bold;
         margin:0px;
     }
     h5{
       margin:0px;
       color:#8f8f8f;
       font-weight:100;  
+      font-size: 14px;
     }
     .my-radio .am-radio {
       padding: 2.5px;
@@ -641,6 +680,7 @@ export const DetailLi = styled.li`
     line-height: 28px;
        h3{
         margin-bottom:0px;
+        font-weight:bold;
        }
     .left{
         text-align: right;

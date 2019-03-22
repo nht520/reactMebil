@@ -2,20 +2,38 @@ import React,{ Component,Fragment } from "react";
 import Carouse from "../Carousel/Carouse";
 import {DateilsWrapper, DaetilsList,DatilHeadline,DateilsButton} from "../style";
 import { Flex,Button } from "antd-mobile";
-import banner from "../../statics/asstas/banner.png"
+import banner from "../../statics/asstas/ydjm.png"
 class Dateils extends Component{
     constructor(props){
         super(props);
         this.state=({
-            title:"商品详情"
+            title:"商品详情",
+            bannerOne: [
+                {
+                    id:1,
+                    src:banner,
+                    alt:"1",
+                },
+                {
+                    id:2,
+                    src:banner,
+                    alt:"2",
+                },
+                {
+                    id:10,
+                    src:banner,
+                    alt:"6",
+                },
+            ],
         })
     }
     render(){
+        const { bannerOne } = this.state;
         return(
             <Fragment>
                 <DateilsWrapper>
                     {/*轮播*/}
-                    <Carouse/>
+                    <Carouse list={bannerOne}/>
                     <DaetilsList>
                         <Flex className="title">
                             <Flex.Item><h3>秘制超级无敌甜筒蛋糕</h3></Flex.Item>
@@ -24,7 +42,7 @@ class Dateils extends Component{
                             <Flex.Item><h5>鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种
                                 料理中的...</h5></Flex.Item>
                         </Flex>
-                        <Flex className="title">
+                        <Flex className="headline">
                             <Flex.Item><span className="original">￥352</span><strong className="strong">￥998</strong></Flex.Item>
                         </Flex>
                         {/*参数*/}

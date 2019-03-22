@@ -60,51 +60,56 @@ class Cpntindent extends Component{
         })
     }
     render(){
+        const { list } = this.props;
         // const { number,states,id,imgurl,title,price,details,quantity,button } = this.state;
-        let params=this.props.list.map((params,key)=>{
-            return(
-                <OrderList key={key}>
-                    <Flex className="title">
-                        <Flex.Item>订单编号:<span>{params.number}</span></Flex.Item>
-                        <Flex.Item className="payment">{params.states}</Flex.Item>
-                    </Flex>
-                    <OrdeList>
-                        {
-                            params.orderList.map((v,key)=>(
-                                <Link to={`/IndentDateils/${v.id}`}  key={key}>
-                                    <OrdeItem>
-                                        <OrdeLeft>
-                                            <img src={v.imgurl} alt="img"/>
-                                        </OrdeLeft>
-                                        <OrdeRight>
-                                            <Flex className="title">
-                                                <Flex.Item>{v.title}</Flex.Item>
-                                                <Flex.Item className="payment">￥{v.price}</Flex.Item>
-                                            </Flex>
-                                            <OneLeft className="ordDtels">
-                                                {v.details}
-                                            </OneLeft>
-                                            <TwoRight>
-                                                X{v.quantity}
-                                            </TwoRight>
-                                        </OrdeRight>
-                                    </OrdeItem>
-                                </Link>
-                            ))
-                        }
-                        <OrdeItem>
-                            <Button size="small">
-                                    {params.button}
-                            </Button>
-                        </OrdeItem>
-                    </OrdeList>
-                </OrderList>
-            )
-        });
+        // let params=this.props.list.map((params,key)=>{
+        //     return(
+        //
+        //     )
+        // });
         return(
             <Fragment>
                 <OrdeWrapper>
-                    {params}
+                    {
+                        list.map(item=>(
+                            <OrderList key={item.id}>
+                                <Flex className="header">
+                                    <Flex.Item>订单编号:<span>{item.number}</span></Flex.Item>
+                                    <Flex.Item className="payment">{item.states}</Flex.Item>
+                                </Flex>
+                                <OrdeList>
+                                    {
+                                        item.orderList.map((v,key)=>(
+                                            <Link to={`/IndentDateils/${v.id}`}  key={key}>
+                                                <OrdeItem>
+                                                    <OrdeLeft>
+                                                        <img src={v.imgurl} alt="img"/>
+                                                    </OrdeLeft>
+                                                    <OrdeRight>
+                                                        <Flex className="title">
+                                                            <Flex.Item>{v.title}</Flex.Item>
+                                                            <Flex.Item className="payment">￥{v.price}</Flex.Item>
+                                                        </Flex>
+                                                        <OneLeft className="ordDtels">
+                                                            {v.details}
+                                                        </OneLeft>
+                                                        <TwoRight>
+                                                            X{v.quantity}
+                                                        </TwoRight>
+                                                    </OrdeRight>
+                                                </OrdeItem>
+                                            </Link>
+                                        ))
+                                    }
+                                    <OrdeItem>
+                                        <Button size="small">
+                                            {item.button}
+                                        </Button>
+                                    </OrdeItem>
+                                </OrdeList>
+                            </OrderList>
+                        ))
+                    }
                 </OrdeWrapper>
             </Fragment>
         )
