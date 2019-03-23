@@ -5,6 +5,7 @@ window.g = {
   register:'http://192.168.10.119:8899/distributor/member/updatePass',
     //  套餐
   meal:"http://192.168.10.119:8899/distributor/meal",
+  mealDts:"http://192.168.10.119:8899/distributor/meal/findById?id=",
   ParentPage: {
     DeteailsApi:'http://www.phonegap100.com/appapi.php?a=getPortalArticle&aid=',
   },

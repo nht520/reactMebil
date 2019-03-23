@@ -9,7 +9,6 @@ import banner from "../../statics/asstas/bna1.png"
 //      Flex
 // } from 'antd-mobile';
 import storage from "../../statics/storage";
-import Banner from "../../statics/asstas/banner.png";
 // import store from "../../store"
 import Axios from "axios";
 class Home extends Component {
@@ -108,7 +107,7 @@ class Home extends Component {
                         {list.map((item,key)=>(
                             <li className="childTwo" key={key}>
                                 <Link to={`/Dateils/${item.id}`} >
-                                    <img src={item.url_img} alt="我是图片">
+                                    <img src={item.mealImage} alt="我是图片">
                                     </img>
                                     <h3>{item.mealName}</h3>
                                     <h5>{item.mealContent}</h5>
