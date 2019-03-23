@@ -44,7 +44,7 @@ class Dateils extends Component{
                             <Flex.Item><h5>{list.mealContent}</h5></Flex.Item>
                         </Flex>
                         <Flex className="headline">
-                            <Flex.Item><span className="original">￥352</span><strong className="strong">￥998</strong></Flex.Item>
+                            <Flex.Item><span className="original">￥352</span><strong className="strong">￥{list.mealPrice}</strong></Flex.Item>
                         </Flex>
                         {/*参数*/}
                         <DatilHeadline
