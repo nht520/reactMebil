@@ -333,6 +333,7 @@ export const LoginWrapper = styled.div`
        text-align: right; 
        color:#8f8f8f;
        font-weight: 100;
+       margin-top: 8%;
     }
 `;
 //商品详情
@@ -635,7 +636,7 @@ export const LoactionWrapper = styled.div`
     .loaction{
         margin-top:5%;
     }
-    .default{
+    .red{
          color: #f00;
         font-weight: bold;
         text-align: center;

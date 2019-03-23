@@ -76,7 +76,7 @@ class CpntReail extends Component{
                                 <OrdeList>
                                     {
                                         item.orderList.map((v,key)=>(
-                                            <Link to={`/IndentDateils/${v.id}`}  key={key}>
+                                            <Link to={`/RetailDetails/${v.id}`}  key={key}>
                                                 <OrdeItem>
                                                     <OrdeLeft>
                                                         <img src={v.imgurl} alt="img"/>

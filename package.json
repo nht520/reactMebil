@@ -1,8 +1,8 @@
 {
-  "name": "storedemo",
+  "name": "nht",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "http://.",
   "dependencies": {
     "antd-mobile": "^2.2.5",
     "axios": "^0.18.0",
@@ -35,5 +35,16 @@
   "devDependencies": {
     "babel-plugin-import": "^1.10.0",
     "react-app-rewired": "^1.6.2"
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "config-overrides.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nht520/reactMebil.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nht520/reactMebil/issues"
   }
 }

@@ -47,7 +47,7 @@ class About extends Component {
                 },
                 {
                     id:5,
-                    title:"关于我们",
+                    title:"设置",
                     thumb:laxi,
                     path:"",
                 }
