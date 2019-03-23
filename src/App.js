@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import { Globalstyle } from "./style";
 import Login from "./component/Login";
+import Register from "./component/Register/Register";
 import Layout from "./component/Layout";
 import Home from "./component/Home/Home";
 import List from "./component/List/List";
@@ -41,6 +42,7 @@ class App extends Component {
                             <div>
                                 <Route path='/' exact component={Login}/>
                                 <Route path='/Layout' exact component={Layout}/>
+                                <Route path='/Register' exact component={Register}/>
                                 <Route path='/Home' exact component={Home}/>
                                 <Route path='/List' exact component={List}/>
                                 <Route path='/Carousel' exact component={Carousel}/>

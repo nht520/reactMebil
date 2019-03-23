@@ -2,56 +2,42 @@ import React,{ Component,Fragment } from "react";
 // import {Route, Link } from "react-router-dom";
 //引用样式
 //引用redux
-import store from "../store/index";
+import store from "../../store/index";
 // import { actionCreators } from '../store';
-import { initListAction } from '../store/actiocnCreators';
+import { initListAction } from '../../store/actiocnCreators';
 import {
     LoginWrapper
-} from "./style.js";
+} from "../style.js";
 // //引用ui组件
+import { Button,Toast } from "antd-mobile";
+import Axios from "axios";
+import storage from "../../statics/storage";
 import {
     Link
 } from "react-router-dom";
-import { Button,Toast } from "antd-mobile";
-import Axios from "axios";
-import storage from "../statics/storage";
-class Login extends Component{
+class Register extends Component{
     constructor(props){
         super(props);
         this.state=({
             username:"",
-            password:""
+            password:"",
+            affirmPassword:"",
         })
     }
     render(){
         return(
             <Fragment>
                 <LoginWrapper>
-                    <h1>登录</h1>
-                    <input type="text" onChange={this.username} placeholder="请输入账号"/>
-                    <input type="password" onKeyDown={this.inputKeyDown} onChange={this.password} placeholder="请输入密码"/>
-                    <Button className="logButton"  onClick={this.handChang}>登录</Button>
-                    <h5>忘记密码？</h5>
-                    <h5>
-                        <Link to="/Register">注册</Link>
-                    </h5>
+                    <h1>注册</h1>
+                    <input type="text" onChange={this.username} placeholder="请输入手机号"/>
+                    <input type="password"  onChange={this.password} placeholder="请输入密码"/>
+                    <input type="password" onKeyDown={this.inputKeyDown} onChange={this.affirmPassword} placeholder="请确认密码"/>
+                    <Button className="logButton"  onClick={this.handChang}>立即注册</Button>
+                    <h5><Link to="/">返回登录？</Link></h5>
                 </LoginWrapper>
             </Fragment>
         )
     }
-    //判断用户是否登录
-    register = () =>{
-        this.user = storage.get("user");
-        this.realName=this.user.memberName;
-        if(this.realName.length>=1){
-            this.setState({
-                name:this.realName
-            });
-            this.props.history.push('/Layout');
-        }else if(this.realName.length<1){
-            this.props.history.push('/');
-        }
-    };
     //判断是否按下了回车
     inputKeyDown = (e) =>{
         if (e.keyCode === 13) {
@@ -66,7 +52,12 @@ class Login extends Component{
     password = (e) =>{
         this.setState({
             password:e.target.value
-       })
+        })
+    };
+    affirmPassword=(e)=>{
+        this.setState({
+            affirmPassword:e.target.value
+        })
     };
     showToast = () => {
         Toast.info(this.state.text);
@@ -75,25 +66,28 @@ class Login extends Component{
         const that = this;
         if (that.state.username === '' || that.state.username === null) {
             this.setState({
-                text:"请输入账号",
+                text:"请输入手机号",
             },()=>that.showToast())
         }
         else if (that.state.password === '' || that.state.password === null) {
             this.setState({
                 text:"请输入密码",
             },()=>that.showToast());
-        }
-        else if (/^[\d\D]{6,12}$/.test(that.state.password) === false) {
+        }else if(that.state.affirmPassword !== that.state.password){
+            this.setState({
+                text:"请确认两次密码相同",
+            },()=>that.showToast());
+        } else if (/^[\d\D]{6,12}$/.test(that.state.password) === false) {
             this.setState({
                 text:"密码在6-12位英文数字之间",
             },()=>that.showToast());
         }else {
             //把用户名  密码统一存在_param里面  把_param提交到后台
             const _param = new URLSearchParams();
-                  _param.append("memberPhone",that.state.username);
-                  _param.append("memberPassword",that.state.password);
+            _param.append("memberPhone",that.state.username);
+            _param.append("memberPassword",that.state.affirmPassword);
             //获取数据将数据存在store
-            var api =window.g.login;
+            var api =window.g.register;
             Axios.post(api,_param).then((res)=>{
                 console.log(res);
                 if (res.status===200){
@@ -103,9 +97,9 @@ class Login extends Component{
                         storage.set("user",res.data.data);
                         const data = res.data.data;
                         const action = initListAction(data);
-                              store.dispatch(action);
+                        store.dispatch(action);
                         //成功并跳转
-                        that.props.history.push('/Layout');
+                        that.props.history.push('/');
                     } else if( code === "500" ){
                         this.setState({
                             text:res.data.msg,
@@ -127,8 +121,7 @@ class Login extends Component{
         }
     };
     componentDidMount(){
-        document.title = "登录";
-        // this.register();
+        document.title = "注册";
     }
 }
-export default Login
+export default Register

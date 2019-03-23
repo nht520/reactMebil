@@ -11,6 +11,7 @@ import banner from "../../statics/asstas/bna1.png"
 import storage from "../../statics/storage";
 import Banner from "../../statics/asstas/banner.png";
 // import store from "../../store"
+import Axios from "axios";
 class Home extends Component {
     constructor(props){
         super(props);
@@ -18,6 +19,7 @@ class Home extends Component {
         this.state=({
             title:"Nai he,tian",
             name:"",
+            list:[],
             banner: [
                 {
                     id:1,
@@ -38,39 +40,13 @@ class Home extends Component {
                     path:"CarouseDts/",
                 },
             ],
-            list:[
-                {
-                    id:1,
-                    title:"粉色小蛋糕",
-                    url_img:Banner,
-                    content:"樱桃酒味从巧克力卷的缝隙飘..."
-                },
-                {
-                    id:2,
-                    title:"好久没吃到草莓了",
-                    url_img:Banner,
-                    content:"色泽鲜艳,肉嫩多汁,酸甜可口。"
-                },
-                {
-                    id:3,
-                    title:"好久没吃到草莓了",
-                    url_img:Banner,
-                    content:"鸡肉有增强体力、强壮身体的..."
-                },
-                {
-                    id:4,
-                    title:"好久没吃到草莓了",
-                    url_img:Banner,
-                    content:"有丰富的柠檬酸，因此被誉为“..."
-                }
-            ]
             // src:"https://www.baidu.com/img/bd_logo1.png",
         })
     }
     homeDate(){
         //从storage获取数据 判断用户是否登录、如果未登录则返回登录页
         this.user = storage.get("user");
-        this.realName=this.user.realName;
+        this.realName=this.user.memberName;
         if(this.realName.length>=1){
             this.setState({
                 name:this.realName
@@ -96,7 +72,18 @@ class Home extends Component {
         this.homeDate();
         document.title = "健简";
         // this.reduxDate();
-        console.log(this.state.title)
+        console.log(this.state.title);
+        //获取数据将数据存在store
+        var api =window.g.meal;
+        Axios.get(api).then((res)=>{
+            console.log(res);
+            let homeList=res.data.records;
+            this.setState({
+                list:homeList
+            })
+        },(err)=>{
+            console.log(err);
+        })
     }
 
     render(){
@@ -123,8 +110,8 @@ class Home extends Component {
                                 <Link to={`/Dateils/${item.id}`} >
                                     <img src={item.url_img} alt="我是图片">
                                     </img>
-                                    <h3>{item.title}</h3>
-                                    <h5>{item.content}</h5>
+                                    <h3>{item.mealName}</h3>
+                                    <h5>{item.mealContent}</h5>
                                 </Link>
                             </li>
                             ))

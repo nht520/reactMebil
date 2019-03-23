@@ -6,7 +6,7 @@ import yhujua from "../../statics/asstas/yhujua.png";
 import scan from "../../statics/asstas/scan.png";
 import dindan from "../../statics/asstas/dindan.png";
 import laxi from "../../statics/asstas/laxi.png";
-import banner from "../../statics/asstas/touxiang.png";
+// import banner from "../../statics/asstas/touxiang.png";
 import {
     Flex,List
 } from 'antd-mobile';
@@ -20,6 +20,7 @@ class About extends Component {
             title:"奈何天",
             dinddan:"99",
             kucun:"888",
+            urlImg:"",
             list:[
                 {
                     id:1,
@@ -57,7 +58,7 @@ class About extends Component {
 
     render(){
         const Item = List.Item;
-        const { list } = this.state;
+        const { list,urlImg } = this.state;
         return(
             <Fragment>
                 <AboutWrapper>
@@ -69,7 +70,7 @@ class About extends Component {
                                    <h3>电话：{this.state.iphone}</h3>
                                </Flex.Item>
                                <Flex.Item>
-                                   <img src={banner} alt="我是图片"></img>
+                                   <img src={ urlImg } alt="我是图片"></img>
                                </Flex.Item>
                            </Flex>
                            {/**/}
@@ -117,11 +118,13 @@ class About extends Component {
     //从storage获取数据
     homeDate = () =>{
         this.user = storage.get("user");
-        this.realName=this.user.realName;
-        this.iphone=this.user.empName;
+        this.realName=this.user.memberName;
+        this.iphone=this.user.memberPhone;
+        this.urlImg=this.user.memberHead;
         this.setState({
             name:this.realName,
-            iphone:this.iphone
+            iphone:this.iphone,
+            urlImg:this.urlImg
         });
     };
     componentDidMount (){
