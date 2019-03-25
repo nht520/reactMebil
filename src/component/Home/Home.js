@@ -45,7 +45,7 @@ class Home extends Component {
     homeDate(){
         //从storage获取数据 判断用户是否登录、如果未登录则返回登录页
         this.user = storage.get("user");
-        this.realName=this.user.memberName;
+        this.realName=this.user.realName;
         if(this.realName.length>=1){
             this.setState({
                 name:this.realName

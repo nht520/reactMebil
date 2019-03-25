@@ -87,7 +87,7 @@ class List extends Component {
                     states:"待付款",
                     freight:"9999",
                     totalprices:"8989",
-                    button:"查看详情",
+                    button:"去付款",
                     orderList:[
                         {
                             id:1,
@@ -113,7 +113,7 @@ class List extends Component {
                     states:"待付款",
                     freight:"9999",
                     totalprices:"8989",
-                    button:"查看详情",
+                    button:"去付款",
                     orderList:[
                         {
                             id:1,
@@ -131,7 +131,7 @@ class List extends Component {
                     states:"待付款",
                     freight:"9999",
                     totalprices:"8989",
-                    button:"查看详情",
+                    button:"去付款",
                     orderList:[
                         {
                             id:1,
@@ -286,7 +286,7 @@ class List extends Component {
                 <ListWaper>
                     <Tabs tabs={tabs} initialPage={0} animated={true} useOnPan={false}>
                         <ListItem >
-                            <Cpntindent list={List} />
+                            <Cpntindent list={List}  />
                         </ListItem>
                         <ListItem >
                             <Cpntindent list={OtionList} />

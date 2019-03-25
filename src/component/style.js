@@ -255,6 +255,13 @@ export const OrdeItem  = styled.li`
     margin: 0% 0% 5% 0%;
     width: 100%;
     float: left;
+    .linkSkip{
+        border: 1PX solid #ddd;
+        padding: 2.5% 5%;
+        border-radius: 5px;
+        color:#252433;
+        float: right;
+    }
 `;
 export const OrdeLeft = styled.div`
     width:30%;
@@ -334,6 +341,15 @@ export const LoginWrapper = styled.div`
        color:#8f8f8f;
        font-weight: 100;
        margin-top: 8%;
+    }
+    .register{
+         float:left;
+         a{
+          color:#8f8f8f;
+         }
+    }
+    .retuout a{
+     color:#8f8f8f;
     }
 `;
 //商品详情

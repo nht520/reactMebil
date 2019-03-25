@@ -31,10 +31,7 @@ class Login extends Component{
                     <input type="text" onChange={this.username} placeholder="请输入账号"/>
                     <input type="password" onKeyDown={this.inputKeyDown} onChange={this.password} placeholder="请输入密码"/>
                     <Button className="logButton"  onClick={this.handChang}>登录</Button>
-                    <h5>忘记密码？</h5>
-                    <h5>
-                        <Link to="/Register">注册</Link>
-                    </h5>
+                    <h5><span className="register"><Link to="/Register">注册</Link></span>忘记密码？</h5>
                 </LoginWrapper>
             </Fragment>
         )
@@ -42,7 +39,7 @@ class Login extends Component{
     //判断用户是否登录
     register = () =>{
         this.user = storage.get("user");
-        this.realName=this.user.memberName;
+        this.realName=this.user.realName;
         if(this.realName.length>=1){
             this.setState({
                 name:this.realName
@@ -90,15 +87,15 @@ class Login extends Component{
         }else {
             //把用户名  密码统一存在_param里面  把_param提交到后台
             const _param = new URLSearchParams();
-                  _param.append("memberPhone",that.state.username);
-                  _param.append("memberPassword",that.state.password);
+                  _param.append("empName",that.state.username);
+                  _param.append("empPassword",that.state.password);
             //获取数据将数据存在store
-            var api =window.g.login;
+            var api =window.g.nineLogin;
             Axios.post(api,_param).then((res)=>{
                 console.log(res);
                 if (res.status===200){
-                    const code =res.data.code;
-                    if (code === "200"){
+                    const code =res.data.status;
+                    if (code === "1"){
                         //将数据存在storage
                         storage.set("user",res.data.data);
                         const data = res.data.data;
@@ -106,18 +103,18 @@ class Login extends Component{
                               store.dispatch(action);
                         //成功并跳转
                         that.props.history.push('/Layout');
-                    } else if( code === "500" ){
+                    } else if( code === "0" ){
                         this.setState({
-                            text:res.data.msg,
+                            text:res.data.message,
                         },()=>that.showToast());
                     }else if( code === "2"){
                         this.setState({
-                            text:res.data.msg,
+                            text:res.data.message,
                         },()=>that.showToast());
                     }else{
                         //如果登录失败 就返回错误信息
                         this.setState({
-                            text:res.data.msg,
+                            text:res.data.message,
                         },()=>that.showToast());
                     }
                 }
@@ -128,7 +125,7 @@ class Login extends Component{
     };
     componentDidMount(){
         document.title = "登录";
-        // this.register();
+        this.register();
     }
 }
 export default Login

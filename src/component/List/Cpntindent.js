@@ -1,78 +1,38 @@
 import React, {Component, Fragment} from "react";
 import {OneLeft, OrdeItem, OrdeLeft, OrdeList, OrdeRight, OrderList, OrdeWrapper, TwoRight} from "../style";
-import {Button, Flex} from "antd-mobile";
+import {
+    // Button,
+    Flex} from "antd-mobile";
 import {Link} from "react-router-dom";
-
+import storage from "../../statics/storage";
 class Cpntindent extends Component{
     constructor(props){
         super(props);
         this.state=({
             title:"全部订单",
-            list:[
-                {
-                    id:1,
-                    number:"16546454",
-                    states:"待付款",
-                    freight:"9999",
-                    totalprices:"8989",
-                    button:"去付款",
-                    orderList:[
-                        {
-                            id:1,
-                            path:"",
-                            imgurl:"https://www.baidu.com/img/bd_logo1.png",
-                            title:"炸鸡汉堡王",
-                            price:"352.00",
-                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                            quantity:"1",
-                        },
-                        {
-                            id:2,
-                            path:"",
-                            imgurl:"https://www.baidu.com/img/bd_logo1.png",
-                            title:"炸鸡汉堡王",
-                            price:"352.00",
-                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                            quantity:"1",
-                        },
-                    ]
-                },
-                {
-                    id:2,
-                    number:"16546454",
-                    states:"已完成",
-                    freight:"9999",
-                    totalprices:"8989",
-                    button:"删除订单",
-                    orderList:[
-                        {
-                            id:1,
-                            path:"",
-                            imgurl:"https://www.baidu.com/img/bd_logo1.png",
-                            title:"炸鸡汉堡王",
-                            price:"352.00",
-                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                            quantity:"1",
-                        }
-                    ]
-                }
-            ]
+            list:[ ]
         })
     }
+    locationChange =(key)=>{
+        let letid = this.props.list;
+        //将数据存储在storage
+        storage.set("lcList",letid[key]);
+        // this.props.history.push('/IndentDateils');
+        console.log(letid[key]);
+        // if (letid[key].states==="待付款"){
+        //     //如果状态是待付款就跳转到付款界面
+        //     // this.props.history.push('/');
+        //     console.log("123456")
+        // }
+    };
     render(){
         const { list } = this.props;
-        // const { number,states,id,imgurl,title,price,details,quantity,button } = this.state;
-        // let params=this.props.list.map((params,key)=>{
-        //     return(
-        //
-        //     )
-        // });
         return(
             <Fragment>
                 <OrdeWrapper>
                     {
-                        list.map(item=>(
-                            <OrderList key={item.id}>
+                        list.map((item,key)=>(
+                            <OrderList key={key} onClick={this.locationChange.bind(this,key)}>
                                 <Flex className="header">
                                     <Flex.Item>订单编号:<span>{item.number}</span></Flex.Item>
                                     <Flex.Item className="payment">{item.states}</Flex.Item>
@@ -102,9 +62,12 @@ class Cpntindent extends Component{
                                         ))
                                     }
                                     <OrdeItem>
-                                        <Button size="small">
-                                            {item.button}
-                                        </Button>
+                                        {/*<Button size="small">*/}
+                                            {/*{item.button}*/}
+                                        {/*</Button>*/}
+                                        <Link to={`/IndentDateils/${item.id}`}>
+                                            <span className="linkSkip">{item.button}</span>
+                                        </Link>
                                     </OrdeItem>
                                 </OrdeList>
                             </OrderList>

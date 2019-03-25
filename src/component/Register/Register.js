@@ -33,7 +33,7 @@ class Register extends Component{
                     <input type="password"  onChange={this.password} placeholder="请输入密码"/>
                     <input type="password" onKeyDown={this.inputKeyDown} onChange={this.affirmPassword} placeholder="请确认密码"/>
                     <Button className="logButton"  onClick={this.handChang}>立即注册</Button>
-                    <h5><Link to="/">返回登录？</Link></h5>
+                    <h5 className="retuout"><Link to="/">返回登录？</Link></h5>
                 </LoginWrapper>
             </Fragment>
         )

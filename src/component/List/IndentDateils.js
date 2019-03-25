@@ -8,14 +8,18 @@ import {
 //     Link
 // } from "react-router-dom";
 import banner from "../../statics/asstas/touxiang.png";
+import storage from "../../statics/storage";
 class IndentDateils extends Component{
     constructor(props){
         super(props);
         this.state=({
-            title:"订单详情"
+            title:"订单详情",
+            displayName:"none",
+            show:true
         })
     }
     render(){
+        const {displayName} = this.state;
         return(
             <Fragment>
                 {/*<IndentWrapper>*/}
@@ -95,7 +99,7 @@ class IndentDateils extends Component{
                        {/*联系*/}
                 </IndentDts>
                 {/*购买*/}
-                <DateilsButton>
+                <DateilsButton style={{ display:displayName }}>
                     <Flex className="title">
                         <Flex.Item></Flex.Item>
                         <Flex.Item><Button className="cancel">取消订单</Button></Flex.Item>
@@ -105,11 +109,32 @@ class IndentDateils extends Component{
             </Fragment>
         )
     }
+    condition=()=>{
+        //获取当前点击的状态值
+        this.lcList = storage.get("lcList");
+        this.realName=this.lcList.states;
+        // console.log(this.realName);
+        if (this.realName==="待发货"){
+            this.setState({
+                displayName:"none"
+            })
+        }else if(this.realName==="待付款"){
+            this.setState({
+                displayName:"block"
+            })
+        }else if(this.realName==="已完成"){
+            this.setState({
+                displayName:"none"
+            })
+        }
+    }
     componentDidMount (){
         //获取动态路由传值
         let _id = this.props.match.params.id;
         console.log(_id);
         document.title = this.state.title;
+        //
+        this.condition();
     }
 }
 
