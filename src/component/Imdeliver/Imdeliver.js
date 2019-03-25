@@ -4,7 +4,8 @@ import {
     Flex,
     Toast} from "antd-mobile";
 import {
-     ImdeList,ImdeItem,ImdeLeft,ImdeRight,ImdeLimit,ImdeButton,DateilsButton,ImdeAdd
+     ImdeList,ImdeItem,ImdeLeft,ImdeRight,ImdeLimit,ImdeButton,DateilsButton,ImdeAdd,
+    ImLeft,ImRight
 } from "../style";
 import {
     Link
@@ -16,6 +17,7 @@ class Imdeliver extends Component{
         this.state=({
             title:"发货",
             page:0,
+
             list:[
                 {
                     id:1,
@@ -51,6 +53,7 @@ class Imdeliver extends Component{
                                     <ImdeRight>
                                         <Flex className="title">
                                             <Flex.Item>{item.title}</Flex.Item>
+                                            <Flex.Item>特惠价:<span>￥{item.price}</span></Flex.Item>
                                         </Flex>
                                         <h5 className="ordDtels">
                                             {item.details}
@@ -58,28 +61,28 @@ class Imdeliver extends Component{
                                     </ImdeRight>
                                 </ImdeItem>
                             </Link>
-                            <ImdeLimit>
-                                可用库存<span className="red">（{item.repertory}）</span>  特惠价:<span>￥{item.price}</span>
-                            </ImdeLimit>
                             <ImdeButton>
                                 <ImdeAdd>
-                                    <ul>
-                                         <li>
-                                            <span>-</span>
-                                         </li>
-                                        <li>
-                                            100
-                                        </li>
-                                        <li>
-                                            <span>+</span>
-                                        </li>
-                                        <li>
-                                            加入发货单
-                                            {/*<Button size="small" className="shipments" onClick={this.adliveChange}>加入发货单</Button>*/}
-                                        </li>
-                                    </ul>
+                                    <ImLeft>
+                                        <Flex.Item>可用库存（<font className="red">{item.repertory}</font>）</Flex.Item>
+                                    </ImLeft>
+                                    <ImRight>
+                                        <ul>
+                                            <li>
+                                                <span onClick={this.subtractChange}>-</span>
+                                            </li>
+                                            <li className="numberDv">
+                                                1
+                                            </li>
+                                            <li >
+                                                <span onClick={this.plusChange}>+</span>
+                                            </li>
+                                            <li className="addJoin">
+                                                <span className="joinSpan" onClick={this.addChange}>加入发货单</span>
+                                            </li>
+                                        </ul>
+                                    </ImRight>
                                 </ImdeAdd>
-                                {/*<Button size="small" className="shipments" onClick={this.adliveChange}>加入发货单</Button>*/}
                             </ImdeButton>
                         </ImdeList>
                     ))
@@ -98,7 +101,7 @@ class Imdeliver extends Component{
     showToast = () => {
         Toast.info(this.state.text);
     };
-    adliveChange = () =>{
+    addChange = () =>{
         // console.log("222")
         this.pages = this.state.page;
         ++this.pages;

@@ -437,12 +437,42 @@ export const DateilsButton = styled.div`
 `;
 //订货
 export const ImdeAdd =styled.div`
-    width:80%;
+    width:100%;
     float:right;
+    margin-top:5%;
     ul li{
-       width:25%;
+       width:13%;
        float:left; 
     }
+    span{
+        padding: 15% 35%;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+    .numberDv{
+        width: 18%;
+        text-align: center; 
+    }
+    .addJoin{
+        width:50%;
+        margin-left:3%;
+    }
+    .joinSpan{
+        padding:5% 10%;
+        width: 50%;
+        margin-left: 5%;
+    }
+`;
+export const ImLeft = styled.div`
+    width:43%;
+    float:left;
+    .red{
+        color:#F00;
+    }
+`;
+export const ImRight = styled.div`
+     width:57%;
+    float:right;   
 `;
 //订单详情
 export const IndentDts = styled.div`
@@ -583,10 +613,10 @@ export const ImdeRight = styled.div`
     box-sizing: border-box;
     .title{
         font-weight: bold;
-        display: inline-block;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        // display: inline-block;
+        // white-space: nowrap;
+        // overflow: hidden;
+        // text-overflow: ellipsis;
     }
 `;
 export const ImdeLimit = styled.div`
