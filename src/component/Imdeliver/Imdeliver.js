@@ -18,7 +18,6 @@ class Imdeliver extends Component{
         this.state=({
             title:"发货",
             sum:"0",
-            totalPrice:"0",
             list:[
                 {
                     id:1,
@@ -26,7 +25,7 @@ class Imdeliver extends Component{
                     imgurl:"https://www.baidu.com/img/bd_logo1.png",
                     title:"炸鸡汉堡王",
                     details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                    price:352.00,
+                    price:22.00,
                     repertory:"5",
                 }, {
                     id:2,
@@ -34,7 +33,7 @@ class Imdeliver extends Component{
                     imgurl:"https://www.baidu.com/img/bd_logo1.png",
                     title:"草莓汉堡王",
                     details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                    price:352.00,
+                    price:100.00,
                     repertory:"5",
                 },
             ]
@@ -91,7 +90,7 @@ class Imdeliver extends Component{
                 <DateilsButton>
                     <Flex className="title">
                         <Flex.Item></Flex.Item>
-                        <Flex.Item className="shipments">发货单({this.state.sum}+{this.state.totalPrice})</Flex.Item>
+                        <Flex.Item className="shipments">发货单({this.state.sum})</Flex.Item>
                         <Flex.Item><Button onClick={this.imdeChange}>去发货</Button></Flex.Item>
                     </Flex>
                 </DateilsButton>
@@ -110,23 +109,23 @@ class Imdeliver extends Component{
     //添加
     subtractChange =(key)=>{
         this.addList=this.state.list;
-        this.numBer=this.addList[key].addNumber;
-        this.repertory=this.addList[key].repertory;
         //点击计算数量
         ++this.addList[key].addNumber;
         //点击计算价格
-        // totalPrice
-        // var price = 0;
-        // for( var a = 0;a<this.addList.length;a++){
-        //     price = price + this.addList[a].price;
-        // }
-        // this.setState({
-        //     totalPrice:price
-        // });
-        // console.log(price);
+
+        var amount =0;
+        var topic =0;
+        for( var a = 0; a<this.addList.length; a++){
+            amount = this.addList[key].addNumber * this.addList[key].price ;
+            // topic=this.addList[key].price+this.addList[key].price;
+        }
+
+        console.log(this.addList[key].price);
+        console.log(this.addList[key].addNumber);
+        console.log(amount+topic);
         // this.sumone=this.state.sum;
-        if (this.numBer>this.repertory){
-            this.numBer=this.repertory;
+        if (this.addList[key].addNumber>this.addList[key].repertory){
+            this.addList[key].addNumber=this.addList[key].repertory;
             this.setState({
                 text:"亲 你已达到库存上限了哦！",
             },()=>this.showToast());
@@ -137,7 +136,7 @@ class Imdeliver extends Component{
                 count = count + this.addList[i].addNumber;
             }
             this.setState({
-                addNumber:this.addNumber,
+                addNumber:this.addList[key].addNumber,
                 sum:count
             });
         }
@@ -156,7 +155,7 @@ class Imdeliver extends Component{
         }else {
             --this.sumone;
             this.setState({
-                addNumber:this.addNumber,
+                addNumber:this.addList[key].addNumber,
                 sum:this.sumone
             });
         }
@@ -173,12 +172,12 @@ class Imdeliver extends Component{
             this.props.history.push('/SubmitOrder');
         }
     };
+
     componentDidMount (){
         //获取动态路由传值
         // let _id = this.props.match.params.id;
         // console.log(_id);
         document.title = this.state.title;
-
     }
 }
 

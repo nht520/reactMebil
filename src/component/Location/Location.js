@@ -14,7 +14,6 @@ class Location extends Component{
         super(props);
         this.state=({
             title:"123",
-            className:"",
             list:[
                 {
                     id:1,
@@ -34,7 +33,7 @@ class Location extends Component{
         })
     }
     render(){
-        const { list,className } =  this.state;
+        const { list } =  this.state;
         return(
             <Fragment>
                 <LoactionWrapper>
@@ -54,7 +53,7 @@ class Location extends Component{
                                 <li className="loaction">
                                     <Flex>
                                         <Flex.Item>
-                                            <span className={className}>{item.lcStatus}</span>
+                                            <span className="red">{item.lcStatus}</span>
                                         </Flex.Item>
                                         <Flex.Item>
                                             <Flex>
