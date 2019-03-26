@@ -4,35 +4,37 @@ import {
     Flex,
     Toast} from "antd-mobile";
 import {
-     ImdeList,ImdeItem,ImdeLeft,ImdeRight,ImdeLimit,ImdeButton,DateilsButton,ImdeAdd,
+     ImdeList,ImdeItem,ImdeLeft,ImdeRight,ImdeButton,DateilsButton,ImdeAdd,
     ImLeft,ImRight
 } from "../style";
 import {
     Link
 } from "react-router-dom";
+import storage from "../../statics/storage";
 // import banner from "../../statics/asstas/touxiang.png";
 class Imdeliver extends Component{
     constructor(props){
         super(props);
         this.state=({
             title:"发货",
-            page:0,
-
+            sum:"0",
             list:[
                 {
                     id:1,
+                    addNumber:0,
                     imgurl:"https://www.baidu.com/img/bd_logo1.png",
                     title:"炸鸡汉堡王",
                     details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
                     price:"352.00",
-                    repertory:"1",
+                    repertory:"5",
                 }, {
                     id:2,
+                    addNumber:0,
                     imgurl:"https://www.baidu.com/img/bd_logo1.png",
                     title:"草莓汉堡王",
                     details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
                     price:"352.00",
-                    repertory:"1",
+                    repertory:"5",
                 },
             ]
         })
@@ -44,7 +46,7 @@ class Imdeliver extends Component{
                 {/*<IndentWrapper>*/}
                 {
                     list.map((item,key)=>(
-                        <ImdeList key={key}>
+                        <ImdeList key={key} onClick={this.addChange.bind(this,key)}>
                             <Link to={`/Dateils/${item.id}`}>
                                 <ImdeItem>
                                     <ImdeLeft>
@@ -68,17 +70,14 @@ class Imdeliver extends Component{
                                     </ImLeft>
                                     <ImRight>
                                         <ul>
-                                            <li>
-                                                <span onClick={this.subtractChange}>-</span>
+                                            <li className="berLeft">
+                                                <span  onClick={this.subtractChange.bind(this,key)}>十</span>
                                             </li>
                                             <li className="numberDv">
-                                                1
+                                                {item.addNumber}
                                             </li>
-                                            <li >
-                                                <span onClick={this.plusChange}>+</span>
-                                            </li>
-                                            <li className="addJoin">
-                                                <span className="joinSpan" onClick={this.addChange}>加入发货单</span>
+                                            <li className="berRight">
+                                                <span onClick={this.plusChange.bind(this,key)}>一</span>
                                             </li>
                                         </ul>
                                     </ImRight>
@@ -91,7 +90,7 @@ class Imdeliver extends Component{
                 <DateilsButton>
                     <Flex className="title">
                         <Flex.Item></Flex.Item>
-                        <Flex.Item className="shipments">发货单({this.state.page})</Flex.Item>
+                        <Flex.Item className="shipments">发货单({this.state.sum})</Flex.Item>
                         <Flex.Item><Button onClick={this.imdeChange}>去发货</Button></Flex.Item>
                     </Flex>
                 </DateilsButton>
@@ -101,30 +100,69 @@ class Imdeliver extends Component{
     showToast = () => {
         Toast.info(this.state.text);
     };
-    addChange = () =>{
-        // console.log("222")
-        this.pages = this.state.page;
-        ++this.pages;
-        this.setState({
-            page:this.pages
-        });
+    addChange = (key) =>{
+        //获取当前点击的key
+        let addList=this.state.list;
+        console.log(addList[key]);
         // console.log(this.pages)
     };
-    imdeChange = () =>{
-        console.log("111");
-        this.pages = this.state.page;
-        if (this.pages<1){
+    //添加
+    subtractChange =(key)=>{
+        this.addList=this.state.list;
+        ++this.addList[key].addNumber;
+        // this.sumone=this.state.sum;
+        if (this.addList[key].addNumber>this.addList[key].repertory){
+            this.addList[key].addNumber=this.addList[key].repertory;
             this.setState({
-                text:"你还没有选择商品哦",
+                text:"亲 你已达到库存上限了哦！",
+            },()=>this.showToast());
+        }else{
+            // ++this.sumone;
+            var count = 0;
+            for( var i = 0;i<this.addList.length;i++){
+                count = count + this.addList[i].addNumber;
+            }
+            this.setState({
+                addNumber:this.addNumber,
+                sum:count
+            });
+        }
+    };
+    // 减少
+    plusChange=(key)=>{
+        this.addList=this.state.list;
+        // console.log(this.addList[key].addNumber);
+        --this.addList[key].addNumber;
+        this.sumone=this.state.sum;
+        if (this.addList[key].addNumber<0){
+            this.addList[key].addNumber=0;
+            this.setState({
+                text:"亲 发货数不能低于1哦！",
+            },()=>this.showToast());
+        }else {
+            --this.sumone;
+            this.setState({
+                addNumber:this.addNumber,
+                sum:this.sumone
+            });
+        }
+
+    };
+    imdeChange = () =>{
+        console.log("00");
+        this.sum = this.state.sum;
+        if (this.sum<1){
+            this.setState({
+                text:"亲 你还没有选择商品哦",
             },()=>this.showToast())
-        } else if(this.pages>=1){
+        } else if(this.sum>=1){
             this.props.history.push('/SubmitOrder');
         }
     };
     componentDidMount (){
         //获取动态路由传值
-        let _id = this.props.match.params.id;
-        console.log(_id);
+        // let _id = this.props.match.params.id;
+        // console.log(_id);
         document.title = this.state.title;
     }
 }

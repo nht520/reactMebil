@@ -439,19 +439,27 @@ export const DateilsButton = styled.div`
 export const ImdeAdd =styled.div`
     width:100%;
     float:right;
-    margin-top:5%;
+    margin-top:3%;
+    line-height: 30px;
     ul li{
-       width:13%;
-       float:left; 
+       width: 20%;
+        float: right;
+        /* padding: 15% 35%; */
+        /* border-radius: 5px; */
+        border: 1px solid #f3f3f3;
+        text-align: center;
+        height: 30px;
+        line-height: 30px;
     }
     span{
-        padding: 15% 35%;
-        border-radius: 5px;
-        border: 1px solid #ccc;
+        color:#8f8f8f;
+        font-size:12px;
     }
     .numberDv{
         width: 18%;
         text-align: center; 
+        border-left:0px;
+        border-right:0px;
     }
     .addJoin{
         width:50%;
@@ -462,16 +470,26 @@ export const ImdeAdd =styled.div`
         width: 50%;
         margin-left: 5%;
     }
+    .berLeft{
+       border-left: 0px;
+       span{
+          color:#252433;
+          font-weight: bold;
+       }
+    }
+    .berRight{
+        border-right:0px;
+    }
 `;
 export const ImLeft = styled.div`
-    width:43%;
+    width:60%;
     float:left;
     .red{
         color:#F00;
     }
 `;
 export const ImRight = styled.div`
-     width:57%;
+     width:40%;
     float:right;   
 `;
 //订单详情
@@ -753,3 +771,57 @@ export  const  DetailAll = styled.div`
         margin-right:3%;
     }
 `;
+export const SubmitWrapper = styled.div`
+     padding: 0% 4%;
+     margin-top: 5%;
+`;
+export const Delivery = styled.div`
+    box-shadow:2px 4px 21px #efefef;
+    color:#8f8f8f;
+    padding: 5% 4%;
+    line-height: 40px;
+    .sbmtDvey{
+        border-bottom:1px solid #f1f1f1;
+    }
+    .delivery{
+        color:#2b2b2b;
+    }
+    .left{
+        text-align: right;
+    }
+`;
+export const Take = styled.div`
+    margin-top:5%;
+    h2{
+        font-weight:bold;
+    }
+    color:#2b2b2b;
+    ul li{
+        line-height: 30px;
+        .right{
+            float:right;
+            font-size:24px;
+            color:#d2d2d2;
+            font-weight:bold;
+            img{
+                width:10px;
+                height:16px;
+            }
+        }
+    }
+`;
+export const SubmitList = styled.div`
+    h2{
+       font-weight:bold;
+       margin:8% 0% 3% 0%;  
+    }
+    .payment{
+        text-align: right;
+    }
+`;
+
+
+
+
+
+

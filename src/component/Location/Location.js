@@ -18,24 +18,24 @@ class Location extends Component{
                 {
                     id:1,
                     user:"奈何天",
-                    clsName:"dd",
+                    className:"1",
                     iphone:"158****1345",
                     location:"四川省 泸州市  九龙坡区  杨家坪步行街四川省 泸州市  九龙坡区  杨家坪步行街",
                     lcStatus:"默认",
                 },
                 {
                     id:2,
-                    clsName:"ff",
                     user:"别经年",
+                    className:"2",
                     iphone:"158****1345",
-                    location:"四川省 泸州市  九龙坡区  杨家坪步行街四川省 泸州市  九龙坡区  杨家坪步行街",
+                    location:"四川省 泸州市  渝中区 泸州市 解放碑步行街",
                     lcStatus:"普通",
                 }
             ]
         })
     }
     render(){
-        const { list } =  this.state;
+        const { list,className } =  this.state;
         return(
             <Fragment>
                 <LoactionWrapper>
@@ -55,7 +55,7 @@ class Location extends Component{
                                 <li className="loaction">
                                     <Flex>
                                         <Flex.Item>
-                                            <span className={item.clsName}>{item.lcStatus}</span>
+                                            <span className={className}>{item.lcStatus}</span>
                                         </Flex.Item>
                                         <Flex.Item>
                                             <Flex>
@@ -83,23 +83,13 @@ class Location extends Component{
             </Fragment>
         )
     }
-    componentDidMount(){
-        document.title="我的地址";
-        this.locationChange();
-    }
     locationChange = (key) =>{
         //获取当前点击的key
-        let tempList=this.state.list;
-        console.log(tempList[key]);
+        this.locList=this.state.list;
+        console.log(this.locList[key]);
         //将数据存储在storage
-        storage.set("location",tempList[key]);
-        // console.log(tempList.lcStatus);
-        // console.log(this.state.list.lcStatus)
-        // if (tempList[key].lcStatus==="默认"){
-        //     this.setState({
-        //         clsName:red
-        //     })
-        // }
+        storage.set("location",this.locList[key]);
+        this.props.history.push('/SubmitOrder');
     };
     compileChang = () =>{
         this.props.history.push('/AddLocation');
@@ -111,6 +101,9 @@ class Location extends Component{
         this.setState({
             list:tempList
         })
+    };
+    componentDidMount(){
+        document.title="我的地址";
     }
 }
 export default Location;

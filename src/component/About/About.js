@@ -6,7 +6,6 @@ import yhujua from "../../statics/asstas/yhujua.png";
 import scan from "../../statics/asstas/scan.png";
 import dindan from "../../statics/asstas/dindan.png";
 import laxi from "../../statics/asstas/laxi.png";
-// import banner from "../../statics/asstas/touxiang.png";
 import {
     Flex,List
 } from 'antd-mobile';
