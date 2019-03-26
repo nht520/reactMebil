@@ -1,9 +1,10 @@
 import React,{ Component,Fragment } from "react";
 import {
-    SubmitWrapper, Delivery, Take, SubmitList, OrdeItem, OrdeLeft, OrdeRight, OneLeft, TwoRight, OrdeList
+    SubmitWrapper, Delivery, Take, SubmitList,Commodity,
+    OrdeItem, OrdeLeft, OrdeRight, OneLeft, TwoRight, OrdeList,DateilsButton
 } from "../style";
 import left from "../../statics/asstas/left.png";
-import { Flex } from "antd-mobile";
+import { Flex,Button } from "antd-mobile";
 import storage from "../../statics/storage";
 class SubmitOrder extends Component{
     constructor(props){
@@ -27,6 +28,7 @@ class SubmitOrder extends Component{
                     quantity:"1",
                 },
             ],
+            sum:"9999.00",
             displayName:"none",
             displaysite:"block",
             userName:"奈何天",
@@ -104,8 +106,36 @@ class SubmitOrder extends Component{
                                 ))
                             }
                         </OrdeList>
+                        <Commodity>
+                            <ul>
+                                <li>
+                                    <span className="left">商品数量</span>
+                                    <span className="right">5</span>
+                                </li>
+                                <li>
+                                    <span className="left">商品总额</span>
+                                    <span className="right">￥352.00</span>
+                                </li>
+                                <li>
+                                    <span className="left">运费</span>
+                                    <span className="right">￥352</span>
+                                </li>
+                                <li className="subsolid">
+                                    <span className="left">实付款</span>
+                                    <span className="right">￥352</span>
+                                </li>
+                            </ul>
+                        </Commodity>
                     </SubmitList>
                 </SubmitWrapper>
+                {/*发货*/}
+                <DateilsButton>
+                    <Flex className="title">
+                        <Flex.Item></Flex.Item>
+                        <Flex.Item className="shipments">￥{this.state.sum}</Flex.Item>
+                        <Flex.Item><Button onClick={this.imdeChange}>提交订单</Button></Flex.Item>
+                    </Flex>
+                </DateilsButton>
             </Fragment>
         )
     }
@@ -118,8 +148,7 @@ class SubmitOrder extends Component{
     };
     submitOrder=()=>{
         this.site = storage.get("location");
-        this.iphone = this.site.iphone;
-        if (this.iphone<0) {
+        if (this.site==null || this.site===undefined) {
             this.setState({
                 displayName:"none",
                 displaysite:"block",

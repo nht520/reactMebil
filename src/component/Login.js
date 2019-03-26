@@ -39,14 +39,14 @@ class Login extends Component{
     //判断用户是否登录
     register = () =>{
         this.user = storage.get("user");
-        this.realName=this.user.realName;
-        if(this.realName.length>=1){
+        console.log(this.user);
+        if(this.user==null || this.user===undefined){
+            this.props.history.push('/');
+        }else if(this.user!==null || this.user!==undefined){
             this.setState({
                 name:this.realName
             });
             this.props.history.push('/Layout');
-        }else if(this.realName.length<1){
-            this.props.history.push('/');
         }
     };
     //判断是否按下了回车
@@ -125,7 +125,7 @@ class Login extends Component{
     };
     componentDidMount(){
         document.title = "登录";
-        // this.register();
+        this.register();
     }
 }
 export default Login

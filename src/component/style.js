@@ -433,6 +433,7 @@ export const DateilsButton = styled.div`
      .shipments{
          font-weight: bold;
          color:#f00;
+         font-size:18px;
      }
 `;
 //订货
@@ -680,6 +681,9 @@ export const LoactionWrapper = styled.div`
         color:#292b33;
         font-weight: bold;
         margin:0px;
+        span{
+            margin-left: 5%;
+        }
     }
     h5{
       margin:0px;
@@ -784,7 +788,8 @@ export const Delivery = styled.div`
         border-bottom:1px solid #f1f1f1;
     }
     .delivery{
-        color:#2b2b2b;
+        color:#292b33;
+        font-weight: bold;
     }
     .left{
         text-align: right;
@@ -795,7 +800,7 @@ export const Take = styled.div`
     h2{
         font-weight:bold;
     }
-    color:#2b2b2b;
+    color:#292b33;
     ul li{
         line-height: 30px;
         .right{
@@ -813,13 +818,29 @@ export const Take = styled.div`
 export const SubmitList = styled.div`
     h2{
        font-weight:bold;
-       margin:8% 0% 3% 0%;  
+       margin:8% 0% 3% 0%; 
+       color:#292b33; 
     }
     .payment{
         text-align: right;
     }
 `;
-
+//商品数量
+export const Commodity = styled.div`
+    margin:10% 0% 70px 0%;
+    .subsolid{
+        color:#292b33;
+        font-weight:bold;
+        font-size:16px;
+    }
+    ul li{
+        color:#8f8f8f;
+        line-height: 28px;
+        .right{
+            float:right;
+        }
+    }
+`;
 
 
 

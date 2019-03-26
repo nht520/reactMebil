@@ -14,11 +14,11 @@ class Location extends Component{
         super(props);
         this.state=({
             title:"123",
+            className:"",
             list:[
                 {
                     id:1,
                     user:"奈何天",
-                    className:"1",
                     iphone:"158****1345",
                     location:"四川省 泸州市  九龙坡区  杨家坪步行街四川省 泸州市  九龙坡区  杨家坪步行街",
                     lcStatus:"默认",
@@ -26,7 +26,6 @@ class Location extends Component{
                 {
                     id:2,
                     user:"别经年",
-                    className:"2",
                     iphone:"158****1345",
                     location:"四川省 泸州市  渝中区 泸州市 解放碑步行街",
                     lcStatus:"普通",
