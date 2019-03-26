@@ -118,13 +118,12 @@ class Imdeliver extends Component{
         for( var a = 0; a<this.addList.length; a++){
             amount = this.addList[key].addNumber * this.addList[key].price ;
             for( var c=0; c<this.addList.length; c++ ){
-                topic=amount[key]+amount[key];
+                topic=amount+amount;
             }
         }
-
         console.log(this.addList[key].price);
         console.log(this.addList[key].addNumber);
-        console.log(topic);
+        console.log(amount);
         // this.sumone=this.state.sum;
         if (this.addList[key].addNumber>this.addList[key].repertory){
             this.addList[key].addNumber=this.addList[key].repertory;
