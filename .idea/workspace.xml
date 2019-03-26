@@ -96,12 +96,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="2532" />
+          <entry key="js" value="2586" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JavaScript" value="2532" />
+          <entry key="JavaScript" value="2586" />
         </counts>
       </usages-collector>
     </session>
@@ -144,8 +144,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/component/Imdeliver/Imdeliver.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="118" column="9" lean-forward="true" selection-start-line="118" selection-start-column="9" selection-end-line="118" selection-end-column="9" />
+            <state relative-caret-position="281">
+              <caret line="123" lean-forward="true" selection-start-line="123" selection-end-line="123" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
                 <element signature="e#1475#3680#0" />
@@ -452,12 +452,12 @@
       <workItem from="1553260476655" duration="18279000" />
       <workItem from="1553491113541" duration="12255000" />
       <workItem from="1553562385977" duration="24503000" />
-      <workItem from="1553600327262" duration="6341000" />
+      <workItem from="1553600327262" duration="7325000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="157605000" />
+    <option name="totallyTimeSpent" value="158589000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -768,8 +768,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/component/Imdeliver/Imdeliver.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="118" column="9" lean-forward="true" selection-start-line="118" selection-start-column="9" selection-end-line="118" selection-end-column="9" />
+        <state relative-caret-position="281">
+          <caret line="123" lean-forward="true" selection-start-line="123" selection-end-line="123" />
           <folding>
             <element signature="e#0#49#0" expanded="true" />
             <element signature="e#1475#3680#0" />
