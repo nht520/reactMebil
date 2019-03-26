@@ -114,12 +114,12 @@ class Imdeliver extends Component{
         //点击计算价格
 
         var amount =0;
-        var topic=0;
+        // var topic=0;
         for( var a = 0; a<this.addList.length; a++){
             amount = this.addList[key].addNumber * this.addList[key].price ;
-            for( var c=0; c<this.addList.length; c++ ){
-                topic=amount+amount;
-            }
+            // for( var c=0; c<this.addList.length; c++ ){
+            //     topic=amount+amount;
+            // }
         }
         console.log(this.addList[key].price);
         console.log(this.addList[key].addNumber);
