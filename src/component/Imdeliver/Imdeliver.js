@@ -10,7 +10,7 @@ import {
 import {
     Link
 } from "react-router-dom";
-import storage from "../../statics/storage";
+// import storage from "../../statics/storage";
 // import banner from "../../statics/asstas/touxiang.png";
 class Imdeliver extends Component{
     constructor(props){

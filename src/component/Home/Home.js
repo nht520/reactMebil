@@ -45,13 +45,12 @@ class Home extends Component {
     homeDate(){
         //从storage获取数据 判断用户是否登录、如果未登录则返回登录页
         this.user = storage.get("user");
-        this.realName=this.user.realName;
-        if(this.realName.length>=1){
+        if(this.user==null || this.user===undefined){
+            this.props.history.push('/');
+        }else if(this.user!==null || this.user!==undefined){
             this.setState({
                 name:this.realName
             });
-        }else if(this.realName.length<1){
-            this.props.history.push('/');
         }
     //从redux获取值
     // reduxDate = () =>{

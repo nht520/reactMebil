@@ -39,7 +39,6 @@ class Login extends Component{
     //判断用户是否登录
     register = () =>{
         this.user = storage.get("user");
-        console.log(this.user);
         if(this.user==null || this.user===undefined){
             this.props.history.push('/');
         }else if(this.user!==null || this.user!==undefined){
