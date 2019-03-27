@@ -122,7 +122,7 @@ class SubmitOrder extends Component{
                                 </li>
                                 <li className="subsolid">
                                     <span className="left">实付款</span>
-                                    <span className="right">￥352</span>
+                                    <span className="right">￥{this.state.sum}</span>
                                 </li>
                             </ul>
                         </Commodity>

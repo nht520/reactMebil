@@ -1,8 +1,7 @@
 import React,{ Component,Fragment } from "react";
 import {
-    Button,
-    Flex,
-    Toast} from "antd-mobile";
+    Button,Toast,
+    Flex,} from "antd-mobile";
 import {
      ImdeList,ImdeItem,ImdeLeft,ImdeRight,ImdeButton,DateilsButton,ImdeAdd,
     ImLeft,ImRight
@@ -10,6 +9,7 @@ import {
 import {
     Link
 } from "react-router-dom";
+import storage from "../../statics/storage";
 // import storage from "../../statics/storage";
 // import banner from "../../statics/asstas/touxiang.png";
 class Imdeliver extends Component{
@@ -105,33 +105,33 @@ class Imdeliver extends Component{
         //获取当前点击的key
         let addList=this.state.list;
         console.log(addList[key]);
+        // console.log(this.pages)
     };
     //添加
     subtractChange =(key)=>{
         this.addList=this.state.list;
+        //点击计算数量
         ++this.addList[key].addNumber;
         if (this.addList[key].addNumber>this.addList[key].repertory){
             this.addList[key].addNumber=this.addList[key].repertory;
-            this.setState({
-                text:"亲 你已达到库存上限了哦！",
-            },()=>this.showToast());
         }else{
-            //点击计算数量
             var count = 0;
-            //点击增加份数，计算价格
+            //点击增加分属，计算价格
             var topicnum =0;
             for( var i = 0;i<this.addList.length;i++){
-                count = count + this.addList[i].addNumber;
-
-                topicnum += this.addList[i].addNumber * this.addList[i].price;
-
+                count = count+parseInt(this.addList[i].addNumber);
+                topicnum += this.addList[i].addNumber* this.addList[i].price;
+                console.log(topicnum+"总价");
             }
             this.setState({
                 addNumber:this.addList[key].addNumber,
                 sum:count,
                 topic:topicnum
             });
-
+            if (this.state.topic>1){
+                console.log(this.state.topic);
+                storage.set("topic",this.addList[key]);
+            }
         }
     };
     // 减少
@@ -142,13 +142,10 @@ class Imdeliver extends Component{
         this.sumone=this.state.sum;
         if (this.addList[key].addNumber<0){
             this.addList[key].addNumber=0;
-            this.setState({
-                text:"亲 发货数不能低于1哦！",
-            },()=>this.showToast());
         }else {
             var minusnum =0;
             for( var i = 0;i<this.addList.length;i++){
-                minusnum += this.addList[i].addNumber* this.addList[i].price;
+                minusnum += this.addList[i].addNumber * this.addList[i].price;
                 console.log(this.state.topic+"总价");
             }
             --this.sumone;
@@ -158,20 +155,23 @@ class Imdeliver extends Component{
                 topic:minusnum
             });
         }
-
     };
     imdeChange = () =>{
-        console.log("00");
-        this.sum = this.state.sum;
-        if (this.sum<1){
+        this.coment = this.state.list;
+        for(var i=0; i<this.state.list.length; i++){
+            // var imdepric = this.coment[key].id;
+            // var imdeMuber = this.coment[key].addNumber;
+            // console.log(imdepric+imdeMuber)
+        }
+
+        if (this.state.sum<1){
             this.setState({
                 text:"亲 你还没有选择商品哦",
             },()=>this.showToast())
-        } else if(this.sum>=1){
+        } else if(this.state.sum>=1){
             this.props.history.push('/SubmitOrder');
         }
     };
-
     componentDidMount (){
         //获取动态路由传值
         // let _id = this.props.match.params.id;
