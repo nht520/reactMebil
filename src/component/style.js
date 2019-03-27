@@ -667,6 +667,13 @@ export const LoactionWrapper = styled.div`
         padding: 4% 4% 5% 4%;
         margin-top:3%;
     }
+    ul:first-child{
+        .red{
+             color: #f00;
+            font-weight: bold;
+            text-align: center;
+        }
+    }
     .hr{
        height: 1px;
        background: #ebebeb;
@@ -703,11 +710,6 @@ export const LoactionWrapper = styled.div`
     }
     .loaction{
         margin-top:5%;
-    }
-    .red{
-         color: #f00;
-        font-weight: bold;
-        text-align: center;
     }
     .common{
         color:#8f8f8f;

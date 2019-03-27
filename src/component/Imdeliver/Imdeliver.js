@@ -18,7 +18,7 @@ class Imdeliver extends Component{
         this.state=({
             title:"发货",
             sum:"0",
-            totalPrice:"0",
+            topic:0,
             list:[
                 {
                     id:1,
@@ -26,7 +26,7 @@ class Imdeliver extends Component{
                     imgurl:"https://www.baidu.com/img/bd_logo1.png",
                     title:"炸鸡汉堡王",
                     details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                    price:352.00,
+                    price:22.00,
                     repertory:"5",
                 }, {
                     id:2,
@@ -34,7 +34,7 @@ class Imdeliver extends Component{
                     imgurl:"https://www.baidu.com/img/bd_logo1.png",
                     title:"草莓汉堡王",
                     details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                    price:352.00,
+                    price:100.00,
                     repertory:"5",
                 },
             ]
@@ -91,7 +91,7 @@ class Imdeliver extends Component{
                 <DateilsButton>
                     <Flex className="title">
                         <Flex.Item></Flex.Item>
-                        <Flex.Item className="shipments">发货单({this.state.sum}+{this.state.totalPrice})</Flex.Item>
+                        <Flex.Item className="shipments">发货单({this.state.sum})</Flex.Item>
                         <Flex.Item><Button onClick={this.imdeChange}>去发货</Button></Flex.Item>
                     </Flex>
                 </DateilsButton>
@@ -105,41 +105,33 @@ class Imdeliver extends Component{
         //获取当前点击的key
         let addList=this.state.list;
         console.log(addList[key]);
-        // console.log(this.pages)
     };
     //添加
     subtractChange =(key)=>{
         this.addList=this.state.list;
-        this.numBer=this.addList[key].addNumber;
-        this.repertory=this.addList[key].repertory;
-        //点击计算数量
         ++this.addList[key].addNumber;
-        //点击计算价格
-        // totalPrice
-        // var price = 0;
-        // for( var a = 0;a<this.addList.length;a++){
-        //     price = price + this.addList[a].price;
-        // }
-        // this.setState({
-        //     totalPrice:price
-        // });
-        // console.log(price);
-        // this.sumone=this.state.sum;
-        if (this.numBer>this.repertory){
-            this.numBer=this.repertory;
+        if (this.addList[key].addNumber>this.addList[key].repertory){
+            this.addList[key].addNumber=this.addList[key].repertory;
             this.setState({
                 text:"亲 你已达到库存上限了哦！",
             },()=>this.showToast());
         }else{
-            // ++this.sumone;
+            //点击计算数量
             var count = 0;
+            //点击增加份数，计算价格
+            var topicnum =0;
             for( var i = 0;i<this.addList.length;i++){
                 count = count + this.addList[i].addNumber;
+
+                topicnum += this.addList[i].addNumber * this.addList[i].price;
+
             }
             this.setState({
-                addNumber:this.addNumber,
-                sum:count
+                addNumber:this.addList[key].addNumber,
+                sum:count,
+                topic:topicnum
             });
+
         }
     };
     // 减少
@@ -154,10 +146,16 @@ class Imdeliver extends Component{
                 text:"亲 发货数不能低于1哦！",
             },()=>this.showToast());
         }else {
+            var minusnum =0;
+            for( var i = 0;i<this.addList.length;i++){
+                minusnum += this.addList[i].addNumber* this.addList[i].price;
+                console.log(this.state.topic+"总价");
+            }
             --this.sumone;
             this.setState({
-                addNumber:this.addNumber,
-                sum:this.sumone
+                addNumber:this.addList[key].addNumber,
+                sum:this.sumone,
+                topic:minusnum
             });
         }
 
@@ -173,12 +171,12 @@ class Imdeliver extends Component{
             this.props.history.push('/SubmitOrder');
         }
     };
+
     componentDidMount (){
         //获取动态路由传值
         // let _id = this.props.match.params.id;
         // console.log(_id);
         document.title = this.state.title;
-
     }
 }
 
