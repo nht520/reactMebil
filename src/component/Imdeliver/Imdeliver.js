@@ -121,7 +121,7 @@ class Imdeliver extends Component{
             for( var i = 0;i<this.addList.length;i++){
                 count = count+parseInt(this.addList[i].addNumber);
                 topicnum += this.addList[i].addNumber* this.addList[i].price;
-                console.log(topicnum+"总价");
+                console.log(topicnum+"++总价");
             }
             this.setState({
                 addNumber:this.addList[key].addNumber,
@@ -146,7 +146,7 @@ class Imdeliver extends Component{
             var minusnum =0;
             for( var i = 0;i<this.addList.length;i++){
                 minusnum += this.addList[i].addNumber * this.addList[i].price;
-                console.log(this.state.topic+"总价");
+                console.log(this.state.topic+"——总价");
             }
             --this.sumone;
             this.setState({
@@ -158,19 +158,19 @@ class Imdeliver extends Component{
     };
     imdeChange = () =>{
         this.coment = this.state.list;
-        for(var i=0; i<this.state.list.length; i++){
-            // var imdepric = this.coment[key].id;
-            // var imdeMuber = this.coment[key].addNumber;
-            // console.log(imdepric+imdeMuber)
+        for(var i=0; i<this.coment.length; i++){
+            if (this.coment.addNumber>1){
+                storage.set("imdev",this.coment[i]);
+                console.log(this.coment[i]);
+            }
         }
-
-        if (this.state.sum<1){
-            this.setState({
-                text:"亲 你还没有选择商品哦",
-            },()=>this.showToast())
-        } else if(this.state.sum>=1){
-            this.props.history.push('/SubmitOrder');
-        }
+        // if (this.state.sum<1){
+        //     this.setState({
+        //         text:"亲 你还没有选择商品哦",
+        //     },()=>this.showToast())
+        // } else if(this.state.sum>=1){
+        //     this.props.history.push('/SubmitOrder');
+        // }
     };
     componentDidMount (){
         //获取动态路由传值
