@@ -39,17 +39,19 @@ class Location extends Component{
                 <LoactionWrapper>
                     {
                         list.map((item,key)=>(
-                            <ul key={key} onClick={this.locationChange.bind(this,key)}>
-                                <li>
-                                    <h3>{item.user}<span>{item.iphone}</span></h3>
-                                </li>
-                                <li>
-                                    <h5>{item.location}</h5>
-                                </li>
-                                <li>
-                                    <div className="hr">
-                                    </div>
-                                </li>
+                            <ul key={key} >
+                                <div onClick={this.locationChange.bind(this,key)}>
+                                    <li>
+                                        <h3>{item.user}<span>{item.iphone}</span></h3>
+                                    </li>
+                                    <li>
+                                        <h5>{item.location}</h5>
+                                    </li>
+                                    <li>
+                                        <div className="hr">
+                                        </div>
+                                    </li>
+                                </div>
                                 <li className="loaction">
                                     <Flex>
                                         <Flex.Item>
@@ -87,13 +89,13 @@ class Location extends Component{
         console.log(this.locList[key]);
         //将数据存储在storage
         storage.set("location",this.locList[key]);
-        this.props.history.push('/SubmitOrder');
+        this.props.history.go(-1)
     };
     compileChang = () =>{
         this.props.history.push('/AddLocation');
     };
     delChang = (key) =>{
-        // console.log("删除");
+        console.log("删除");
         let tempList=this.state.list;
         tempList.splice(key,1);
         this.setState({

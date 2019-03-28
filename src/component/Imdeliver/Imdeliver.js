@@ -18,6 +18,7 @@ class Imdeliver extends Component{
         this.state=({
             title:"发货",
             sum:"0",
+            listNumber:[],
             topic:0,
             list:[
                 {
@@ -33,6 +34,15 @@ class Imdeliver extends Component{
                     addNumber:0,
                     imgurl:"https://www.baidu.com/img/bd_logo1.png",
                     title:"草莓汉堡王",
+                    details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
+                    price:100.00,
+                    repertory:"5",
+                },
+                {
+                    id:3,
+                    addNumber:0,
+                    imgurl:"https://www.baidu.com/img/bd_logo1.png",
+                    title:"汉堡王堡王",
                     details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
                     price:100.00,
                     repertory:"5",
@@ -128,11 +138,8 @@ class Imdeliver extends Component{
                 sum:count,
                 topic:topicnum
             });
-            if (this.state.topic>1){
-                console.log(this.state.topic);
-                storage.set("topic",this.addList[key]);
-            }
-        }
+        };
+
     };
     // 减少
     plusChange=(key)=>{
@@ -157,20 +164,22 @@ class Imdeliver extends Component{
         }
     };
     imdeChange = () =>{
-        this.coment = this.state.list;
-        for(var i=0; i<this.coment.length; i++){
-            if (this.coment.addNumber>1){
-                storage.set("imdev",this.coment[i]);
-                console.log(this.coment[i]);
+        if (this.state.sum<1){
+            this.setState({
+                text:"亲 你还没有选择商品哦",
+            },()=>this.showToast())
+        } else if(this.state.sum>=1){
+            var data = new Array();
+            for ( var j= 0; j<this.state.list.length; j++){
+                if(this.state.list[j].addNumber>=1){
+                    var listNumber = { "id": this.state.list[j].id, "addNumber": this.state.list[j].addNumber,"pric":this.state.topic};
+                    data.push(listNumber);
+                    // console.log("id为"+this.state.list[j].id+"+"+"数量"+ this.state.list[j].addNumber);
+                }
             }
+            storage.set("listNumber",data);
+            this.props.history.push('/SubmitOrder');
         }
-        // if (this.state.sum<1){
-        //     this.setState({
-        //         text:"亲 你还没有选择商品哦",
-        //     },()=>this.showToast())
-        // } else if(this.state.sum>=1){
-        //     this.props.history.push('/SubmitOrder');
-        // }
     };
     componentDidMount (){
         //获取动态路由传值
