@@ -19,6 +19,7 @@ class Layout extends Component {
         this.state=({
             title:"我是Layout",
             selectedTab: 'redTab',
+            value: 0,
         })
     }
     render(){

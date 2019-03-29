@@ -52,5 +52,5 @@ export const Globalstyle = createGlobalStyle`
             border-collapse: collapse;
             border-spacing: 0;
         }
-         *{ touch-action: pan-y; }    
+         *{ touch-action: pan-y; }
 `;

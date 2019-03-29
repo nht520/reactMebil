@@ -148,8 +148,7 @@ class SubmitOrder extends Component{
     };
     submitOrder=()=>{
         this.site = storage.get("location");
-        console.log(this.site+"===========");
-        if (this.site==null) {
+        if (this.site==null || this.site===undefined) {
             this.setState({
                 displayName:"none",
                 displaysite:"block",
@@ -161,9 +160,9 @@ class SubmitOrder extends Component{
                 userName:this.site.user,
                 ipHone:this.site.iphone,
                 site:this.site.location,
-            })
+            });
+            // storage.remove("location");
         }
-        storage.remove("location");
     }
 }
 export default SubmitOrder;

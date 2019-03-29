@@ -1,41 +1,121 @@
 import React,{ Component,Fragment } from "react";
 import {
-    AddWrapper
+    AddWrapper, Addleft, Addright, AddButton
 } from "../style";
-import {
-    // Button,
-    InputItem
-} from "antd-mobile";
+// import {
+//     Button,
+//     InputItem
+// } from "antd-mobile";
+import Input from '@material-ui/core/Input';
+import Switch from '@material-ui/core/Switch';
+// import {Link} from "react-router-dom";
 class AddLocation extends Component {
     constructor(props){
         super(props);
         this.state=({
-
+            username:"",
+            iphone:"",
+            site:"",
+            checkedA: false,
         })
     }
+    handleChange = name => event => {
+        this.setState({ [name]: event.target.checked });
+    };
     render(){
         return(
             <Fragment>
                 <AddWrapper>
-                    <InputItem
-                        clear
-                        placeholder="请输入收货人姓名"
-                    >收货人 :</InputItem>
-                    <InputItem
-                        clear
-                        placeholder="请输入联系电话"
-                    >联系电话 :</InputItem>
-                    <InputItem
-                        clear
-                        placeholder="auto focus"
-                    >详细地址 :</InputItem>
+                    <ul>
+                        <li>
+                            <Addleft>
+                                收 货 人 :
+                            </Addleft>
+                            <Addright>
+                                <Input
+                                    onChange={this.username}
+                                    className="adlcwidth"
+                                    placeholder="请输入收货人姓名"
+                                />
+                            </Addright>
+                        </li>
+                        <li>
+                            <Addleft>
+                                联系电话 :
+                            </Addleft>
+                            <Addright>
+                                <Input
+                                    onChange={this.iphone}
+                                    className="adlcwidth"
+                                    placeholder="请输入联系电话"
+                                />
+                            </Addright>
+                        </li>
+                        <li>
+                            <Addleft>
+                                选择区域 :
+                            </Addleft>
+                            <Addright>
+                                <Input
+                                    className="adlcwidth"
+                                    placeholder="请输入联系电话"
+                                />
+                            </Addright>
+                        </li>
+                        <li>
+                            <Addleft>
+                                详细地址 :
+                            </Addleft>
+                            <Addright>
+                                <Input
+                                    onChange={this.site}
+                                    className="adlcwidth"
+                                    placeholder="请输入详细地址"
+                                />
+                            </Addright>
+                        </li>
+                        <li>
+                            <Addleft>
+                                设为默认 :
+                            </Addleft>
+                            <Addright>
+                                <Switch
+                                    checked={this.state.checkedA}
+                                    onChange={this.handleChange('checkedA')}
+                                    value="checkedA"
+                                />
+                            </Addright>
+                        </li>
+                    </ul>
                     {/**/}
+                    <AddButton>
+                        <div onClick={this.addSave}>保存</div>
+                    </AddButton>
                 </AddWrapper>
             </Fragment>
         )
     }
+    username=(e)=>{
+        this.setState({
+            username:e.target.value
+        })
+    };
+    iphone=(e)=>{
+        this.setState({
+            iphone:e.target.value
+        })
+    };
+    site=(e)=>{
+        this.setState({
+            site:e.target.value
+        })
+    };
+    addSave=()=>{
+        // this.props.history.go(-1)
+        console.log(this.state)
+    };
     componentDidMount(){
-        document.title="添加发货地址"
+        document.title="添加发货地址";
     }
 }
 

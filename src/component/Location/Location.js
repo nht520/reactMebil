@@ -14,6 +14,8 @@ class Location extends Component{
         super(props);
         this.state=({
             title:"123",
+            checkedA: false,
+            checkedB: true,
             list:[
                 {
                     id:1,
@@ -21,6 +23,7 @@ class Location extends Component{
                     iphone:"158****1345",
                     location:"四川省 泸州市  九龙坡区  杨家坪步行街四川省 泸州市  九龙坡区  杨家坪步行街",
                     lcStatus:"默认",
+                    checked:"checkedA",
                 },
                 {
                     id:2,
@@ -28,6 +31,7 @@ class Location extends Component{
                     iphone:"158****1345",
                     location:"四川省 泸州市  渝中区 泸州市 解放碑步行街",
                     lcStatus:"普通",
+                    checked:"checkedB",
                 }
             ]
         })
@@ -55,6 +59,12 @@ class Location extends Component{
                                 <li className="loaction">
                                     <Flex>
                                         <Flex.Item>
+                                            {/*<Switch*/}
+                                                {/*checked={this.state.checkedA}*/}
+                                                {/*onChange={this.handleChange('checkedA')}*/}
+                                                {/*value={list.checked}*/}
+                                            {/*/>*/}
+                                            {/*<Switch value={list.checked} onChange={this.locationChange.bind(this,key)}/>*/}
                                             <span className="red">{item.lcStatus}</span>
                                         </Flex.Item>
                                         <Flex.Item>
@@ -64,7 +74,7 @@ class Location extends Component{
                                                     <span> 编辑</span>
                                                 </Flex.Item>
                                                 <Flex.Item
-                                                    onClick={this.delChang}
+                                                    onClick={this.delChang.bind(this,key)}
                                                 >
                                                     <img src={compile} alt="删除"/>
                                                     <span> 删除</span>
@@ -95,12 +105,14 @@ class Location extends Component{
         this.props.history.push('/AddLocation');
     };
     delChang = (key) =>{
-        console.log("删除");
+        //console.log("删除");
+        //console.log(this.locList[key].id);
         let tempList=this.state.list;
         tempList.splice(key,1);
         this.setState({
             list:tempList
         })
+        //console.log(this.state.list);
     };
     componentDidMount(){
         document.title="我的地址";

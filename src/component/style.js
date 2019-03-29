@@ -719,9 +719,13 @@ export const LoactionWrapper = styled.div`
         background:#292b33;
         color:#ffffff;
     }
+    .MuiSwitch-switchBase-4{
+        height:22px;
+    }
 `;
 export  const AddButton = styled.div`
     background: #292b33;
+    color: #ffffff;
     margin-top: 12%;
     height: 50px;
     line-height: 50px;
@@ -735,6 +739,33 @@ export  const AddButton = styled.div`
 //添加地址
 export const AddWrapper = styled.div`
     padding:5%;
+    ul li{
+        height: 45px;
+        line-height: 45px;
+        margin-bottom:6%;
+    }
+    .MuiSwitch-colorSecondary-37.MuiSwitch-checked-35{
+        color:#f00;
+    }
+    .MuiSwitch-colorSecondary-37.MuiSwitch-checked-35 + .MuiSwitch-bar-39{
+        background-color:#f00 !important;
+        theme.spacing.unit;
+    }
+`;
+export const Addright = styled.div`
+    width:75%;
+    float:left;
+    .MuiInput-root-1{
+        width:100% !important;
+    }
+    .adlcwidth{
+         width:100% !important;
+    }
+    
+`;
+export const Addleft = styled.div`
+    width:25%;
+    float:left;
 `;
 //库存明细
 export const DetailWrapper =styled.div`
