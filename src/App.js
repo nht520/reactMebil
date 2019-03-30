@@ -31,6 +31,9 @@ import Detail from "./component/Inventory/Detail";
 import FxDateils from "./component/Dateils/FxDateils";
 //提交订单
 import SubmitOrder from "./component/SubmitOrder/SubmitOrder";
+//设置
+import Setting from "./component/Setting/Setting";
+
 class App extends Component {
     render(){
         return(
@@ -60,6 +63,7 @@ class App extends Component {
                                 <Route path='/Detail/:id' exact component={Detail}/>
                                 <Route path='/FxDateils/:id' exact component={FxDateils}/>
                                 <Route path='/SubmitOrder' exact component={SubmitOrder}/>
+                                <Route path='/Setting' exact component={Setting}/>
                             </div>
                         </Router>
                 </Fragment>

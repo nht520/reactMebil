@@ -6,6 +6,7 @@ import yhujua from "../../statics/asstas/yhujua.png";
 import scan from "../../statics/asstas/scan.png";
 import dindan from "../../statics/asstas/dindan.png";
 import laxi from "../../statics/asstas/laxi.png";
+import site from "../../statics/asstas/site.png";
 import {
     Flex,List
 } from 'antd-mobile';
@@ -42,14 +43,14 @@ class About extends Component {
                 {
                     id:4,
                     title:"我的地址",
-                    thumb:dindan,
+                    thumb:laxi,
                     path:"/Location",
                 },
                 {
                     id:5,
-                    title:"设置",
-                    thumb:laxi,
-                    path:"",
+                    title:"关于我们",
+                    thumb:site,
+                    path:"/Setting",
                 }
             ]
         })

@@ -47,7 +47,7 @@ export const HomeWrapper = styled.div`
         padding: 6% 10%;
         float: right;
         text-align: center;
-        border-radius: 20px 0px 0px 20px;
+        border-radius: 20px 0px 20px  0px;
         font-size: 12px;s
      }
      .am-tabs-content-wrap{
@@ -198,11 +198,24 @@ export const AboutList =styled.div`
     }
     .am-list-item{
         line-height:50px;
+        padding:0px;
     }
     .am-list-item .am-list-line .am-list-content{
         color:#292b33;
         font-size:14px;
     }
+    .am-list-item .am-list-line .am-list-arrow{
+        width:12px;
+        height:12px;
+    }
+    .am-list-item img{
+        width:20px;
+        height:20px;
+    }
+`;
+export const SettingWropr = styled.div`
+    padding:5%;
+    
 `;
 //全部订单
 export const OrdeWrapper = styled.div`
@@ -216,6 +229,10 @@ export const OrdeWrapper = styled.div`
      .deliver{
         color:#f00;
         text-align: right;
+     }
+     .img{
+        width:20px;
+        height:20px;
      }
 `;
 export const OrdeList  = styled.ul`
