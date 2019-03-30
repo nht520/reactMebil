@@ -457,6 +457,38 @@ export const DateilsButton = styled.div`
          color:#f00;
          font-size:18px;
      }
+     .am-modal-button{
+        color:#f00 !important;
+     }
+     ul li{
+        width: 20%;
+        float: right;
+        border: 1px solid #f3f3f3;
+        text-align: center;
+        height: 30px;
+        line-height: 30px;
+     }
+    .numberDv{
+        width: 18%;
+        text-align: center; 
+        border-left:0px;
+        border-right:0px;
+    }
+    .berLeft{
+       border-left: 0px;
+       span{
+          color:#252433;
+          font-weight: bold;
+       }
+    }
+    .berRight{
+        border-right:0px;
+    }
+     
+     
+     
+     
+     
 `;
 //订货
 export const ImdeAdd =styled.div`
@@ -478,12 +510,6 @@ export const ImdeAdd =styled.div`
         color:#8f8f8f;
         font-size:12px;
     }
-    .numberDv{
-        width: 18%;
-        text-align: center; 
-        border-left:0px;
-        border-right:0px;
-    }
     .addJoin{
         width:50%;
         margin-left:3%;
@@ -492,6 +518,12 @@ export const ImdeAdd =styled.div`
         padding:5% 10%;
         width: 50%;
         margin-left: 5%;
+    }
+    .numberDv{
+        width: 18%;
+        text-align: center; 
+        border-left:0px;
+        border-right:0px;
     }
     .berLeft{
        border-left: 0px;

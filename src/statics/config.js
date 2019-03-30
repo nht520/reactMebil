@@ -4,6 +4,8 @@ window.g = {
   login:"http://192.168.2.123:8899/distributor/member/login",
   register:'http://192.168.2.123:8899/distributor/member/updatePass',
   mcMembers:'http://192.168.2.123:8899/distributor/mcMembers/findById',
+  //stock购买
+  stock:'http://192.168.2.123:8899/distributor/stock',
   nineLogin:"http://md.9knx.com:9099/sale/login",
     //  套餐
   meal:"http://192.168.2.123:8899/distributor/meal",

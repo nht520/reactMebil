@@ -11,27 +11,29 @@ import {
     Link
 } from "react-router-dom";
 import Button from "@material-ui/core/Button/Button";
+import Axios from "axios";
+import storage from "../../statics/storage";
 class Inventory extends Component{
     constructor(props){
         super(props);
         this.state=({
             title:"我的库存",
             list:[
-                {
-                    id:1,
-                    imgurl:"https://www.baidu.com/img/bd_logo1.png",
-                    title:"炸鸡汉堡王",
-                    details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                    price:"352.00",
-                    repertory:"1",
-                }, {
-                    id:2,
-                    imgurl:"https://www.baidu.com/img/bd_logo1.png",
-                    title:"炸鸡汉堡王",
-                    details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                    price:"352.00",
-                    repertory:"1",
-                },
+                // {
+                //     id:1,
+                //     imgurl:"https://www.baidu.com/img/bd_logo1.png",
+                //     title:"炸鸡汉堡王",
+                //     details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
+                //     price:"352.00",
+                //     repertory:"1",
+                // }, {
+                //     id:2,
+                //     imgurl:"https://www.baidu.com/img/bd_logo1.png",
+                //     title:"炸鸡汉堡王",
+                //     details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
+                //     price:"352.00",
+                //     repertory:"1",
+                // },
             ]
         })
     }
@@ -46,15 +48,15 @@ class Inventory extends Component{
                           <Link to={`/Detail/${item.id}`}>
                               <ImdeItem>
                                   <ImdeLeft>
-                                      <img src={item.imgurl} alt="img"/>
+                                      <img src={item.mealEntity.mealImage} alt="img"/>
                                   </ImdeLeft>
                                   <ImdeRight>
                                       <Flex className="title">
-                                          <Flex.Item>{item.title}</Flex.Item>
-                                          <Flex.Item>特惠价:<span>￥{item.price}</span></Flex.Item>
+                                          <Flex.Item>{item.mealEntity.mealName}</Flex.Item>
+                                          <Flex.Item>特惠价:<span>￥{item.mealEntity.mealPrice}</span></Flex.Item>
                                       </Flex>
                                       <h5 className="ordDtels">
-                                          {item.details}
+                                          {item.mealEntity.mealContent}
                                       </h5>
                                   </ImdeRight>
                               </ImdeItem>
@@ -62,7 +64,7 @@ class Inventory extends Component{
                           <ImdeButton>
                               <ImdeAdd>
                                   <ImLeft>
-                                      可用库存<span className="red">({item.repertory})</span>
+                                      可用库存<span className="red">({item.boxNum})</span>
                                   </ImLeft>
                                   <ImRight>
                                       <Button variant="outlined" size="small" color="primary" className="ordering">
@@ -77,8 +79,23 @@ class Inventory extends Component{
             </Fragment>
         )
     }
+
+    inventory = () =>{
+        const api = window.g.stock;
+        this.user = storage.get("user");
+        this.usernameId=this.user.id;
+        Axios.get(api,{params:{distributorId:this.usernameId}}).then((res)=>{
+            console.log(res);
+            this.setState({
+                list:res.data.records
+            })
+        },(err)=>{
+            console.log(err)
+        })
+    };
     componentDidMount (){
         document.title = this.state.title;
+        this.inventory();
     }
 }
 

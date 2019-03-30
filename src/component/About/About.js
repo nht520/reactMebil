@@ -18,7 +18,7 @@ class About extends Component {
         this.state=({
             name:"",
             iphone:"",
-            pic:"",
+            pric:"",
             uid:"",
             kucun:"999",
             urlImg:"",
@@ -76,7 +76,7 @@ class About extends Component {
                            {/**/}
                            <Flex className="About">
                                <Flex.Item>
-                                   <h2>{this.state.pic}</h2>
+                                   <h2>{this.state.pric}</h2>
                                    <h4>我的余额</h4>
                                </Flex.Item>
                                <Flex.Item>
@@ -142,13 +142,9 @@ class About extends Component {
             let credit2=res.data.data.credit2;
             console.log(res);
             //将余额存的storage
-            // var data = new Array();
-            // var listNumber = { "purchase": res.data.data.credit2};
-            // data.push(listNumber);
             storage.set("listNumber",res.data.data.credit2);
-
             this.setState({
-                pic:credit2
+                pric:credit2
             })
         },(err)=>{
             console.log(err)
