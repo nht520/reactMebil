@@ -346,8 +346,8 @@ export const LoginWrapper = styled.div`
         background:#292b33;
         color:#ffffff;
         margin-top:12%;
+        width:100%;
         height:50px;
-       line-height: 50px;
     }
     .logButton:hover{
         background:#303032;
@@ -433,16 +433,18 @@ export const DateilsButton = styled.div`
         width: 100%;
         bottom: 0px;
         background: #ffffff;
-     .am-button{
-        color:#F00;
-        margin-top:7%;
-        height: 40px;
-        line-height:40px;
-        // border: 1px solid #f00 !important;
-        margin-right: 10%;
-        font-size: 14px;
-         border-radius: 0px;
-     }
+         button{
+            // background: #F00 !important;
+            border:1px solid #ddd;
+            color: #f00;
+            width:100px;
+            height:40px;
+            border-radius: 3px;
+            text-align: center;
+        }
+        button:hover{
+           border:1px solid #ddd;
+        }
      .cancel{
         color:#252433;
          // border: 1px solid #e5e5e5 !important;
@@ -457,7 +459,7 @@ export const DateilsButton = styled.div`
 export const ImdeAdd =styled.div`
     width:100%;
     float:right;
-    margin-top:3%;
+    margin-top:1%;
     line-height: 30px;
     ul li{
        width: 20%;
@@ -664,15 +666,19 @@ export const ImdeLimit = styled.div`
     }
 `;
 export const ImdeButton = styled.div`
-    .am-button{
-       float: right;
-        margin-top: 3%;
-        line-height: 38px;
-        width:100px;
+    button{
+        color:#f00 !important;
+        float: right;
+        border:1PX solid #ddd;
+        margin-top: 0%;
+        width:90px;
         height: 38px;
     }
-    .ordering{
-        color:#f00;
+    button span{
+        color:#F00;
+    }
+    button:hover{
+        border:1px solid #ddd;;
     }
 `;
 //我的地址
@@ -739,6 +745,19 @@ export const LoactionWrapper = styled.div`
     .MuiSwitch-switchBase-4{
         height:22px;
     }
+    button{
+        width: 100% !important;
+        background: #292b33 !important;
+        color: #ffffff;
+        width:100%;
+        margin-top: 12%;
+        height: 50px;
+        border-radius: 3px;
+        text-align: center;
+    }
+    button:hover{
+        background-color: #292b33;
+    }
 `;
 export  const AddButton = styled.div`
     background: #292b33;
@@ -752,6 +771,7 @@ export  const AddButton = styled.div`
         color: #ffffff;
         display : block;
     }
+ 
 `;
 //添加地址
 export const AddWrapper = styled.div`
@@ -767,6 +787,19 @@ export const AddWrapper = styled.div`
     .MuiSwitch-colorSecondary-37.MuiSwitch-checked-35 + .MuiSwitch-bar-39{
         background-color:#f00 !important;
         theme.spacing.unit;
+    }
+    button{
+        width: 100% !important;
+        background: #292b33 !important;
+        color: #ffffff;
+        width:100%;
+        margin-top: 12%;
+        height: 50px;
+        border-radius: 3px;
+        text-align: center;
+    }
+    button:hover{
+        background-color: #292b33;
     }
 `;
 export const Addright = styled.div`

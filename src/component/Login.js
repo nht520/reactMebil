@@ -9,10 +9,13 @@ import {
     LoginWrapper
 } from "./style.js";
 // //引用ui组件
+import Button from '@material-ui/core/Button';
 import {
     Link
 } from "react-router-dom";
-import { Button,Toast } from "antd-mobile";
+import {
+    // Button,
+    Toast } from "antd-mobile";
 import Axios from "axios";
 import storage from "../statics/storage";
 class Login extends Component{
@@ -30,7 +33,9 @@ class Login extends Component{
                     <h1>登录</h1>
                     <input type="text" onChange={this.username} placeholder="请输入账号"/>
                     <input type="password" onKeyDown={this.inputKeyDown} onChange={this.password} placeholder="请输入密码"/>
-                    <Button className="logButton"  onClick={this.handChang}>登录</Button>
+                    <Button  className="logButton" onClick={this.handChang}>
+                        登录
+                    </Button>
                     <h5><span className="register"><Link to="/Register">注册</Link></span>忘记密码？</h5>
                 </LoginWrapper>
             </Fragment>

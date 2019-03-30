@@ -1,5 +1,6 @@
 import React,{ Component,Fragment } from "react";
-import {Button, Flex} from "antd-mobile";
+import { Flex} from "antd-mobile";
+import Button from "@material-ui/core/Button/Button";
 import {
     IndentDts, IntList, IntItem, IntLeft, IntRight, InOLeft, InTRight,
     IntUl, IntLi, IntConte, DateilsButton
@@ -102,8 +103,18 @@ class IndentDateils extends Component{
                 <DateilsButton style={{ display:displayName }}>
                     <Flex className="title">
                         <Flex.Item></Flex.Item>
-                        <Flex.Item><Button className="cancel">取消订单</Button></Flex.Item>
-                        <Flex.Item><Button>去付款</Button></Flex.Item>
+                        <Flex.Item>
+                            {/*<Button className="cancel"></Button>*/}
+                            <Button variant="outlined" size="medium" color="primary" className="cancel" >
+                                取消订单
+                            </Button>
+                        </Flex.Item>
+                        <Flex.Item>
+                            <Button variant="outlined" size="medium" color="primary" className="ordering">
+                                去付款
+                            </Button>
+                            {/*<Button></Button>*/}
+                        </Flex.Item>
                     </Flex>
                 </DateilsButton>
             </Fragment>

@@ -4,8 +4,9 @@ import {
     OrdeItem, OrdeLeft, OrdeRight, OneLeft, TwoRight, OrdeList,DateilsButton
 } from "../style";
 import left from "../../statics/asstas/left.png";
-import { Flex,Button } from "antd-mobile";
+import { Flex } from "antd-mobile";
 import storage from "../../statics/storage";
+import Button from "@material-ui/core/Button/Button";
 class SubmitOrder extends Component{
     constructor(props){
         super(props);
@@ -133,7 +134,11 @@ class SubmitOrder extends Component{
                     <Flex className="title">
                         <Flex.Item></Flex.Item>
                         <Flex.Item className="shipments">￥{this.state.sum}</Flex.Item>
-                        <Flex.Item><Button onClick={this.imdeChange}>提交订单</Button></Flex.Item>
+                        <Flex.Item>
+                            <Button variant="outlined" size="medium" color="primary" className="ordering"onClick={this.imdeChange}>
+                                提交订单
+                            </Button>
+                        </Flex.Item>
                     </Flex>
                 </DateilsButton>
             </Fragment>

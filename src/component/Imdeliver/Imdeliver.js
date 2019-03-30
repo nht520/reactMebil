@@ -1,6 +1,7 @@
 import React,{ Component,Fragment } from "react";
 import {
-    Button,Toast,
+    // Button,
+    Toast,
     Flex,} from "antd-mobile";
 import {
      ImdeList,ImdeItem,ImdeLeft,ImdeRight,ImdeButton,DateilsButton,ImdeAdd,
@@ -10,8 +11,7 @@ import {
     Link
 } from "react-router-dom";
 import storage from "../../statics/storage";
-// import storage from "../../statics/storage";
-// import banner from "../../statics/asstas/touxiang.png";
+import Button from "@material-ui/core/Button/Button";
 class Imdeliver extends Component{
     constructor(props){
         super(props);
@@ -102,7 +102,11 @@ class Imdeliver extends Component{
                     <Flex className="title">
                         <Flex.Item></Flex.Item>
                         <Flex.Item className="shipments">发货单({this.state.sum})</Flex.Item>
-                        <Flex.Item><Button onClick={this.imdeChange}>去发货</Button></Flex.Item>
+                        <Flex.Item>
+                            <Button variant="outlined" size="medium" color="primary" className="ordering" onClick={this.imdeChange}>
+                                去发货
+                            </Button>
+                        </Flex.Item>
                     </Flex>
                 </DateilsButton>
             </Fragment>

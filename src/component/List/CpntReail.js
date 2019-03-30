@@ -98,9 +98,9 @@ class CpntReail extends Component{
                                         ))
                                     }
                                     <OrdeItem>
-                                        <Button size="small">
-                                            {item.button}
-                                        </Button>
+                                        <Link to={`/RetailDetails/${item.id}`}>
+                                            <span className="linkSkip">{item.button}</span>
+                                        </Link>
                                     </OrdeItem>
                                 </OrdeList>
                             </OrderList>

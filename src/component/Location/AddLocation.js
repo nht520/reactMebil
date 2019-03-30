@@ -1,6 +1,6 @@
 import React,{ Component,Fragment } from "react";
 import {
-    AddWrapper, Addleft, Addright, AddButton
+    AddWrapper, Addleft, Addright
 } from "../style";
 // import {
 //     Button,
@@ -8,7 +8,7 @@ import {
 // } from "antd-mobile";
 import Input from '@material-ui/core/Input';
 import Switch from '@material-ui/core/Switch';
-// import {Link} from "react-router-dom";
+import Button from "@material-ui/core/Button/Button";
 class AddLocation extends Component {
     constructor(props){
         super(props);
@@ -88,9 +88,9 @@ class AddLocation extends Component {
                         </li>
                     </ul>
                     {/**/}
-                    <AddButton>
-                        <div onClick={this.addSave}>保存</div>
-                    </AddButton>
+                    <Button variant="contained" size="large" color="primary" className="addlcinButton" onClick={this.addSave}>
+                        保存
+                    </Button>
                 </AddWrapper>
             </Fragment>
         )

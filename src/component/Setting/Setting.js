@@ -16,7 +16,7 @@ class Setting extends Component {
                             111111
                         </li>
                     </ul>
-                    
+
                 </SettingWropr>
             </Fragment>
         )

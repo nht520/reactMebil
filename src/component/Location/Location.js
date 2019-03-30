@@ -1,14 +1,15 @@
 import React,{ Component,Fragment } from "react";
 import {
-    LoactionWrapper,AddButton
+    LoactionWrapper
 } from "../style";
 import del from "../../statics/asstas/del.png";
 import compile from "../../statics/asstas/compile.png";
 import {
     Flex
 } from "antd-mobile";
-import { Link } from "react-router-dom";
 import storage from "../../statics/storage";
+import Button from "@material-ui/core/Button/Button";
+
 class Location extends Component{
     constructor(props){
         super(props);
@@ -86,9 +87,9 @@ class Location extends Component{
                             </ul>
                         ))
                     }
-                     <AddButton>
-                         <Link to="/AddLocation">添加发货地址</Link>
-                     </AddButton>
+                    <Button variant="contained" size="large" color="primary" className="addlcinButton" onClick={this.compileChang}>
+                        添加发货地址
+                    </Button>
                 </LoactionWrapper>
             </Fragment>
         )

@@ -1,12 +1,16 @@
 import React,{ Component,Fragment } from "react";
-import {Button, Flex} from "antd-mobile";
 import {
-    ImdeList,ImdeItem,ImdeLeft,ImdeRight,ImdeLimit,ImdeButton
+    // Button,
+    Flex} from "antd-mobile";
+import {
+    ImdeList, ImdeItem, ImdeLeft,
+    ImdeRight, ImdeButton, ImdeAdd,
+    ImLeft, ImRight
 } from "../style";
 import {
     Link
 } from "react-router-dom";
-// import banner from "../../statics/asstas/touxiang.png";
+import Button from "@material-ui/core/Button/Button";
 class Inventory extends Component{
     constructor(props){
         super(props);
@@ -47,6 +51,7 @@ class Inventory extends Component{
                                   <ImdeRight>
                                       <Flex className="title">
                                           <Flex.Item>{item.title}</Flex.Item>
+                                          <Flex.Item>特惠价:<span>￥{item.price}</span></Flex.Item>
                                       </Flex>
                                       <h5 className="ordDtels">
                                           {item.details}
@@ -54,11 +59,17 @@ class Inventory extends Component{
                                   </ImdeRight>
                               </ImdeItem>
                           </Link>
-                          <ImdeLimit>
-                              可用库存<span className="red">({item.repertory})</span>  特惠价:<span>￥{item.price}</span>
-                          </ImdeLimit>
                           <ImdeButton>
-                              <Button size="small" className="ordering" >去订货</Button>
+                              <ImdeAdd>
+                                  <ImLeft>
+                                      可用库存<span className="red">({item.repertory})</span>
+                                  </ImLeft>
+                                  <ImRight>
+                                      <Button variant="outlined" size="small" color="primary" className="ordering">
+                                          去订货
+                                      </Button>
+                                  </ImRight>
+                              </ImdeAdd>
                           </ImdeButton>
                       </ImdeList>
                   ))

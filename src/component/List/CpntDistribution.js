@@ -101,9 +101,9 @@ class CpntDistribution extends Component{
                                         ))
                                     }
                                     <OrdeItem>
-                                        <Button size="small">
-                                            {item.button}
-                                        </Button>
+                                        <Link to={`/FxDateils/${item.id}`}>
+                                            <span className="linkSkip">{item.button}</span>
+                                        </Link>
                                     </OrdeItem>
                                 </OrdeList>
                             </OrderList>
