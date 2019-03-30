@@ -1,15 +1,17 @@
 import React,{ Component,Fragment } from "react";
 import Carouse from "../Carousel/Carouse";
 import {DateilsWrapper, DaetilsList,DatilHeadline,DateilsButton} from "../style";
-import { Flex,Button } from "antd-mobile";
+import {Flex, Toast} from "antd-mobile";
+import Button from "@material-ui/core/Button/Button";
 import banner from "../../statics/asstas/ydjm.png";
 import Axios from "axios";
+import storage from "../../statics/storage";
 class Dateils extends Component{
     constructor(props){
         super(props);
         this.state=({
             title:"商品详情",
-            list:"",
+            list:[],
             bannerOne: [
                 {
                     id:1,
@@ -50,35 +52,6 @@ class Dateils extends Component{
                         <DatilHeadline
                             dangerouslySetInnerHTML={{__html:list.mealDetail}}
                         >
-                            {/*<h3>商品参数</h3>*/}
-                            {/*<ul>*/}
-                                {/*<li>*/}
-                                    {/*<span>包装：</span>精选不湿纸*/}
-                                {/*</li>*/}
-                                {/*<li>*/}
-                                    {/*<span>盒数：</span>1盒10包*/}
-                                {/*</li>*/}
-                                {/*<li>*/}
-                                    {/*<span>用材：</span>灰面，白糖，陈皮，山泉水，小麦*/}
-                                {/*</li>*/}
-                            {/*</ul>*/}
-                            {/*<h3>图文描述</h3>*/}
-                            {/*<ul>*/}
-                                {/*<li>*/}
-                                    {/*<img src={banner} alt="详情"/>*/}
-                                {/*</li>*/}
-                                {/*<li>*/}
-                                    {/*鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可*/}
-                                    {/*使用于各种料理中的...*/}
-                                {/*</li>*/}
-                                {/*<li>*/}
-                                    {/*<img src={banner} alt="详情"/>*/}
-                                {/*</li>*/}
-                                {/*<li>*/}
-                                    {/*鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可*/}
-                                    {/*使用于各种料理中的...*/}
-                                {/*</li>*/}
-                            {/*</ul>*/}
                         </DatilHeadline>
                     </DaetilsList>
                     {/*购买*/}
@@ -86,14 +59,22 @@ class Dateils extends Component{
                         <Flex className="title">
                             <Flex.Item></Flex.Item>
                             <Flex.Item></Flex.Item>
-                            <Flex.Item><Button>立即购买</Button></Flex.Item>
+                            <Flex.Item>
+                                <Button onClick={this.purChase}  variant="outlined" size="medium" color="primary" className="ordering">
+                                    立即购买
+                                </Button>
+                            </Flex.Item>
                         </Flex>
                     </DateilsButton>
                 </DateilsWrapper>
             </Fragment>
         )
     }
-    componentDidMount (){
+    //提示
+    showToast = () => {
+        Toast.info(this.state.text);
+    };
+    details = () =>{
         //获取动态路由传值
         let _id = this.props.match.params.id;
         console.log(_id);
@@ -108,6 +89,23 @@ class Dateils extends Component{
         },(err)=>{
             console.log(err)
         })
+    };
+    purChase = () =>{
+        //获取余额，并且和商品价格比较，如果余额大于商品价格则可以买
+        this.purchase = storage.get("listNumber");
+        if (this.purchase>=this.state.list.mealPrice){
+            console.log("跳转");
+            this.setState({
+                text:"购买成功！",
+            },()=>this.showToast())
+        }else if (this.purchase<this.state.list.mealPrice){
+            this.setState({
+                text:"亲 你的余额不足了哦！",
+            },()=>this.showToast())
+        }
+    };
+    componentDidMount (){
+       this.details();
     }
 }
 

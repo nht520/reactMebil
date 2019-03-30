@@ -11,15 +11,16 @@ import {
     Flex,List
 } from 'antd-mobile';
 import storage from "../../statics/storage";
+import Axios from "axios";
 class About extends Component {
     constructor(props){
         super(props);
         this.state=({
             name:"",
             iphone:"",
-            title:"奈何天",
-            dinddan:"99",
-            kucun:"888",
+            pic:"",
+            uid:"",
+            kucun:"999",
             urlImg:"",
             list:[
                 {
@@ -55,7 +56,6 @@ class About extends Component {
             ]
         })
     }
-
     render(){
         const Item = List.Item;
         const { list,urlImg } = this.state;
@@ -76,7 +76,7 @@ class About extends Component {
                            {/**/}
                            <Flex className="About">
                                <Flex.Item>
-                                   <h2>{this.state.dinddan}</h2>
+                                   <h2>{this.state.pic}</h2>
                                    <h4>我的余额</h4>
                                </Flex.Item>
                                <Flex.Item>
@@ -121,15 +121,43 @@ class About extends Component {
         this.realName=this.user.memberName;
         this.iphone=this.user.memberPhone;
         this.urlImg=this.user.memberHead;
+        this.Uid=this.user.memberUid;
+        console.log(this.Uid+"===");
         this.setState({
             name:this.realName,
             iphone:this.iphone,
-            urlImg:this.urlImg
+            urlImg:this.urlImg,
+            uid:this.Uid,
         });
+    };
+    //获取余额
+    mcMembers =()=>{
+          let param = {
+              params:{
+                  uid:this.Uid,
+              }
+          };
+        var api =window.g.mcMembers;
+        Axios.get(api,param).then((res)=>{
+            let credit2=res.data.data.credit2;
+            console.log(res);
+            //将余额存的storage
+            // var data = new Array();
+            // var listNumber = { "purchase": res.data.data.credit2};
+            // data.push(listNumber);
+            storage.set("listNumber",res.data.data.credit2);
+
+            this.setState({
+                pic:credit2
+            })
+        },(err)=>{
+            console.log(err)
+        })
     };
     componentDidMount (){
         // document.title = "个人中心";
-        this.homeDate()
+        this.homeDate();
+        this.mcMembers();
     }
 }
 export default About;

@@ -9,6 +9,7 @@ import {
 import Input from '@material-ui/core/Input';
 import Switch from '@material-ui/core/Switch';
 import Button from "@material-ui/core/Button/Button";
+import {Toast} from "antd-mobile";
 class AddLocation extends Component {
     constructor(props){
         super(props);
@@ -95,6 +96,10 @@ class AddLocation extends Component {
             </Fragment>
         )
     }
+    //提示
+    showToast = () => {
+        Toast.info(this.state.text);
+    };
     username=(e)=>{
         this.setState({
             username:e.target.value
@@ -111,8 +116,21 @@ class AddLocation extends Component {
         })
     };
     addSave=()=>{
-        // this.props.history.go(-1)
-        console.log(this.state)
+        //保存并返回地址页面
+        console.log(this.state);
+       if (this.state.username === "" || this.state.username === undefined){
+           this.setState({
+               text:"请输入收获人姓名",
+           },()=>this.showToast())
+       }else if(this.state.iphone === "" || this.state.iphone === undefined){
+           this.setState({
+               text:"请输入收获人电话",
+           },()=>this.showToast())
+       }else if(this.state.site === "" || this.state.site === undefined){
+           this.setState({
+               text:"请输入详细地址",
+           },()=>this.showToast())
+       }
     };
     componentDidMount(){
         document.title="添加发货地址";

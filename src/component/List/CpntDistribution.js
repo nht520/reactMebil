@@ -3,7 +3,7 @@ import {
     OrdeList, OrdeItem, OrdeLeft, OrdeRight, OneLeft, TwoRight, OrderList, OrdeWrapper
 } from "../style";
 import {
-    Flex,Button
+    Flex
 } from "antd-mobile";
 import { Link } from "react-router-dom";
 class CpntDistribution extends Component{

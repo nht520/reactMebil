@@ -91,15 +91,15 @@ class Login extends Component{
         }else {
             //把用户名  密码统一存在_param里面  把_param提交到后台
             const _param = new URLSearchParams();
-                  _param.append("empName",that.state.username);
-                  _param.append("empPassword",that.state.password);
+                  _param.append("memberPhone",that.state.username);
+                  _param.append("memberPassword",that.state.password);
             //获取数据将数据存在store
-            var api =window.g.nineLogin;
+            var api =window.g.login;
             Axios.post(api,_param).then((res)=>{
                 console.log(res);
                 if (res.status===200){
-                    const code =res.data.status;
-                    if (code === "1"){
+                    const code =res.data.code;
+                    if (code === "200"){
                         //将数据存在storage
                         storage.set("user",res.data.data);
                         const data = res.data.data;
@@ -109,16 +109,16 @@ class Login extends Component{
                         that.props.history.push('/Layout');
                     } else if( code === "0" ){
                         this.setState({
-                            text:res.data.message,
+                            text:res.data.msg,
                         },()=>that.showToast());
-                    }else if( code === "2"){
+                    }else if( code === "500"){
                         this.setState({
-                            text:res.data.message,
+                            text:res.data.msg,
                         },()=>that.showToast());
                     }else{
                         //如果登录失败 就返回错误信息
                         this.setState({
-                            text:res.data.message,
+                            text:res.data.msg,
                         },()=>that.showToast());
                     }
                 }

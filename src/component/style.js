@@ -409,18 +409,21 @@ export const DaetilsList = styled.div`
 `;
 export const DatilHeadline =styled.div`
     margin-top:6%;
-    ul{
-        padding:0px;
+    // ul{
+    //     padding:0px;
+    // }
+    // ul li{
+    //     list-style: none;
+    //     color:#252433;
+    //      line-height:25px;   
+    // }
+    // ul li span{
+    //     color:#8f8f8f;
+    // }
+    p{
+        line-height:30px;
     }
-    ul li{
-        list-style: none;
-        color:#252433;
-         line-height:25px;   
-    }
-    ul li span{
-        color:#8f8f8f;
-    }
-    ul li img{
+    img{
         width:100%;
     }
 `;

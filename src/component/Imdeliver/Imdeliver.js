@@ -173,6 +173,7 @@ class Imdeliver extends Component{
                 text:"亲 你还没有选择商品哦",
             },()=>this.showToast())
         } else if(this.state.sum>=1){
+            //将数量大于1的商品储存在listNumber并放在storage
             var data = new Array();
             for ( var j= 0; j<this.state.list.length; j++){
                 if(this.state.list[j].addNumber>=1){
