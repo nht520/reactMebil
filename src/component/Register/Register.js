@@ -9,7 +9,8 @@ import {
     LoginWrapper
 } from "../style.js";
 // //引用ui组件
-import { Button,Toast } from "antd-mobile";
+import { Toast } from "antd-mobile";
+import Button from '@material-ui/core/Button';
 import Axios from "axios";
 import storage from "../../statics/storage";
 import {
@@ -32,7 +33,9 @@ class Register extends Component{
                     <input type="text" onChange={this.username} placeholder="请输入手机号"/>
                     <input type="password"  onChange={this.password} placeholder="请输入密码"/>
                     <input type="password" onKeyDown={this.inputKeyDown} onChange={this.affirmPassword} placeholder="请确认密码"/>
-                    <Button className="logButton"  onClick={this.handChang}>立即注册</Button>
+                    <Button  className="logButton" onClick={this.handChang}>
+                        立即注册
+                    </Button>
                     <h5 className="retuout"><Link to="/">返回登录？</Link></h5>
                 </LoginWrapper>
             </Fragment>

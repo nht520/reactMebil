@@ -13,9 +13,7 @@ import Button from '@material-ui/core/Button';
 import {
     Link
 } from "react-router-dom";
-import {
-    // Button,
-    Toast } from "antd-mobile";
+import { Toast } from "antd-mobile";
 import Axios from "axios";
 import storage from "../statics/storage";
 class Login extends Component{

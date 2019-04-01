@@ -147,16 +147,17 @@ class Dateils extends Component{
                 this.user = storage.get("user");
                 this.usernameId=this.user.id;
                 const _param = new URLSearchParams();
-                _param.append("goodsId",this.state.list.id);
-                _param.append("stockNum",this.state.sum);
-                _param.append("distributorId",this.usernameId);
-                _param.append("boxNum",this.state.topic);
+                    _param.append("goodsId",this.state.list.id);
+                    _param.append("stockNum",this.state.sum);
+                    _param.append("distributorId",this.usernameId);
+                    _param.append("boxNum",this.state.topic);
                 var api =window.g.stock;
                 Axios.post(api,_param).then((res)=>{
                     console.log(res);
                     this.setState({
                         text: "购买成功！",
                     }, () => this.showToast())
+                    this.props.history.push('/Inventory');
                 },(err)=>{
                     console.log(err)
                 });
