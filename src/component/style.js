@@ -465,8 +465,8 @@ export const DateilsButton = styled.div`
         float: right;
         border: 1px solid #f3f3f3;
         text-align: center;
-        height: 30px;
-        line-height: 30px;
+        height: 37px;
+        line-height: 37px;
      }
     .numberDv{
         width: 18%;

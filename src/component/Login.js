@@ -127,7 +127,7 @@ class Login extends Component{
     };
     componentDidMount(){
         document.title = "登录";
-        // this.register();
+        this.register();
     }
 }
 export default Login
