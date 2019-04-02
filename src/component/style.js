@@ -973,7 +973,30 @@ export const Commodity = styled.div`
         }
     }
 `;
+//设置
 
+export const SetingWropr = styled.div`
+    padding:15% 5% 5% 5%;
+    Button{
+        width: 100% !important;
+        background: #292b33 !important;
+        color: #ffffff;
+        width: 100%;
+        margin-top: 20%;
+        height: 50px;
+        border-radius: 3px;
+        text-align: center;
+    }
+    .MuiGrid-container-1{
+        line-height: 30px;
+    }
+    .MuiPaper-elevation2-102{
+        box-shadow:none;
+    }
+    .right{
+           float: right;
+    }
+`;
 
 
 

@@ -44,15 +44,15 @@ class About extends Component {
                 {
                     id:4,
                     title:"我的地址",
-                    thumb:laxi,
+                    thumb:site,
                     path:"/Location",
                 },
                 {
                     id:5,
                     title:"设置",
-                    thumb:site,
+                    thumb:laxi,
                     path:"/Setting",
-                }
+                },
             ]
         })
     }
