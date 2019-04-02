@@ -67,14 +67,6 @@ class About extends Component {
                 <AboutWrapper>
                    <AboutDtae>
                        <HomeWrapper>
-                           {/*<Flex className="user">*/}
-                           {/*    <Flex.Item>*/}
-                           {/*        */}
-                           {/*    </Flex.Item>*/}
-                           {/*    <Flex.Item>*/}
-                           {/*       */}
-                           {/*    </Flex.Item>*/}
-                           {/*</Flex>*/}
                            <Grid container  className="user">
                                <Grid item xs={9} sm={9}>
                                    <h1>{this.state.name}</h1>

@@ -29,11 +29,12 @@ export const HomeWrapper = styled.div`
      h4{
         color:#8f8f8f;
         font-weight: 500;
-        font-size: 14px;
+        font-size: 13px;
      }
      h3{
         color:#8f8f8f;
         font-weight: 500;
+        font-size: 13px;
         margin-top: 10%;
      }
      .About{
