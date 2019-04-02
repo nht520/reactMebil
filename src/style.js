@@ -24,7 +24,7 @@ export const Globalstyle = createGlobalStyle`
             border: 0;
             font-size: 100%;
             vertical-align: baseline;
-            font-family: 微软雅黑;
+            font-family: 微软雅黑 !important;
         }
         *{ touch-action: pan-y; }
         /* HTML5 display-role reset for older browsers */

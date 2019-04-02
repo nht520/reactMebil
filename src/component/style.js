@@ -571,7 +571,8 @@ export const ImLeft = styled.div`
 `;
 export const ImRight = styled.div`
      width:40%;
-    float:right;   
+     float:right;   
+     text-align: right;
 `;
 //订单详情
 export const IndentDts = styled.div`
@@ -718,6 +719,7 @@ export const ImdeRight = styled.div`
         // white-space: nowrap;
         // overflow: hidden;
         // text-overflow: ellipsis;
+        font-size: 13px;
     }
     .invTitle{
         white-space:nowrap;
@@ -741,7 +743,7 @@ export const ImdeButton = styled.div`
         color:#f00 !important;
         float: right;
         border:1PX solid #ddd;
-        margin-top: 0%;
+        margin-top: 2%
         width:90px;
         height: 35px;
     }

@@ -53,7 +53,6 @@ class Inventory extends Component{
                                   <ImdeRight>
                                       <Flex className="title">
                                           <Flex.Item className="invTitle"> {item.mealEntity.mealName}</Flex.Item>
-                                          <Flex.Item>特惠价:<span>￥{item.mealEntity.mealPrice}</span></Flex.Item>
                                       </Flex>
                                       <h5 className="ordDtels">
                                           {item.mealEntity.mealContent}
@@ -67,10 +66,11 @@ class Inventory extends Component{
                                       可用库存<span className="red">({item.boxNum})</span>
                                   </ImLeft>
                                   <ImRight>
-                                      <Button variant="outlined" size="small" color="primary" className="ordering">
-                                          去订货
-                                      </Button>
+                                       <Flex.Item>特惠价:￥{item.mealEntity.mealPrice}</Flex.Item>
                                   </ImRight>
+                                  <Button variant="outlined" size="small" color="primary" className="ordering">
+                                      去订货
+                                  </Button>
                               </ImdeAdd>
                           </ImdeButton>
                       </ImdeList>
