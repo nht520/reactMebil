@@ -444,13 +444,13 @@ export const DateilsButton = styled.div`
         bottom: 0px;
         background: #ffffff;
          button{
-            // background: #F00 !important;
             border:1px solid #ddd;
             color: #f00;
             width:100px;
             height:40px;
             border-radius: 3px;
             text-align: center;
+            font-size:12px;
         }
         button:hover{
            border:1px solid #ddd;
@@ -501,7 +501,6 @@ export const DateilsButton = styled.div`
 export const ImdeAdd =styled.div`
     width:100%;
     float:right;
-    margin-top:1%;
     line-height: 30px;
     ul li{
        width: 20%;
@@ -685,6 +684,7 @@ export const ImdeLeft = styled.div`
     img{
         width:100%;
         border-radius: 3px;
+        height: 70px;
     }
 `;
 export const ImdeRight = styled.div`
@@ -698,6 +698,11 @@ export const ImdeRight = styled.div`
         // white-space: nowrap;
         // overflow: hidden;
         // text-overflow: ellipsis;
+    }
+    .invTitle{
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis; 
     }
 `;
 export const ImdeLimit = styled.div`
@@ -715,7 +720,7 @@ export const ImdeButton = styled.div`
         border:1PX solid #ddd;
         margin-top: 0%;
         width:90px;
-        height: 38px;
+        height: 35px;
     }
     button span{
         color:#F00;
@@ -850,6 +855,7 @@ export const Addright = styled.div`
     float:left;
     .MuiInput-root-1{
         width:100% !important;
+        font-size:13px;
     }
     .adlcwidth{
          width:100% !important;

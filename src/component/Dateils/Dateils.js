@@ -43,7 +43,7 @@ class Dateils extends Component{
                     <Carouse list={bannerOne}/>
                     <DaetilsList>
                         <Flex className="title">
-                            <Flex.Item><h3>{list.mealNum}</h3></Flex.Item>
+                            <Flex.Item><h3>{list.mealName}</h3></Flex.Item>
                         </Flex>
                         <Flex className="title">
                             <Flex.Item><h5>{list.mealContent}</h5></Flex.Item>

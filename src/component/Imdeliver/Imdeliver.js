@@ -65,7 +65,7 @@ class Imdeliver extends Component{
                                     </ImdeLeft>
                                     <ImdeRight>
                                         <Flex className="title">
-                                            <Flex.Item>{item.title}</Flex.Item>
+                                            <Flex.Item className="invTitle">{item.title}</Flex.Item>
                                             <Flex.Item>特惠价:<span>￥{item.price}</span></Flex.Item>
                                         </Flex>
                                         <h5 className="ordDtels">

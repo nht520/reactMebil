@@ -52,7 +52,7 @@ class Inventory extends Component{
                                   </ImdeLeft>
                                   <ImdeRight>
                                       <Flex className="title">
-                                          <Flex.Item>{item.mealEntity.mealName}</Flex.Item>
+                                          <Flex.Item className="invTitle"> {item.mealEntity.mealName}</Flex.Item>
                                           <Flex.Item>特惠价:<span>￥{item.mealEntity.mealPrice}</span></Flex.Item>
                                       </Flex>
                                       <h5 className="ordDtels">
