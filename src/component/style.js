@@ -994,7 +994,7 @@ export const SetingWropr = styled.div`
         box-shadow:none;
     }
     .right{
-           float: right;
+       float: right;
     }
 `;
 
