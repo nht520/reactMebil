@@ -105,6 +105,7 @@ export const HomeList = styled.div`
         -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
         overflow: hidden;
+        height: 13px;
      }
 `;
 //
@@ -284,6 +285,7 @@ export const OrderList= styled.div`
         margin-bottom:5%;
         font-size: 13px;
         font-weight: bold;
+        height: 13px;
     }
 `;
 export const OrdeItem  = styled.li`
@@ -316,6 +318,7 @@ export const OrdeRight = styled.div`
    box-sizing:border-box;
    .am-flexbox-item{
         overflow: hidden;
+        height: 13px;
         // text-overflow: ellipsis;
         // display: -webkit-box;
         // -webkit-box-orient: vertical;
