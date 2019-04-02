@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 //登录
 export const HomeWrapper = styled.div`
-     padding:6% 5% 6% 5%;
+     padding:4% 4% 4% 4%;
      h1{
         color:#252433;
         margin:0px;
@@ -91,6 +91,7 @@ export const HomeList = styled.div`
         text-overflow:ellipsis;
         white-space:nowrap;
         font-weight: 400;
+        font-size: 12px;
      }
 `;
 //
@@ -121,6 +122,10 @@ export const ListWaper = styled.div`
     }
     .am-tabs-content-wrap{
        margin-top:45px !important;
+    }
+    .am-tabs-default-bar-tab{
+        font-size:13px;
+       font-weight: bold;
     }
 `;
 export const ListItem = styled.div`
@@ -264,6 +269,7 @@ export const OrderList= styled.div`
     }
     .header{
         margin-bottom:5%;
+        font-size: 13px;
         font-weight: bold;
     }
 `;
@@ -301,6 +307,7 @@ export const OrdeRight = styled.div`
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;
    }
+   font-size: 13px;
 `;
 export const OneLeft = styled.div`
     width: 85%;
@@ -455,7 +462,7 @@ export const DateilsButton = styled.div`
      .shipments{
          font-weight: bold;
          color:#f00;
-         font-size:18px;
+         font-size:16px;
      }
      .am-modal-button{
         color:#f00 !important;
@@ -621,6 +628,7 @@ export const IntLi = styled.li`
         list-style: none;
         color:#8f8f8f;
         line-height:30px;
+        font-size: 12px;
     .site{
         color: #292b33;
         font-weight: bold;

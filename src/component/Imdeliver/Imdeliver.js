@@ -81,14 +81,14 @@ class Imdeliver extends Component{
                                     </ImLeft>
                                     <ImRight>
                                         <ul>
-                                            <li className="berLeft">
-                                                <span  onClick={this.subtractChange.bind(this,key)}>十</span>
+                                            <li className="berLeft" onClick={this.subtractChange.bind(this,key)}>
+                                                <span>十</span>
                                             </li>
                                             <li className="numberDv">
                                                 {item.addNumber}
                                             </li>
-                                            <li className="berRight">
-                                                <span onClick={this.plusChange.bind(this,key)}>一</span>
+                                            <li className="berRight" onClick={this.plusChange.bind(this,key)}>
+                                                <span>一</span>
                                             </li>
                                         </ul>
                                     </ImRight>
@@ -101,7 +101,7 @@ class Imdeliver extends Component{
                 <DateilsButton>
                     <Flex className="title">
                         <Flex.Item></Flex.Item>
-                        <Flex.Item className="shipments">发货单({this.state.sum})</Flex.Item>
+                        <Flex.Item>发货单 <span className="shipments">({this.state.sum})</span></Flex.Item>
                         <Flex.Item>
                             <Button variant="outlined" size="medium" color="primary" className="ordering" onClick={this.imdeChange}>
                                 去发货

@@ -67,14 +67,14 @@ class Dateils extends Component{
                             </Flex.Item>
                             <Flex.Item>
                                 <ul>
-                                    <li className="berLeft">
-                                        <span  onClick={this.subtractChange}>十</span>
+                                    <li className="berLeft" onClick={this.subtractChange}>
+                                        <span>十</span>
                                     </li>
                                     <li className="numberDv">
                                         {this.state.sum}
                                     </li>
-                                    <li className="berRight">
-                                        <span onClick={this.plusChange}>一</span>
+                                    <li className="berRight" onClick={this.plusChange}>
+                                        <span>一</span>
                                     </li>
                                 </ul>
                             </Flex.Item>
