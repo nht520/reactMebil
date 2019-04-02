@@ -12,21 +12,13 @@ export const HomeWrapper = styled.div`
         margin:0px;
         // margin-top:6%;
      }
-     .left{
-        width:70%;
-        float:left;
-     }
-     .right{
-        width:30%;
-         float:right;
-     }
-     .user{
-        width: 100%;
+     .imgRight{
+        text-align: right;
      }
      .user img{
-            width: 30px;
-            height: 30px;
-            border-radius: 100%;
+        width: 55px;
+        height: 55px;
+        border-radius: 100%;
      }
      .am-flexbox-item img{
         width: 50px;
@@ -304,6 +296,7 @@ export const OrdeItem  = styled.li`
         border-radius: 5px;
         color:#252433;
         float: right;
+        font-size: 13px;
     }
 `;
 export const OrdeLeft = styled.div`

@@ -10,6 +10,9 @@ import site from "../../statics/asstas/site.png";
 import {
     Flex,List
 } from 'antd-mobile';
+
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 import storage from "../../statics/storage";
 import Axios from "axios";
 class About extends Component {
@@ -64,15 +67,23 @@ class About extends Component {
                 <AboutWrapper>
                    <AboutDtae>
                        <HomeWrapper>
-                           <Flex className="user">
-                               <Flex.Item className="left">
+                           {/*<Flex className="user">*/}
+                           {/*    <Flex.Item>*/}
+                           {/*        */}
+                           {/*    </Flex.Item>*/}
+                           {/*    <Flex.Item>*/}
+                           {/*       */}
+                           {/*    </Flex.Item>*/}
+                           {/*</Flex>*/}
+                           <Grid container  className="user">
+                               <Grid item xs={9} sm={9}>
                                    <h1>{this.state.name}</h1>
                                    <h3>电话：{this.state.iphone}</h3>
-                               </Flex.Item>
-                               <Flex.Item className="right">
+                               </Grid>
+                               <Grid item xs={3} sm={3} className="imgRight">
                                    <img src={ urlImg } alt="我是图片"></img>
-                               </Flex.Item>
-                           </Flex>
+                               </Grid>
+                           </Grid>
                            {/**/}
                            <Flex className="About">
                                <Flex.Item>
