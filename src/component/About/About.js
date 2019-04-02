@@ -65,11 +65,11 @@ class About extends Component {
                    <AboutDtae>
                        <HomeWrapper>
                            <Flex className="user">
-                               <Flex.Item>
+                               <Flex.Item className="left">
                                    <h1>{this.state.name}</h1>
                                    <h3>电话：{this.state.iphone}</h3>
                                </Flex.Item>
-                               <Flex.Item>
+                               <Flex.Item className="right">
                                    <img src={ urlImg } alt="我是图片"></img>
                                </Flex.Item>
                            </Flex>

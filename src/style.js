@@ -23,8 +23,8 @@ export const Globalstyle = createGlobalStyle`
             padding: 0;
             border: 0;
             font-size: 100%;
-            font: inherit;
             vertical-align: baseline;
+            font-family: 微软雅黑;
         }
         *{ touch-action: pan-y; }
         /* HTML5 display-role reset for older browsers */

@@ -1,15 +1,32 @@
 import styled from 'styled-components';
 //登录
 export const HomeWrapper = styled.div`
-     padding:4% 4% 4% 4%;
+     padding:5% 4% 5% 4%;
      h1{
         color:#252433;
         margin:0px;
         font-weight: bold;
+        font-size: 24px;
      }
      .am-wingblank.am-wingblank-lg{
         margin:0px;
         // margin-top:6%;
+     }
+     .left{
+        width:70%;
+        float:left;
+     }
+     .right{
+        width:30%;
+         float:right;
+     }
+     .user{
+        width: 100%;
+     }
+     .user img{
+            width: 30px;
+            height: 30px;
+            border-radius: 100%;
      }
      .am-flexbox-item img{
         width: 50px;
@@ -20,6 +37,7 @@ export const HomeWrapper = styled.div`
      h4{
         color:#8f8f8f;
         font-weight: 500;
+        font-size: 14px;
      }
      h3{
         color:#8f8f8f;
@@ -78,20 +96,22 @@ export const HomeList = styled.div`
      ul li h3{
         margin:10px 0px 8px 0px;
         color:#252433;
-        overflow: hidden;
-        // text-overflow: ellipsis;
         font-weight: bold;
-        // white-space: nowrap;
-        // font-size: 14px;
+        font-size: 14px;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
      }
     ul li h5{
         color:#8f8f8f;
         margin:9px 0px;
-        overflow:hidden;
-        // text-overflow:ellipsis;
-        // white-space:nowrap;
         font-weight: 400;
         font-size: 12px;
+         display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
      }
 `;
 //
@@ -302,10 +322,10 @@ export const OrdeRight = styled.div`
    box-sizing:border-box;
    .am-flexbox-item{
         overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 1;
+        // text-overflow: ellipsis;
+        // display: -webkit-box;
+        // -webkit-box-orient: vertical;
+        // -webkit-line-clamp: 1;
    }
    font-size: 13px;
 `;
