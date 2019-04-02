@@ -704,6 +704,9 @@ export const ImdeRight = styled.div`
         overflow:hidden;
         text-overflow:ellipsis; 
     }
+    .ordDtels{
+        font-size: 13px;
+    }
 `;
 export const ImdeLimit = styled.div`
     width:100%;
