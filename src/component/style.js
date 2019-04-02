@@ -72,24 +72,24 @@ export const HomeList = styled.div`
      }
      ul li img{
       width: 100%;
-      height:180px;
+      height:160px;
       border-radius:5px;
      }
      ul li h3{
         margin:10px 0px 8px 0px;
         color:#252433;
         overflow: hidden;
-        text-overflow: ellipsis;
+        // text-overflow: ellipsis;
         font-weight: bold;
-        white-space: nowrap;
-        font-size: 14px;
+        // white-space: nowrap;
+        // font-size: 14px;
      }
     ul li h5{
         color:#8f8f8f;
         margin:9px 0px;
         overflow:hidden;
-        text-overflow:ellipsis;
-        white-space:nowrap;
+        // text-overflow:ellipsis;
+        // white-space:nowrap;
         font-weight: 400;
         font-size: 12px;
      }
