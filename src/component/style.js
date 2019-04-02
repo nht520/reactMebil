@@ -83,7 +83,7 @@ export const HomeList = styled.div`
      }
      ul li img{
       width: 100%;
-      height:160px;
+      height:150px;
       border-radius:5px;
      }
      ul li h3{
