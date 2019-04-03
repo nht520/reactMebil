@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from "react";
 import {OneLeft, OrdeItem, OrdeLeft, OrdeList, OrdeRight, OrderList, OrdeWrapper, TwoRight} from "../style";
 import {
-    // Button,
+    Button,
     Flex} from "antd-mobile";
 import {Link} from "react-router-dom";
 import storage from "../../statics/storage";
@@ -62,12 +62,12 @@ class Cpntindent extends Component{
                                         ))
                                     }
                                     <OrdeItem>
-                                        {/*<Button size="small">*/}
-                                            {/*{item.button}*/}
-                                        {/*</Button>*/}
-                                        <Link to={`/IndentDateils/${item.id}`}>
-                                            <span className="linkSkip">{item.button}</span>
-                                        </Link>
+                                        <Button size="small">
+                                            {item.button}
+                                        </Button>
+                                        {/*<Link to={`/IndentDateils/${item.id}`}>*/}
+                                        {/*    <span className="linkSkip">{item.button}</span>*/}
+                                        {/*</Link>*/}
                                     </OrdeItem>
                                 </OrdeList>
                             </OrderList>

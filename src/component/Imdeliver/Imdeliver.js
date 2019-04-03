@@ -24,7 +24,7 @@ class Imdeliver extends Component{
                 {
                     id:1,
                     addNumber:0,
-                    imgurl:"https://www.baidu.com/img/bd_logo1.png",
+                    imgurl:"http://wx.bomao.xyz/attachment/images/1/2018/07/du4046PU9Y8z9w1rL9wprE6L6Lrz3L.png",
                     title:"炸鸡汉堡王",
                     details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
                     price:22.00,
@@ -32,7 +32,7 @@ class Imdeliver extends Component{
                 }, {
                     id:2,
                     addNumber:0,
-                    imgurl:"https://www.baidu.com/img/bd_logo1.png",
+                    imgurl:"http://wx.bomao.xyz/attachment/images/1/2018/07/du4046PU9Y8z9w1rL9wprE6L6Lrz3L.png",
                     title:"草莓汉堡王",
                     details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
                     price:100.00,
@@ -41,7 +41,7 @@ class Imdeliver extends Component{
                 {
                     id:3,
                     addNumber:0,
-                    imgurl:"https://www.baidu.com/img/bd_logo1.png",
+                    imgurl:"http://wx.bomao.xyz/attachment/images/1/2018/07/du4046PU9Y8z9w1rL9wprE6L6Lrz3L.png",
                     title:"汉堡王堡王",
                     details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
                     price:100.00,

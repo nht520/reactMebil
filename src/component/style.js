@@ -73,6 +73,7 @@ export const HomeList = styled.div`
        width:48%;
        float:left;
        margin-bottom:3%;
+       height: 210px;
      }
      .childTwo:nth-child(even){
         margin-left:4% !important;
@@ -87,25 +88,26 @@ export const HomeList = styled.div`
       border-radius:5px;
      }
      ul li h3{
-        margin:10px 0px 8px 0px;
+        margin:8px 0px 3px 0px;
         color:#252433;
         font-weight: bold;
         font-size: 14px;
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
+        display:block;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+         overflow:hidden
+         height:18px;
+         line-height:18px;
      }
     ul li h5{
         color:#8f8f8f;
-        margin:9px 0px;
+        margin:6px 0px;
         font-weight: 400;
         font-size: 12px;
-         display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        height: 13px;
+        display:block;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+        overflow:hidden
      }
 `;
 //
@@ -280,12 +282,15 @@ export const OrderList= styled.div`
     }
     .title{
         color:#252433;
+        height: 20px;
+         line-height: 20px;
     }
     .header{
         margin-bottom:5%;
         font-size: 13px;
+        height: 20px;
+        line-height: 20px;
         font-weight: bold;
-        height: 13px;
     }
 `;
 export const OrdeItem  = styled.li`
@@ -305,6 +310,7 @@ export const OrdeItem  = styled.li`
 export const OrdeLeft = styled.div`
     width:30%;
     float:left;
+    height: 78px;
      img{
         width:100%;
         height: 75px;
@@ -314,15 +320,15 @@ export const OrdeLeft = styled.div`
 export const OrdeRight = styled.div`
    width:70%;
    float:left;
+   box-sizing: border-box;
+   height: 78px;
    padding: 2% 0% 0% 3%;
-   box-sizing:border-box;
    .am-flexbox-item{
-        overflow: hidden;
-        height: 13px;
-        // text-overflow: ellipsis;
-        // display: -webkit-box;
-        // -webkit-box-orient: vertical;
-        // -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
    }
    font-size: 13px;
 `;
@@ -330,7 +336,7 @@ export const OneLeft = styled.div`
     width: 85%;
     float: left;
     color: #8f8f8f;
-    margin-top: 5%;
+    margin-top: 4%;
     line-height: 20px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -674,6 +680,8 @@ export const ImdeList = styled.div`
     overflow: hidden;
     .title{
         color:#252433;
+        height:20px;
+        line-height:20px;
     }
     .limit{
         widht:100%;
@@ -688,10 +696,11 @@ export const ImdeItem = styled.div`
         color: #8f8f8f;
         font-weight: 100;
         margin: 0px;
-        margin-top: 6%;
+        margin-top: 5%;
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
+        font-weight: 400;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
     }
@@ -702,7 +711,7 @@ export const ImdeLeft = styled.div`
     img{
         width:100%;
         border-radius: 3px;
-        height: 70px;
+        height: 80px;
     }
 `;
 export const ImdeRight = styled.div`
