@@ -91,7 +91,7 @@ export const HomeList = styled.div`
         margin:8px 0px 3px 0px;
         color:#252433;
         font-weight: bold;
-        font-size: 14px;
+        font-size: 13px;
         display:block;
         text-overflow:ellipsis;
         white-space:nowrap;

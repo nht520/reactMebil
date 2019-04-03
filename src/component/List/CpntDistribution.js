@@ -3,6 +3,7 @@ import {
     OrdeList, OrdeItem, OrdeLeft, OrdeRight, OneLeft, TwoRight, OrderList, OrdeWrapper
 } from "../style";
 import {
+    Button,
     Flex
 } from "antd-mobile";
 import { Link } from "react-router-dom";
@@ -101,9 +102,16 @@ class CpntDistribution extends Component{
                                         ))
                                     }
                                     <OrdeItem>
-                                        <Link to={`/FxDateils/${item.id}`}>
-                                            <span className="linkSkip">{item.button}</span>
-                                        </Link>
+                                        <Flex>
+                                            <Flex.Item>
+                                                总价：￥<span>88989</span>
+                                            </Flex.Item>
+                                            <Flex.Item>
+                                                <Button size="small">
+                                                    {item.button}
+                                                </Button>
+                                            </Flex.Item>
+                                        </Flex>
                                     </OrdeItem>
                                 </OrdeList>
                             </OrderList>

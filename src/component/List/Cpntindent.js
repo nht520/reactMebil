@@ -62,9 +62,16 @@ class Cpntindent extends Component{
                                         ))
                                     }
                                     <OrdeItem>
-                                        <Button size="small">
-                                            {item.button}
-                                        </Button>
+                                        <Flex>
+                                            <Flex.Item>
+                                                总价：￥<span>88989</span>
+                                            </Flex.Item>
+                                            <Flex.Item>
+                                                <Button size="small">
+                                                    {item.button}
+                                                </Button>
+                                            </Flex.Item>
+                                        </Flex>
                                         {/*<Link to={`/IndentDateils/${item.id}`}>*/}
                                         {/*    <span className="linkSkip">{item.button}</span>*/}
                                         {/*</Link>*/}
