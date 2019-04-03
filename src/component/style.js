@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 //登录
 export const HomeWrapper = styled.div`
-     padding:5% 4% 5% 4%;
+     padding:6% 4% 6% 4%;
      h1{
         color:#252433;
         margin:0px;
@@ -28,13 +28,13 @@ export const HomeWrapper = styled.div`
      }
      h4{
         color:#8f8f8f;
-        font-weight: 500;
+        font-weight: 400;
         font-size: 13px;
      }
      h3{
         color:#8f8f8f;
         font-weight: 500;
-        font-size: 13px;
+        font-size: 16px;
         margin-top: 10%;
      }
      .About{
@@ -44,7 +44,6 @@ export const HomeWrapper = styled.div`
         color:#292b33;
         margin-top:10px;
         padding:0px;
-        font-weight: 500;
      }
       .About h2{
         margin:10px 0px 0px 0px;
@@ -59,7 +58,8 @@ export const HomeWrapper = styled.div`
         float: right;
         text-align: center;
         border-radius: 20px 0px 20px  0px;
-        font-size: 12px;s
+        font-size: 12px;
+        margin-top: 10%;
      }
      .am-tabs-content-wrap{
         margin-top:8% !important;
@@ -129,6 +129,7 @@ export const ListWaper = styled.div`
     }
     .am-tabs-default-bar-tab-active{
         color:#f00;
+        font-weight: bold;
     }
     .am-tabs-tab-bar-wrap{
       position: fixed;
@@ -141,7 +142,6 @@ export const ListWaper = styled.div`
     }
     .am-tabs-default-bar-tab{
         font-size:13px;
-       font-weight: bold;
     }
 `;
 export const ListItem = styled.div`
@@ -651,11 +651,10 @@ export const IntLi = styled.li`
         list-style: none;
         color:#8f8f8f;
         line-height:30px;
-        font-size: 12px;
+        font-size: 13px;
     .site{
         color: #292b33;
         font-weight: bold;
-        // font-size: 16px;
     }
     .location{
         font-size:14px;
