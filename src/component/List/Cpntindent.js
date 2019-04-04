@@ -5,12 +5,16 @@ import {
     Flex} from "antd-mobile";
 import {Link} from "react-router-dom";
 import storage from "../../statics/storage";
+
 class Cpntindent extends Component{
     constructor(props){
         super(props);
         this.state=({
             title:"全部订单",
-            list:[ ]
+            list:[ ],
+            refreshing: false,
+            down: true,
+            height: document.documentElement.clientHeight,
         })
     }
     locationChange =(key)=>{
@@ -30,8 +34,7 @@ class Cpntindent extends Component{
         return(
             <Fragment>
                 <OrdeWrapper>
-                    {
-                        list.map((item,key)=>(
+                    {list.map((item,key)=>(
                             <OrderList key={key} onClick={this.locationChange.bind(this,key)}>
                                 <Flex className="header">
                                     <Flex.Item>订单编号:<span>{item.number}</span></Flex.Item>
@@ -83,6 +86,9 @@ class Cpntindent extends Component{
                 </OrdeWrapper>
             </Fragment>
         )
+    };
+    componentDidMount() {
     }
+
 }
 export default Cpntindent;

@@ -11,7 +11,6 @@ import {
     Flex,List
 } from 'antd-mobile';
 
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import storage from "../../statics/storage";
 import Axios from "axios";
@@ -89,9 +88,9 @@ class About extends Component {
                                    </Link>
                                </Flex.Item>
                                <Flex.Item>
-                                   {/*<Link to="/Header">*/}
+                                   <Link to="/Rullt">
                                        <span className="message">个人信息</span>
-                                   {/*</Link>*/}
+                                   </Link>
                                </Flex.Item>
                            </Flex>
                        </HomeWrapper>
@@ -154,7 +153,6 @@ class About extends Component {
         })
     };
     componentDidMount (){
-        // document.title = "个人中心";
         this.homeDate();
         this.mcMembers();
     }

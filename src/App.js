@@ -33,7 +33,6 @@ import FxDateils from "./component/Dateils/FxDateils";
 import SubmitOrder from "./component/SubmitOrder/SubmitOrder";
 //设置
 import Setting from "./component/Setting/Setting";
-
 class App extends Component {
     render(){
         return(

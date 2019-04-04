@@ -10,7 +10,7 @@ const tabs = [
     { title: '全部' },
     { title: '待付款' },
     { title: '待发货' },
-    { title: '已完成' },
+    { title: '待收货' },
 ];
 class Dstribution extends Component {
     constructor(props){
@@ -208,18 +208,18 @@ class Dstribution extends Component {
                     ]
                 }
             ],
-            accmpList:[
+            Delivery:[
                 {
                     id:1,
                     number:"123456",
-                    states:"已完成",
+                    states:"待收货",
                     freight:"9999",
                     totalprices:"8989",
                     button:"查看详情",
                     orderList:[
                         {
                             id:1,
-                            imgurl:"https://www.baidu.com/img/bd_logo1.png",
+                            imgurl:"http://wx.bomao.xyz/attachment/images/1/2018/07/du4046PU9Y8z9w1rL9wprE6L6Lrz3L.png",
                             title:"炸鸡汉堡王",
                             price:"352.00",
                             details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
@@ -227,7 +227,7 @@ class Dstribution extends Component {
                         },
                         {
                             id:2,
-                            imgurl:"https://www.baidu.com/img/bd_logo1.png",
+                            imgurl:"http://wx.bomao.xyz/attachment/images/1/2018/07/du4046PU9Y8z9w1rL9wprE6L6Lrz3L.png",
                             title:"炸鸡汉堡王",
                             price:"352.00",
                             details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
@@ -238,14 +238,14 @@ class Dstribution extends Component {
                 {
                     id:2,
                     number:"16546454",
-                    states:"已完成",
+                    states:"待收货",
                     freight:"9999",
                     totalprices:"8989",
                     button:"查看详情",
                     orderList:[
                         {
                             id:1,
-                            imgurl:"https://www.baidu.com/img/bd_logo1.png",
+                            imgurl:"http://wx.bomao.xyz/attachment/images/1/2018/07/du4046PU9Y8z9w1rL9wprE6L6Lrz3L.png",
                             title:"炸鸡汉堡王",
                             price:"352.00",
                             details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
@@ -256,14 +256,14 @@ class Dstribution extends Component {
                 {
                     id:3,
                     number:"16546454",
-                    states:"已完成",
+                    states:"待收货",
                     freight:"9999",
                     totalprices:"8989",
                     button:"查看详情",
                     orderList:[
                         {
                             id:1,
-                            imgurl:"https://www.baidu.com/img/bd_logo1.png",
+                            imgurl:"http://wx.bomao.xyz/attachment/images/1/2018/07/du4046PU9Y8z9w1rL9wprE6L6Lrz3L.png",
                             title:"炸鸡汉堡王",
                             price:"352.00",
                             details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
@@ -271,14 +271,14 @@ class Dstribution extends Component {
                         }
                     ]
                 }
-            ]
+            ],
         })
     }
     componentDidMount (){
         document.title="分销订单";
     }
     render(){
-        const { List,OtionList,shmentsList,accmpList } = this.state;
+        const { List,OtionList,shmentsList,Delivery } = this.state;
         return(
             <Fragment>
                 <ListWaper>
@@ -294,7 +294,7 @@ class Dstribution extends Component {
                             <CpntDistribution list={shmentsList} />
                         </ListItem>
                         <ListItem >
-                            <CpntDistribution list={accmpList} />
+                            <CpntDistribution list={Delivery} />
                         </ListItem>
                     </Tabs>
                 </ListWaper>

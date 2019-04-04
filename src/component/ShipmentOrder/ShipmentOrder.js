@@ -5,16 +5,15 @@ import {
 import { Tabs,
     // WhiteSpace
 } from 'antd-mobile';
-import Cpntindent from "./Cpntindent";
+import Cpntindent from "../List/Cpntindent";
 import Axios from "axios";
 const tabs = [
     { title: '全部' },
-    { title: '待付款' },
     { title: '待发货' },
     { title: '待收货' },
     { title: '已完成' },
 ];
-class List extends Component {
+class ShipmentOrder extends Component {
     constructor(props){
         super(props);
         this.state=({
@@ -22,10 +21,10 @@ class List extends Component {
                 {
                     id:1,
                     number:"123456",
-                    states:"待付款",
+                    states:"待收货",
                     freight:"9999",
                     totalprices:"8989",
-                    button:"去付款",
+                    button:"确认收货",
                     orderList:[
                         {
                             id:1,
@@ -48,10 +47,10 @@ class List extends Component {
                 {
                     id:2,
                     number:"16546454",
-                    states:"待发货",
+                    states:"待收货",
                     freight:"9999",
                     totalprices:"8989",
-                    button:"查看详情",
+                    button:"确认收货",
                     orderList:[
                         {
                             id:1,
@@ -70,134 +69,6 @@ class List extends Component {
                     freight:"9999",
                     totalprices:"8989",
                     button:"删除订单",
-                    orderList:[
-                        {
-                            id:1,
-                            imgurl:"http://wx.bomao.xyz/attachment/images/1/2018/07/du4046PU9Y8z9w1rL9wprE6L6Lrz3L.png",
-                            title:"炸鸡汉堡王",
-                            price:"352.00",
-                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                            quantity:"1",
-                        }
-                    ]
-                }
-            ],
-            OtionList:[
-                {
-                    id:1,
-                    number:"123456",
-                    states:"待付款",
-                    freight:"9999",
-                    totalprices:"8989",
-                    button:"去付款",
-                    orderList:[
-                        {
-                            id:1,
-                            imgurl:"http://wx.bomao.xyz/attachment/images/1/2018/07/du4046PU9Y8z9w1rL9wprE6L6Lrz3L.png",
-                            title:"炸鸡汉堡王",
-                            price:"352.00",
-                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                            quantity:"1",
-                        },
-                        {
-                            id:2,
-                            imgurl:"http://wx.bomao.xyz/attachment/images/1/2018/07/du4046PU9Y8z9w1rL9wprE6L6Lrz3L.png",
-                            title:"炸鸡汉堡王",
-                            price:"352.00",
-                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                            quantity:"1",
-                        },
-                    ]
-                },
-                {
-                    id:2,
-                    number:"16546454",
-                    states:"待付款",
-                    freight:"9999",
-                    totalprices:"8989",
-                    button:"去付款",
-                    orderList:[
-                        {
-                            id:1,
-                            imgurl:"http://wx.bomao.xyz/attachment/images/1/2018/07/du4046PU9Y8z9w1rL9wprE6L6Lrz3L.png",
-                            title:"炸鸡汉堡王",
-                            price:"352.00",
-                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                            quantity:"1",
-                        }
-                    ]
-                },
-                {
-                    id:3,
-                    number:"16546454",
-                    states:"待付款",
-                    freight:"9999",
-                    totalprices:"8989",
-                    button:"去付款",
-                    orderList:[
-                        {
-                            id:1,
-                            imgurl:"http://wx.bomao.xyz/attachment/images/1/2018/07/du4046PU9Y8z9w1rL9wprE6L6Lrz3L.png",
-                            title:"炸鸡汉堡王",
-                            price:"352.00",
-                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                            quantity:"1",
-                        }
-                    ]
-                }
-            ],
-            shmentsList:[
-                {
-                    id:1,
-                    number:"123456",
-                    states:"待发货",
-                    freight:"9999",
-                    totalprices:"8989",
-                    button:"查看详情",
-                    orderList:[
-                        {
-                            id:1,
-                            imgurl:"http://wx.bomao.xyz/attachment/images/1/2018/07/du4046PU9Y8z9w1rL9wprE6L6Lrz3L.png",
-                            title:"炸鸡汉堡王",
-                            price:"352.00",
-                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                            quantity:"1",
-                        },
-                        {
-                            id:2,
-                            imgurl:"http://wx.bomao.xyz/attachment/images/1/2018/07/du4046PU9Y8z9w1rL9wprE6L6Lrz3L.png",
-                            title:"炸鸡汉堡王",
-                            price:"352.00",
-                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                            quantity:"1",
-                        },
-                    ]
-                },
-                {
-                    id:2,
-                    number:"16546454",
-                    states:"待发货",
-                    freight:"9999",
-                    totalprices:"8989",
-                    button:"查看详情",
-                    orderList:[
-                        {
-                            id:1,
-                            imgurl:"http://wx.bomao.xyz/attachment/images/1/2018/07/du4046PU9Y8z9w1rL9wprE6L6Lrz3L.png",
-                            title:"炸鸡汉堡王",
-                            price:"352.00",
-                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                            quantity:"1",
-                        }
-                    ]
-                },
-                {
-                    id:3,
-                    number:"16546454",
-                    states:"待发货",
-                    freight:"9999",
-                    totalprices:"8989",
-                    button:"查看详情",
                     orderList:[
                         {
                             id:1,
@@ -262,6 +133,70 @@ class List extends Component {
                     freight:"9999",
                     totalprices:"8989",
                     button:"确认收货",
+                    orderList:[
+                        {
+                            id:1,
+                            imgurl:"http://wx.bomao.xyz/attachment/images/1/2018/07/du4046PU9Y8z9w1rL9wprE6L6Lrz3L.png",
+                            title:"炸鸡汉堡王",
+                            price:"352.00",
+                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
+                            quantity:"1",
+                        }
+                    ]
+                }
+            ],
+            Orderlivery:[
+                {
+                    id:1,
+                    number:"123456",
+                    states:"待发货",
+                    freight:"9999",
+                    totalprices:"8989",
+                    button:"查看详情",
+                    orderList:[
+                        {
+                            id:1,
+                            imgurl:"http://wx.bomao.xyz/attachment/images/1/2018/07/du4046PU9Y8z9w1rL9wprE6L6Lrz3L.png",
+                            title:"炸鸡汉堡王",
+                            price:"352.00",
+                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
+                            quantity:"1",
+                        },
+                        {
+                            id:2,
+                            imgurl:"http://wx.bomao.xyz/attachment/images/1/2018/07/du4046PU9Y8z9w1rL9wprE6L6Lrz3L.png",
+                            title:"炸鸡汉堡王",
+                            price:"352.00",
+                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
+                            quantity:"1",
+                        },
+                    ]
+                },
+                {
+                    id:2,
+                    number:"16546454",
+                    states:"待发货",
+                    freight:"9999",
+                    totalprices:"8989",
+                    button:"查看详情",
+                    orderList:[
+                        {
+                            id:1,
+                            imgurl:"http://wx.bomao.xyz/attachment/images/1/2018/07/du4046PU9Y8z9w1rL9wprE6L6Lrz3L.png",
+                            title:"炸鸡汉堡王",
+                            price:"352.00",
+                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
+                            quantity:"1",
+                        }
+                    ]
+                },
+                {
+                    id:3,
+                    number:"16546454",
+                    states:"待发货",
+                    freight:"9999",
+                    totalprices:"8989",
+                    button:"查看详情",
                     orderList:[
                         {
                             id:1,
@@ -341,6 +276,7 @@ class List extends Component {
         })
     }
     indent=()=>{
+        console.log("自己发货");
         var api =window.g.indent;
         Axios.get(api).then((res)=>{
             console.log(res);
@@ -352,7 +288,7 @@ class List extends Component {
         this.indent();
     }
     render(){
-        const { List,OtionList,shmentsList,accmpList,Delivery } = this.state;
+        const { List,accmpList,Delivery,Orderlivery } = this.state;
         return(
             <Fragment>
                 <ListWaper>
@@ -361,15 +297,10 @@ class List extends Component {
                             <Cpntindent list={List}  />
                         </ListItem>
                         <ListItem >
-                            <Cpntindent list={OtionList} />
-                            {/*<Refresh/>*/}
-                        </ListItem>
-                        <ListItem >
-                            <Cpntindent list={shmentsList} />
+                            <Cpntindent list={ Orderlivery } />
                         </ListItem>
                         <ListItem >
                             <Cpntindent list={ Delivery } />
-                            {/*<Refresh/>*/}
                         </ListItem>
                         <ListItem >
                             <Cpntindent list={accmpList} />
@@ -380,4 +311,4 @@ class List extends Component {
         )
     }
 }
-export default List;
+export default ShipmentOrder;

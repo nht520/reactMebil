@@ -8,11 +8,15 @@ import List from "./List/List";
 import About from "./About/About";
 import tabHome from "../statics/asstas/home.png"
 import tabHomeOne from "../statics/asstas/homeOne.png"
-
 import about from "../statics/asstas/about.png"
 import aboutOne from "../statics/asstas/aboutOne.png"
 import tabList from "../statics/asstas/List.png"
 import tabListone from "../statics/asstas/Listone.png"
+import shorder from "../statics/asstas/shorder.png"
+import shordero from "../statics/asstas/shordero.png"
+
+
+import ShipmentOrder from "./ShipmentOrder/ShipmentOrder";
 class Layout extends Component {
     constructor(props){
         super(props);
@@ -49,12 +53,27 @@ class Layout extends Component {
                         <TabBar.Item
                             icon={{ uri:tabListone  }}
                             selectedIcon={{ uri: tabList }}
-                            title="订单"
-                            key="订单"
+                            title="发货订单"
+                            key="发货订单"
                             selected={this.state.selectedTab === 'greenTab'}
                             onPress={() => {
                                 this.setState({
                                     selectedTab: 'greenTab',
+                                });
+                            }}
+                        >
+                            {/*<List/>*/}
+                            <ShipmentOrder/>
+                        </TabBar.Item>
+                        <TabBar.Item
+                            icon={{ uri:shorder  }}
+                            selectedIcon={{ uri: shordero }}
+                            title="订货订单"
+                            key="订货订单"
+                            selected={this.state.selectedTab === 'blueTab'}
+                            onPress={() => {
+                                this.setState({
+                                    selectedTab: 'blueTab',
                                 });
                             }}
                         >
