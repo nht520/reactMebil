@@ -1,11 +1,11 @@
 import React, {Component, Fragment} from "react";
 import {OneLeft, OrdeItem, OrdeLeft, OrdeList, OrdeRight, OrderList, OrdeWrapper, TwoRight} from "../style";
 import {
-    Button,
+    Button,Toast,Modal,
     Flex} from "antd-mobile";
 import {withRouter,Link} from "react-router-dom";
 import storage from "../../statics/storage";
-
+const alert = Modal.alert;
 class Cpntindent extends Component{
     constructor(props){
         super(props);
@@ -30,9 +30,29 @@ class Cpntindent extends Component{
             let id = letid[key].id;
             this.props.history.push(`/IndentDateils/${id}`);
         }else if(letid[key].states==="待收货"){
-            console.log("待收货")
+            console.log("待收货");
+            alert('收货提示！', '是否确认收货 ???', [
+                { text: '取消', onPress: () => console.log('取消') },
+                {text: '确定',
+                    onPress: () =>
+                        new Promise((resolve) => {
+                            Toast.info('onPress Promise', 1);
+                            setTimeout(resolve, 1000);
+                        }),
+                },
+            ])
         }else if(letid[key].states==="已完成"){
             console.log("已完成");
+            alert('删除提示！', '是否确认删除 ???', [
+                { text: '取消', onPress: () => console.log('取消') },
+                {text: '确定',
+                    onPress: () =>
+                        new Promise((resolve) => {
+                            Toast.info('onPress Promise', 1);
+                            setTimeout(resolve, 1000);
+                        }),
+                },
+            ])
         }
     };
     render(){

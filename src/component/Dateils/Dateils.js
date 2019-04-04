@@ -1,11 +1,12 @@
 import React,{ Component,Fragment } from "react";
 import Carouse from "../Carousel/Carouse";
 import {DateilsWrapper, DaetilsList, DatilHeadline, DateilsButton} from "../style";
-import {Flex, Toast} from "antd-mobile";
+import {Flex, Modal, Toast} from "antd-mobile";
 import Button from "@material-ui/core/Button/Button";
 import banner from "../../statics/asstas/ydjm.png";
 import Axios from "axios";
 import storage from "../../statics/storage";
+const alert = Modal.alert;
 class Dateils extends Component{
     constructor(props){
         super(props);
@@ -147,17 +148,28 @@ class Dateils extends Component{
                 this.user = storage.get("user");
                 this.usernameId=this.user.id;
                 const _param = new URLSearchParams();
-                    _param.append("goodsId",this.state.list.id);
-                    _param.append("stockNum",this.state.sum);
-                    _param.append("distributorId",this.usernameId);
-                    _param.append("boxNum",this.state.topic);
+                      _param.append("goodsId",this.state.list.id);
+                      _param.append("stockNum",this.state.sum);
+                      _param.append("distributorId",this.usernameId);
+                      _param.append("boxNum",this.state.topic);
                 var api =window.g.stock;
                 Axios.post(api,_param).then((res)=>{
                     console.log(res);
-                    this.setState({
-                        text: "购买成功！",
-                    }, () => this.showToast())
-                    this.props.history.push('/Inventory');
+                    alert('购买提示！', '是否确认购买 ???', [
+                        { text: '取消', onPress: () => console.log('取消') },
+                        {text: '确定',
+                            onPress: () =>
+                                new Promise((resolve) => {
+                                    this.props.history.push('/Inventory');
+                                    Toast.info('购买成功', 1);
+                                    setTimeout(resolve, 1000);
+                                }),
+                        },
+                    ]);
+                    // this.setState({
+                    //     text: "购买成功！",
+                    // }, () => this.showToast());
+                    // this.props.history.push('/Inventory');
                 },(err)=>{
                     console.log(err)
                 });
