@@ -155,20 +155,20 @@ class Dateils extends Component{
                 var api =window.g.stock;
                 Axios.post(api,_param).then((res)=>{
                     console.log(res);
-                    alert('购买提示！', '是否确认购买 ???', [
-                        { text: '取消', onPress: () => console.log('取消') },
-                        {text: '确定',
-                            onPress: () =>
-                                new Promise((resolve) => {
-                                    this.props.history.push('/Inventory');
-                                    Toast.info('购买成功', 1);
-                                    setTimeout(resolve, 1000);
-                                }),
-                        },
-                    ]);
-                    // this.setState({
-                    //     text: "购买成功！",
-                    // }, () => this.showToast());
+                    // alert('购买提示！', '是否确认购买 ???', [
+                    //     { text: '取消', onPress: () => console.log('取消') },
+                    //     { text: '确定',
+                    //         onPress: () =>
+                    //             new Promise((resolve) => {
+                    //                 this.props.history.push('/Inventory');
+                    //                 Toast.info('购买成功', 1);
+                    //                 setTimeout(resolve, 1000);
+                    //             }),
+                    //     },
+                    // ]);
+                    this.setState({
+                        text: "购买成功！",
+                    }, () => this.showToast());
                     // this.props.history.push('/Inventory');
                 },(err)=>{
                     console.log(err)
@@ -197,20 +197,6 @@ class Dateils extends Component{
             console.log(err)
         })
     };
-    // purChase = () =>{
-    //     //获取余额，并且和商品价格比较，如果余额大于商品价格则可以买
-    //     this.purchase = 10;
-    //     if (this.purchase>=this.state.list.mealPrice){
-    //         console.log("跳转");
-    //         // this.setState({
-    //         //     text:"购买成功！",
-    //         // },()=>this.showToast())
-    //     }else if (this.purchase<this.state.list.mealPrice){
-    //         // this.setState({
-    //         //     text:"亲 你的余额不足了哦！",
-    //         // },()=>this.showToast())
-    //     }
-    // };
     componentDidMount (){
        this.details();
     }

@@ -796,7 +796,7 @@ export const LoactionWrapper = styled.div`
     h5{
       margin:0px;
       color:#8f8f8f;
-      font-weight:100;  
+      font-weight:400;  
       font-size: 14px;
     }
     .my-radio .am-radio {
