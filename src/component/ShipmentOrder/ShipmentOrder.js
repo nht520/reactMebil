@@ -5,8 +5,8 @@ import {
 import { Tabs,
     // WhiteSpace
 } from 'antd-mobile';
-import Cpntindent from "../List/Cpntindent";
 import Axios from "axios";
+import CpntOrder from "../List/CpntOrder";
 const tabs = [
     { title: '全部' },
     { title: '待发货' },
@@ -17,11 +17,13 @@ class ShipmentOrder extends Component {
     constructor(props){
         super(props);
         this.state=({
+            name:"我的订单",
+            odList:[],
             List:[
                 {
                     id:1,
-                    number:"123456",
-                    states:"待收货",
+                    number:"999999",
+                    states:"待收货11111",
                     freight:"9999",
                     totalprices:"8989",
                     button:"确认收货",
@@ -65,10 +67,10 @@ class ShipmentOrder extends Component {
                 {
                     id:3,
                     number:"16546454",
-                    states:"已完成",
+                    states:"待收货",
                     freight:"9999",
                     totalprices:"8989",
-                    button:"删除订单",
+                    button:"确认收货",
                     orderList:[
                         {
                             id:1,
@@ -276,34 +278,37 @@ class ShipmentOrder extends Component {
         })
     }
     indent=()=>{
-        console.log("自己发货");
-        var api =window.g.indent;
+        let api =window.g.indent;
         Axios.get(api).then((res)=>{
-            console.log(res);
+            let orderList=res.data.records;
+            this.setState({
+                odList:orderList,
+            });
+            console.log(this.state.odList);
         },(err)=>{
             console.log(err)
         })
     };
     componentDidMount (){
-        // this.indent();
+        this.indent();
     }
     render(){
-        const { List,accmpList,Delivery,Orderlivery } = this.state;
+        const { List,odList,accmpList,Delivery,Orderlivery } = this.state;
         return(
             <Fragment>
                 <ListWaper>
                     <Tabs tabs={tabs} initialPage={0}  useOnPan={false}>
                         <ListItem >
-                            <Cpntindent list={List}   />
+                            <CpntOrder list={ odList } />
                         </ListItem>
                         <ListItem >
-                            <Cpntindent list={ Orderlivery } />
+                            {/*<CpntOrder list={ Orderlivery } />*/}
                         </ListItem>
                         <ListItem >
-                            <Cpntindent list={ Delivery } />
+                            {/*<CpntOrder list={ Delivery } />*/}
                         </ListItem>
                         <ListItem >
-                            <Cpntindent list={accmpList} />
+                            {/*<CpntOrder list={accmpList} />*/}
                         </ListItem>
                     </Tabs>
                 </ListWaper>

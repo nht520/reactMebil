@@ -349,7 +349,7 @@ class List extends Component {
         })
     };
     componentDidMount (){
-        this.indent();
+        // this.indent();
     }
     render(){
         const { List,OtionList,shmentsList,accmpList,Delivery } = this.state;
