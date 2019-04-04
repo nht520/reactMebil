@@ -27,7 +27,7 @@ class IndentDateils extends Component{
                 <IndentDts>
                         <Flex className="indentHeader">
                             <Flex.Item>供货商：<span>华佗医药</span></Flex.Item>
-                            <Flex.Item className="religion">待收货</Flex.Item>
+                            <Flex.Item className="religion">代付款</Flex.Item>
                         </Flex>
                         <IntList>
                             <IntItem>
@@ -138,7 +138,7 @@ class IndentDateils extends Component{
                 displayName:"none"
             })
         }
-    }
+    };
     componentDidMount (){
         //获取动态路由传值
         let _id = this.props.match.params.id;

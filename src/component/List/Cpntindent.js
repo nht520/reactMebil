@@ -3,7 +3,7 @@ import {OneLeft, OrdeItem, OrdeLeft, OrdeList, OrdeRight, OrderList, OrdeWrapper
 import {
     Button,
     Flex} from "antd-mobile";
-import {Link} from "react-router-dom";
+import {withRouter,Link} from "react-router-dom";
 import storage from "../../statics/storage";
 
 class Cpntindent extends Component{
@@ -12,30 +12,36 @@ class Cpntindent extends Component{
         this.state=({
             title:"全部订单",
             list:[ ],
-            refreshing: false,
-            down: true,
-            height: document.documentElement.clientHeight,
         })
     }
-    locationChange =(key)=>{
+    datsChange =(key)=>{
         let letid = this.props.list;
         //将数据存储在storage
         storage.set("lcList",letid[key]);
         // this.props.history.push('/IndentDateils');
         console.log(letid[key]);
-        // if (letid[key].states==="待付款"){
-        //     //如果状态是待付款就跳转到付款界面
-        //     // this.props.history.push('/');
-        //     console.log("123456")
-        // }
+    };
+    listOrder=(key)=>{
+        let letid = this.props.list;
+        storage.set("lcList",letid[key]);
+        console.log(letid[key]);
+        if (letid[key].states==="待发货"){
+            console.log("待发货");
+            let id = letid[key].id;
+            this.props.history.push(`/IndentDateils/${id}`);
+        }else if(letid[key].states==="待收货"){
+            console.log("待收货")
+        }else if(letid[key].states==="已完成"){
+            console.log("已完成");
+        }
     };
     render(){
-        const { list } = this.props;
+        const { list, } = this.props;
         return(
             <Fragment>
                 <OrdeWrapper>
                     {list.map((item,key)=>(
-                            <OrderList key={key} onClick={this.locationChange.bind(this,key)}>
+                            <OrderList key={key} >
                                 <Flex className="header">
                                     <Flex.Item>订单编号:<span>{item.number}</span></Flex.Item>
                                     <Flex.Item className="payment">{item.states}</Flex.Item>
@@ -43,7 +49,7 @@ class Cpntindent extends Component{
                                 <OrdeList>
                                     {
                                         item.orderList.map((v,key)=>(
-                                            <Link to={`/IndentDateils/${v.id}`}  key={key}>
+                                            <Link to={`/IndentDateils/${v.id}`}  key={key} onClick={this.datsChange.bind(this,key)}>
                                                 <OrdeItem>
                                                     <OrdeLeft>
                                                         <img src={v.imgurl} alt="img"/>
@@ -70,14 +76,15 @@ class Cpntindent extends Component{
                                                 总价：￥<span>88989</span>
                                             </Flex.Item>
                                             <Flex.Item>
-                                                <Button size="small">
+                                                <Button  size="small" onClick={this.listOrder.bind(this,key)}>
                                                     {item.button}
                                                 </Button>
+                                                    {/*<Link to={`/IndentDateils/${item.id}`}  style={{ display:displayNone }}>*/}
+                                                    {/*    <span className="linkSkip">{item.button}</span>*/}
+                                                    {/*</Link>*/}
                                             </Flex.Item>
                                         </Flex>
-                                        {/*<Link to={`/IndentDateils/${item.id}`}>*/}
-                                        {/*    <span className="linkSkip">{item.button}</span>*/}
-                                        {/*</Link>*/}
+                                        {/*点击跳转*/}
                                     </OrdeItem>
                                 </OrdeList>
                             </OrderList>
@@ -88,7 +95,8 @@ class Cpntindent extends Component{
         )
     };
     componentDidMount() {
+        // this.listOrder();
     }
 
 }
-export default Cpntindent;
+export default withRouter(Cpntindent);

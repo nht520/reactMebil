@@ -1,9 +1,9 @@
 import React,{ Component,Fragment } from "react";
 //引用路由
 import {
-    HashRouter  as Router,
+    BrowserRouter  as Router,
     Route,
-    // BrowserRouter
+    // HashRouter
     // Link
 } from "react-router-dom";
 import { Globalstyle } from "./style";

@@ -285,7 +285,7 @@ class ShipmentOrder extends Component {
         })
     };
     componentDidMount (){
-        this.indent();
+        // this.indent();
     }
     render(){
         const { List,accmpList,Delivery,Orderlivery } = this.state;
@@ -294,7 +294,7 @@ class ShipmentOrder extends Component {
                 <ListWaper>
                     <Tabs tabs={tabs} initialPage={0}  useOnPan={false}>
                         <ListItem >
-                            <Cpntindent list={List}  />
+                            <Cpntindent list={List}   />
                         </ListItem>
                         <ListItem >
                             <Cpntindent list={ Orderlivery } />
