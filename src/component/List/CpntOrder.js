@@ -55,7 +55,7 @@ class CpntOrder extends Component{
         }
     };
     render(){
-        const { list } = this.props;
+        const { list } = this.state;
         return(
             <Fragment>
                 <OrdeWrapper>
@@ -115,9 +115,11 @@ class CpntOrder extends Component{
     };
     componentDidMount() {
         // this.listOrder();
-        console.log(this.props.list)
-
+        console.log(this.state.list)
     }
-
+    componentWillReceiveProps(nextProps){
+        const { list } =nextProps;
+        console.log(list);
+     }
 }
 export default withRouter(CpntOrder);

@@ -64,24 +64,6 @@ class ShipmentOrder extends Component {
                         }
                     ]
                 },
-                {
-                    id:3,
-                    number:"16546454",
-                    states:"待收货",
-                    freight:"9999",
-                    totalprices:"8989",
-                    button:"确认收货",
-                    orderList:[
-                        {
-                            id:1,
-                            imgurl:"http://wx.bomao.xyz/attachment/images/1/2018/07/du4046PU9Y8z9w1rL9wprE6L6Lrz3L.png",
-                            title:"炸鸡汉堡王",
-                            price:"352.00",
-                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                            quantity:"1",
-                        }
-                    ]
-                }
             ],
             Delivery:[
                 {
