@@ -1,12 +1,11 @@
 import React,{ Component,Fragment } from "react";
 import Carouse from "../Carousel/Carouse";
 import {DateilsWrapper, DaetilsList, DatilHeadline, DateilsButton} from "../style";
-import {Flex, Modal, Toast} from "antd-mobile";
+import {Flex, Toast} from "antd-mobile";
 import Button from "@material-ui/core/Button/Button";
 import banner from "../../statics/asstas/ydjm.png";
 import Axios from "axios";
 import storage from "../../statics/storage";
-const alert = Modal.alert;
 class Dateils extends Component{
     constructor(props){
         super(props);

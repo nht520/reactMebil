@@ -23,7 +23,7 @@ class ShipmentOrder extends Component {
                 {
                     id:1,
                     number:"999999",
-                    states:"待收货11111",
+                    states:"待收货",
                     freight:"9999",
                     totalprices:"8989",
                     button:"确认收货",
@@ -272,25 +272,25 @@ class ShipmentOrder extends Component {
         })
     };
     componentDidMount (){
-        this.indent();
+        // this.indent();
     }
     render(){
-        const { List,odList,accmpList,Delivery,Orderlivery } = this.state;
+        const { List,accmpList,Delivery,Orderlivery } = this.state;
         return(
             <Fragment>
                 <ListWaper>
                     <Tabs tabs={tabs} initialPage={0}  useOnPan={false}>
                         <ListItem >
-                            <CpntOrder list={ odList } />
+                            <CpntOrder list={ List } />
                         </ListItem>
                         <ListItem >
-                            {/*<CpntOrder list={ Orderlivery } />*/}
+                            <CpntOrder list={ Orderlivery } />
                         </ListItem>
                         <ListItem >
-                            {/*<CpntOrder list={ Delivery } />*/}
+                            <CpntOrder list={ Delivery } />
                         </ListItem>
                         <ListItem >
-                            {/*<CpntOrder list={accmpList} />*/}
+                            <CpntOrder list={accmpList} />
                         </ListItem>
                     </Tabs>
                 </ListWaper>

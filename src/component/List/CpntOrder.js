@@ -19,11 +19,12 @@ class CpntOrder extends Component{
         //将数据存储在storage
         storage.set("lcList",letid[key]);
         // this.props.history.push('/IndentDateils');
-        // console.log(letid[key]);
+        console.log(letid[key]);
     };
     listOrder=(key)=>{
         let letid = this.props.list;
-        storage.set("lcList",letid[key]);
+        // storage.set("lcList",letid[key]);
+        console.log(letid[key]);
         if (letid[key].states==="待发货"){
             console.log("待发货");
             let id = letid[key].id;
@@ -55,7 +56,7 @@ class CpntOrder extends Component{
         }
     };
     render(){
-        const { list } = this.state;
+        const { list } = this.props;
         return(
             <Fragment>
                 <OrdeWrapper>
@@ -115,11 +116,11 @@ class CpntOrder extends Component{
     };
     componentDidMount() {
         // this.listOrder();
-        console.log(this.state.list)
+        // console.log(this.state.list)
     }
     componentWillReceiveProps(nextProps){
-        const { list } =nextProps;
-        console.log(list);
+        // const { list } =nextProps;
+        // console.log(list);
      }
 }
 export default withRouter(CpntOrder);

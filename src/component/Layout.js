@@ -14,8 +14,6 @@ import tabList from "../statics/asstas/List.png"
 import tabListone from "../statics/asstas/Listone.png"
 import shorder from "../statics/asstas/shorder.png"
 import shordero from "../statics/asstas/shordero.png"
-
-
 import ShipmentOrder from "./ShipmentOrder/ShipmentOrder";
 class Layout extends Component {
     constructor(props){

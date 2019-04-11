@@ -890,7 +890,21 @@ export const Addright = styled.div`
     .adlcwidth{
          width:100% !important;
     }
-    
+    .picker .picker{
+        width:100%;
+        height:50px
+    }
+    .am-list-item{
+        padding-left: 0px;
+        border-bottom: 1px solid #949494;
+    }
+    .am-list-item .am-list-line .am-list-extra{
+        flex-basis: 100%;
+        text-align: left !important;
+    }
+    .am-picker-popup-body .am-picker-popup-header .am-picker-popup-item{
+        color:#f00 !important;
+    }
 `;
 export const Addleft = styled.div`
     width:25%;

@@ -23,7 +23,8 @@ class Cpntindent extends Component{
     };
     listOrder=(key)=>{
         let letid = this.props.list;
-        storage.set("lcList",letid[key]);
+        // storage.set("lcList",letid[key]);
+        console.log(letid[key]);
         if (letid[key].states==="待发货"){
             console.log("待发货");
             let id = letid[key].id;
