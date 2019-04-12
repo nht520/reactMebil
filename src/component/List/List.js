@@ -41,7 +41,24 @@ class List extends Component {
             this.indent();
         } else if(id===1){
             this.listOne();
+        }else if(id===2){
+            this.ListTwo();
+        }else if(id===3){
+            this.listOne();
+        }else if(id===4){
+            this.listOne();
         }
+    };
+    ListTwo=()=>{
+        let api =window.g.indent;
+        Axios.get(api).then((res)=>{
+            let orderList=res.data.records;
+            this.setState({
+                ListTwo:orderList,
+            });
+        },(err)=>{
+            console.log(err)
+        })
     };
     listOne=()=>{
         let api =window.g.indent;
