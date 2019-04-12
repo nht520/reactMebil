@@ -187,6 +187,7 @@ class Dateils extends Component{
         document.title = this.state.title;
         var api =window.g.mealDts+_id;
         Axios.get(api).then((res)=>{
+            console.log("+++++");
             console.log(res);
             let dtList=res.data.data;
             this.setState({

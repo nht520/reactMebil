@@ -578,6 +578,14 @@ export const ImRight = styled.div`
      text-align: right;
 `;
 //订单详情
+export const Indeslider = styled.div`
+     .am-wingblank.am-wingblank-lg{
+        margin:0px;        
+    }
+    .iFAthZ img{
+        border-radius: 0px;
+    }
+`;
 export const IndentDts = styled.div`
     padding:4% 5%;
     .title{
@@ -610,6 +618,10 @@ export const IndentDts = styled.div`
 `;
 export const IntList = styled.ul`
     padding:0px;
+    p{
+        line-height:20px;
+        margin-top:3%;
+    }
 `;
 export const IntItem = styled.li`
     list-style: none;

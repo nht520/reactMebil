@@ -5,7 +5,7 @@ import {
 import { Tabs,
     // WhiteSpace
 } from 'antd-mobile';
-import Axios from "axios";
+// import Axios from "axios";
 import CpntOrder from "../List/CpntOrder";
 const tabs = [
     { title: '全部' },
@@ -67,7 +67,19 @@ class ShipmentOrder extends Component {
             ],
         })
     }
-
+    // tabsChange=(e)=>{
+    //     const listId = e.id;
+    //     this.setState({
+    //         id:listId
+    //     });
+    //     if (listId===0){
+    //         this.indent();
+    //     } else if(listId===1){
+    //         this.listOne();
+    //     }else if(listId===2){
+    //         // this.ListTwo();
+    //     }
+    // };
     componentDidMount (){
     }
     render(){
@@ -75,7 +87,7 @@ class ShipmentOrder extends Component {
         return(
             <Fragment>
                 <ListWaper>
-                    <Tabs tabs={tabs} initialPage={0}  useOnPan={false}>
+                    <Tabs tabs={tabs} initialPage={0}   useOnPan={false} onChange={this.tabsChange} >
                         <ListItem >
                             <CpntOrder list={ List } />
                         </ListItem>

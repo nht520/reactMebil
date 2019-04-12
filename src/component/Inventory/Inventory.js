@@ -85,6 +85,7 @@ class Inventory extends Component{
         this.user = storage.get("user");
         this.usernameId=this.user.id;
         Axios.get(api,{params:{distributorId:this.usernameId}}).then((res)=>{
+            console.log("=====");
             console.log(res);
             this.setState({
                 list:res.data.records

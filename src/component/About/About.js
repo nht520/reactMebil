@@ -24,6 +24,8 @@ class About extends Component {
             uid:"",
             kucun:"999",
             urlImg:"",
+            getBoxNum:"",
+            stock:"",
             list:[
                 {
                     id:1,
@@ -83,7 +85,7 @@ class About extends Component {
                                </Flex.Item>
                                <Flex.Item>
                                    <Link to="/Inventory">
-                                       <h2>{this.state.kucun}</h2>
+                                       <h2>{this.state.getBoxNum}</h2>
                                        <h4>我的库存</h4>
                                    </Link>
                                </Flex.Item>
@@ -124,7 +126,7 @@ class About extends Component {
         this.iphone=this.user.memberPhone;
         this.urlImg=this.user.memberHead;
         this.Uid=this.user.memberUid;
-        console.log(this.Uid+"===");
+        // console.log(this.Uid+"===");
         this.setState({
             name:this.realName,
             iphone:this.iphone,
@@ -142,7 +144,6 @@ class About extends Component {
         var api =window.g.mcMembers;
         Axios.get(api,param).then((res)=>{
             let credit2=res.data.data.credit2;
-            console.log(res);
             //将余额存的storage
             storage.set("listNumber",res.data.data.credit2);
             this.setState({
@@ -152,9 +153,29 @@ class About extends Component {
             console.log(err)
         })
     };
+    //获取库存
+    stock = () =>{
+        this.id = storage.get("user");
+        this.userid=this.id.id;
+        let param = {
+            params:{
+                distributorId:this.userid
+            }
+        };
+        var api =window.g.getBoxNum;
+        Axios.get(api,param).then((res)=>{
+            this.setState({
+                getBoxNum:res.data.data,
+            })
+        },(err)=>{
+            console.log(err)
+        })
+    };
+
     componentDidMount (){
         this.homeDate();
         this.mcMembers();
+        this.stock();
     }
 }
 export default About;
