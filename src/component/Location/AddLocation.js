@@ -14,7 +14,6 @@ class AddLocation extends Component {
         this.state=({
             username:"",
             iphone:"",
-            pickervalue:[],
             priker: [
                 {
                     label: '北京',
@@ -215,7 +214,11 @@ class AddLocation extends Component {
            this.setState({
                text:"请输入收获人电话",
            },()=>this.showToast())
-       }else if(this.state.site === "" || this.state.site === undefined){
+       }else if(this.state.value === "" || this.state.value === undefined){
+           this.setState({
+               text:"请选择区域",
+           },()=>this.showToast())
+       } else if(this.state.site === "" || this.state.site === undefined){
            this.setState({
                text:"请输入详细地址",
            },()=>this.showToast())
