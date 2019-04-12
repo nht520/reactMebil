@@ -20,11 +20,11 @@ class About extends Component {
         this.state=({
             name:"",
             iphone:"",
-            pric:"",
+            pric:0,
             uid:"",
             kucun:"999",
             urlImg:"",
-            getBoxNum:"",
+            getBoxNum:0,
             stock:"",
             list:[
                 {
