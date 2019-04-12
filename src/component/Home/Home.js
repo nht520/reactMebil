@@ -70,7 +70,7 @@ class Home extends Component {
         this.homeDate();
         document.title = "健简";
         // this.reduxDate();
-        console.log(this.state.title);
+        // console.log(this.state.title);
         //获取数据将数据存在store
         var api =window.g.meal;
         Axios.get(api).then((res)=>{

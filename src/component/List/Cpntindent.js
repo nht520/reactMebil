@@ -11,18 +11,74 @@ class Cpntindent extends Component{
         super(props);
         this.state=({
             title:"全部订单",
-            list:[ ],
+            dtList:[],
         })
     }
+    render(){
+        const { dtList } = this.state;
+        return(
+            <Fragment>
+                <OrdeWrapper>
+                    {
+                        dtList.map((item,key)=>(
+                            <OrderList key={key} >
+                                <Flex className="header">
+                                    <Flex.Item>订单编号:<span>{item.deliverPhone}</span></Flex.Item>
+                                    <Flex.Item className="payment">{item.deliverAddress}</Flex.Item>
+                                </Flex>
+                                <OrdeList>
+                                    <Link to={`/IndentDateils/${item.mealEntity.id}`}  key={key} onClick={this.datsChange.bind(this,key)}>
+                                        <OrdeItem>
+                                            <OrdeLeft>
+                                                <img src={item.mealEntity.mealImage} alt="img"/>
+                                            </OrdeLeft>
+                                            <OrdeRight>
+                                                <Flex className="title">
+                                                    <Flex.Item>{item.mealEntity.mealName}</Flex.Item>
+                                                    <Flex.Item className="payment">￥{item.mealEntity.orderPrice}</Flex.Item>
+                                                </Flex>
+                                                <OneLeft className="ordDtels">
+                                                    {item.mealEntity.mealDetail}
+                                                </OneLeft>
+                                                <TwoRight>
+                                                    X{item.mealEntity.mealNum}
+                                                </TwoRight>
+                                            </OrdeRight>
+                                        </OrdeItem>
+                                    </Link>
+                                    <OrdeItem>
+                                        <Flex>
+                                            <Flex.Item>
+                                                总价：￥<span>{item.orderNum}</span>
+                                            </Flex.Item>
+                                            <Flex.Item>
+                                                <Button  size="small" onClick={this.listOrder.bind(this,key)}>
+                                                    {item.button}
+                                                </Button>
+                                                {/*<Link to={`/IndentDateils/${item.id}`}  style={{ display:displayNone }}>*/}
+                                                {/*    <span className="linkSkip">{item.button}</span>*/}
+                                                {/*</Link>*/}
+                                            </Flex.Item>
+                                        </Flex>
+                                        {/*点击跳转*/}
+                                    </OrdeItem>
+                                </OrdeList>
+                            </OrderList>
+                      ))
+                    }
+                </OrdeWrapper>
+            </Fragment>
+        )
+    };
     datsChange =(key)=>{
-        let letid = this.props.list;
+        let letid = this.state.dtList;
         //将数据存储在storage
         storage.set("lcList",letid[key]);
         // this.props.history.push('/IndentDateils');
         // console.log(letid[key]);
     };
     listOrder=(key)=>{
-        let letid = this.props.list;
+        let letid = this.state.dtList;
         // storage.set("lcList",letid[key]);
         console.log(letid[key]);
         if (letid[key].states==="待发货"){
@@ -55,68 +111,17 @@ class Cpntindent extends Component{
             ])
         }
     };
-    render(){
-        const { list } = this.props;
-        return(
-            <Fragment>
-                <OrdeWrapper>
-                    {list.map((item,key)=>(
-                            <OrderList key={key} >
-                                <Flex className="header">
-                                    <Flex.Item>订单编号:<span>{item.number}</span></Flex.Item>
-                                    <Flex.Item className="payment">{item.states}</Flex.Item>
-                                </Flex>
-                                <OrdeList>
-                                    {
-                                        item.orderList.map((v,key)=>(
-                                            <Link to={`/IndentDateils/${v.id}`}  key={key} onClick={this.datsChange.bind(this,key)}>
-                                                <OrdeItem>
-                                                    <OrdeLeft>
-                                                        <img src={v.imgurl} alt="img"/>
-                                                    </OrdeLeft>
-                                                    <OrdeRight>
-                                                        <Flex className="title">
-                                                            <Flex.Item>{v.title}</Flex.Item>
-                                                            <Flex.Item className="payment">￥{v.price}</Flex.Item>
-                                                        </Flex>
-                                                        <OneLeft className="ordDtels">
-                                                            {v.details}
-                                                        </OneLeft>
-                                                        <TwoRight>
-                                                            X{v.quantity}
-                                                        </TwoRight>
-                                                    </OrdeRight>
-                                                </OrdeItem>
-                                            </Link>
-                                        ))
-                                    }
-                                    <OrdeItem>
-                                        <Flex>
-                                            <Flex.Item>
-                                                总价：￥<span>88989</span>
-                                            </Flex.Item>
-                                            <Flex.Item>
-                                                <Button  size="small" onClick={this.listOrder.bind(this,key)}>
-                                                    {item.button}
-                                                </Button>
-                                                    {/*<Link to={`/IndentDateils/${item.id}`}  style={{ display:displayNone }}>*/}
-                                                    {/*    <span className="linkSkip">{item.button}</span>*/}
-                                                    {/*</Link>*/}
-                                            </Flex.Item>
-                                        </Flex>
-                                        {/*点击跳转*/}
-                                    </OrdeItem>
-                                </OrdeList>
-                            </OrderList>
-                        ))
-                    }
-                </OrdeWrapper>
-            </Fragment>
-        )
+    componentWillReceiveProps(nextProps) {
+        let list = nextProps.list;
+        console.log(list);
+        if (list) {
+            this.setState({
+                dtList: list,
+            })
+        }
     };
-    componentDidMount() {
-        // this.listOrder();
-        // console.log(this.props.list)
+    componentDidMount(){
+
     }
 
 }
