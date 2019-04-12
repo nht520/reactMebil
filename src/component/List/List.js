@@ -37,18 +37,23 @@ class List extends Component {
         })
     }
     tabsChange=(e)=>{
-        this.id = e.id;
-        if (this.id===0){
+        const listId = e.id;
+        this.setState({
+            id:listId
+        });
+        if (listId===0){
             this.indent();
-        } else if(this.id===1){
+        } else if(listId===1){
             this.listOne();
-        }else if(this.id===2){
+        }else if(listId===2){
             // this.ListTwo();
         }
     };
     listOne=()=>{
         let api =window.g.indent;
-        Axios.get(api).then((res)=>{
+        const _date = new URLSearchParams();
+              _date.append("orderStatus",this.state.id);
+        Axios.get(api,_date).then((res)=>{
             console.log(res);
             let orderList=res.data.records;
             this.setState({
@@ -60,7 +65,9 @@ class List extends Component {
     };
     indent=()=>{
         let api =window.g.indent;
-        Axios.get(api).then((res)=>{
+        const _date = new URLSearchParams();
+              _date.append("orderStatus",this.state.id);
+        Axios.get(api,_date).then((res)=>{
             console.log(res);
             let orderList=res.data.records;
             this.setState({
