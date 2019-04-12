@@ -28,6 +28,7 @@ class List extends Component {
     constructor(props){
         super(props);
         this.state=({
+            id:0,
             List:[ ],
             ListOne:[],
             ListTwo:[],
@@ -36,33 +37,19 @@ class List extends Component {
         })
     }
     tabsChange=(e)=>{
-        const id = e.id;
-        if (id===0){
+        this.id = e.id;
+        if (this.id===0){
             this.indent();
-        } else if(id===1){
+        } else if(this.id===1){
             this.listOne();
-        }else if(id===2){
-            this.ListTwo();
-        }else if(id===3){
-            this.listOne();
-        }else if(id===4){
-            this.listOne();
+        }else if(this.id===2){
+            // this.ListTwo();
         }
-    };
-    ListTwo=()=>{
-        let api =window.g.indent;
-        Axios.get(api).then((res)=>{
-            let orderList=res.data.records;
-            this.setState({
-                ListTwo:orderList,
-            });
-        },(err)=>{
-            console.log(err)
-        })
     };
     listOne=()=>{
         let api =window.g.indent;
         Axios.get(api).then((res)=>{
+            console.log(res);
             let orderList=res.data.records;
             this.setState({
                 ListOne:orderList,
@@ -74,6 +61,7 @@ class List extends Component {
     indent=()=>{
         let api =window.g.indent;
         Axios.get(api).then((res)=>{
+            console.log(res);
             let orderList=res.data.records;
             this.setState({
                 List:orderList,
