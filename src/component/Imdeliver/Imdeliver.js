@@ -160,9 +160,11 @@ class Imdeliver extends Component{
                     //     // "pric":this.state.topic};
                     // };
                     data.push(listNumber);
+
                     // console.log("id为"+this.state.list[j].id+"+"+"数量"+ this.state.list[j].addNumber);
                 }
             }
+            console.log(data);
             // console.log(JSON.stringify(data));
             this.id = storage.get("user");
             this.userid=this.id.id;
@@ -170,14 +172,15 @@ class Imdeliver extends Component{
                 param.append("orderGoods",JSON.stringify(data));
                 param.append("distributorId",this.userid);
                 param.append("orderPrice",this.state.topic);
-            const api = window.g.indent;
+                param.append("orderStatus",0);//未付款
+                const api = window.g.indent;
             Axios.post(api,param).then((res)=>{
                 // console.log(res);
                 storage.set("deliverId",res.data.data)
             },(err)=>{
                 console.log(err)
             });
-            storage.set("listNumber",data);
+            // storage.set("listNumber",data);
             this.props.history.push('/SubmitOrder');
         }
 

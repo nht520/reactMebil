@@ -146,7 +146,7 @@ class About extends Component {
             let credit2=res.data.data.credit2;
             console.log(res);
             //将余额存的storage
-            storage.set("listNumber",res.data.data.credit2);
+            storage.set("pricerNumber",res.data.data);
             this.setState({
                 pric:credit2
             })

@@ -330,6 +330,10 @@ export const OrdeRight = styled.div`
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
    }
+   .left{
+      height:20px;
+    line-height:20px;
+   }
    font-size: 13px;
 `;
 export const OneLeft = styled.div`

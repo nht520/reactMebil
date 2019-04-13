@@ -98,19 +98,21 @@ class Dateils extends Component{
         //点击计算数量
         let numberSum =  this.state.sum;
         ++numberSum;
-        if (numberSum>this.state.list.mealNum){
-            numberSum=this.state.list.mealNum;
-        }else{
-            // //点击增加分属，计算价格
-            var topicnum =0;
-            topicnum += numberSum * this.state.list.mealNum;
-            console.log(numberSum);
-            console.log(topicnum);
-            this.setState({
-                sum:numberSum,
-                topic:topicnum
-            });
-        };
+        // console.log(numberSum);
+        // //点击增加分属，计算价格
+        var topicnum =0;
+        topicnum += numberSum * this.state.list.mealNum;
+        // console.log(numberSum);
+        // console.log(topicnum);
+        this.setState({
+            sum:numberSum,
+            topic:topicnum
+        });
+        // if (numberSum>this.state.list.mealNum){
+        //     numberSum=this.state.list.mealNum;
+        // }else{
+        //
+        // };
     };
     // 减少
     plusChange=()=>{
@@ -139,9 +141,9 @@ class Dateils extends Component{
         } else if (this.state.sum >= 1) {
             //获取余额，并且和商品价格比较，如果余额大于商品价格则可以买
             this.picer =this.state.list.mealPrice;
-            this.purchase = storage.get("listNumber");
+            this.purchase = storage.get("pricerNumber").credit2;
+            // console.log("购买"+this.purchase);
             if (this.purchase>=this.picer){
-                console.log("购买");
                 //goodsId  商品编号   stockNum 份数  distributorId 当前用户id   boxNum  总份数
                 // mealNum盒数
                 this.user = storage.get("user");
@@ -153,7 +155,7 @@ class Dateils extends Component{
                       _param.append("boxNum",this.state.topic);
                 var api =window.g.stock;
                 Axios.post(api,_param).then((res)=>{
-                    console.log(res);
+                    // console.log(res);
                     // alert('购买提示！', '是否确认购买 ???', [
                     //     { text: '取消', onPress: () => console.log('取消') },
                     //     { text: '确定',

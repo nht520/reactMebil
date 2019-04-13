@@ -35,11 +35,15 @@ class SubmitOrder extends Component{
             displaysite:"block",
             userName:"奈何天",
             ipHone:"15803614645",
-            site:"重庆市，城口县，巴山，高楠，8组6号。"
+            site:"重庆市，城口县，巴山，高楠，8组6号。",
+            orderInfo:[],
+            orderGoods:[],
+            deliverFreight:100,
+            orderNum:0,
         })
     }
     render(){
-        const { orderList,userName,ipHone,site,displayName,displaysite } = this.state;
+        const {orderNum,orderInfo,orderGoods,userName,ipHone,site,displayName,displaysite,deliverFreight } = this.state;
         return(
             <Fragment>
                 <SubmitWrapper>
@@ -84,24 +88,24 @@ class SubmitOrder extends Component{
                     </Delivery>
                     {/**/}
                     <SubmitList>
-                        <h2>累计2件商品</h2>
+                        <h2>累计{orderGoods.length}商品</h2>
                         <OrdeList>
                             {
-                                orderList.map((v,key)=>(
+                                orderGoods.map((v,key)=>(
                                     <OrdeItem key={key}>
                                         <OrdeLeft>
-                                            <img src={v.imgurl} alt="img"/>
+                                            <img src={v.mealEntity.mealImage} alt="img"/>
                                         </OrdeLeft>
                                         <OrdeRight>
                                             <Flex className="title">
-                                                <Flex.Item>{v.title}</Flex.Item>
-                                                <Flex.Item className="payment">￥{v.price}</Flex.Item>
+                                                <Flex.Item className="left">{v.mealEntity.mealName}</Flex.Item>
+                                                <Flex.Item className="payment">￥{v.mealEntity.mealPrice}</Flex.Item>
                                             </Flex>
                                             <OneLeft className="ordDtels">
-                                                {v.details}
+                                                {v.mealEntity.mealContent}
                                             </OneLeft>
                                             <TwoRight>
-                                                X{v.quantity}
+                                                X{v.addNumber}
                                             </TwoRight>
                                         </OrdeRight>
                                     </OrdeItem>
@@ -112,19 +116,19 @@ class SubmitOrder extends Component{
                             <ul>
                                 <li>
                                     <span className="left">商品数量</span>
-                                    <span className="right">5</span>
+                                    <span className="right">{orderNum}</span>
                                 </li>
                                 <li>
                                     <span className="left">商品总额</span>
-                                    <span className="right">￥352.00</span>
+                                    <span className="right">￥{orderInfo.orderPrice}</span>
                                 </li>
                                 <li>
                                     <span className="left">运费</span>
-                                    <span className="right">￥352</span>
+                                    <span className="right">￥{deliverFreight}</span>
                                 </li>
                                 <li className="subsolid">
                                     <span className="left">实付款</span>
-                                    <span className="right">￥{this.state.sum}</span>
+                                    <span className="right">￥{orderInfo.orderPrice+deliverFreight}</span>
                                 </li>
                             </ul>
                         </Commodity>
@@ -134,7 +138,7 @@ class SubmitOrder extends Component{
                 <DateilsButton>
                     <Flex className="title">
                         <Flex.Item></Flex.Item>
-                        <Flex.Item className="shipments">￥{this.state.sum}</Flex.Item>
+                        <Flex.Item className="shipments">￥{orderInfo.orderPrice+deliverFreight}</Flex.Item>
                         <Flex.Item>
                             <Button variant="outlined" size="medium" color="primary" className="ordering"onClick={this.imdeChange}>
                                 提交订单
@@ -147,14 +151,20 @@ class SubmitOrder extends Component{
     }
     imdeChange = ()=>{
         this.id = storage.get("deliverId");
-        this.userid=this.id.id;
-        console.log(this.userid);
+        this.orderId=this.id.id;
+        this.userid = storage.get("user").id;
         var param = new URLSearchParams();
+            param.append("id",this.orderId);
             param.append("distributorId",this.userid);
-            // param.append("orderPrice",this.state.orderPrice);
+            param.append("orderGoods",JSON.stringify(this.state.orderGoods));
+            param.append("deliverFreight",this.state.deliverFreight);
             param.append("deliverName",this.state.userName);
             param.append("deliverPhone",this.state.ipHone);
             param.append("deliverAddress",this.state.site);
+            param.append("orderStatus",1);//待发货
+            // param.append("orderNo",this.state.orderInfo.orderNo);
+            // param.append("orderTime",this.state.orderInfo.orderTime);
+            // param.append("orderPrice",this.state.orderInfo.orderPrice+this.state.deliverFreight);
          const  api = window.g.update;
          Axios.post(api,param).then((res)=>{
              console.log(res)
@@ -165,6 +175,7 @@ class SubmitOrder extends Component{
     componentDidMount(){
         document.title="提交订单";
         this.submitOrder();
+        this.getOrderInfo();
     }
     submit =()=>{
         this.props.history.push('/Location');
@@ -188,5 +199,31 @@ class SubmitOrder extends Component{
             // storage.remove("location");
         }
     }
+    //得到订单信息
+    getOrderInfo=()=>{
+        var api = window.g.indent;
+        this.id = storage.get("deliverId");
+        this.orderId=this.id.id;
+        var param = {
+            params:{
+                id:this.orderId,
+            }
+        };
+        Axios.get(api,param).then((res)=>{
+            console.log("订单");
+            let orderData = res.data.records[0];
+            let num = 0;
+            console.log(orderData);
+            JSON.parse(orderData.orderGoods).forEach((list)=>{
+               num = num+list.addNumber;
+            });
+            console.log(num);
+            this.setState({orderNum:num,orderInfo:orderData,orderGoods:JSON.parse(orderData.orderGoods)});
+        }).catch((err)=>{
+            console.log(err);
+        })
+    };
+
 }
+
 export default SubmitOrder;
