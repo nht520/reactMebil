@@ -202,11 +202,16 @@ class SubmitOrder extends Component{
     //得到订单信息
     getOrderInfo=()=>{
         var api = window.g.indent;
-        this.id = storage.get("deliverId");
-        this.orderId=this.id.id;
+        this.orderId = storage.get("deliverId");
+        // if(!this.orderId){
+        //    window.location.reload();
+        // }
+        this.idOrder=this.orderId.id;
+        console.log(this.orderId.id);
+        // this.orderId=this.id.id;
         var param = {
             params:{
-                id:this.orderId,
+                id:this.idOrder,
             }
         };
         Axios.get(api,param).then((res)=>{

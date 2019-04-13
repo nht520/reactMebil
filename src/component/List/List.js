@@ -24,7 +24,7 @@ class List extends Component {
             }
         };
         Axios.get(api,param).then((res)=>{
-            console.log(res);
+            // console.log(res);
             this.setState({
                 List:res.data.records,
             });

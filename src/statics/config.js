@@ -17,6 +17,8 @@ window.g = {
   //自己发货订单
   indent:besurl+"/distributor/order",
   update:besurl+"/distributor/order/update",
+  //发货订单列表
+  originalPrice:besurl+"/distributor/order/originalPrice",
   ParentPage: {
     // http://wx.bomao.xyz:8080/distributor
     // ApiUrl: 'http://www.phonegap100.com/appapi.php?a=getPortalList&catid=20&page=', // 配置服务器地址,

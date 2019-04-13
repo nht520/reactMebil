@@ -5,7 +5,7 @@ import {
 import { Tabs,
     // WhiteSpace
 } from 'antd-mobile';
-// import Axios from "axios";
+import Axios from "axios";
 import CpntOrder from "../List/CpntOrder";
 const tabs = [
     { title: '全部' },
@@ -81,7 +81,16 @@ class ShipmentOrder extends Component {
     //         // this.ListTwo();
     //     }
     // };
+    shipMent=()=>{
+      const api = window.g.originalPrice;
+      Axios.get(api).then((res)=>{
+          console.log(res)
+      },(err)=>{
+          console.log(err)
+      })
+    };
     componentDidMount (){
+        this.shipMent();
     }
     render(){
         const { List} = this.state;

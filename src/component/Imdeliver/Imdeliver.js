@@ -160,11 +160,9 @@ class Imdeliver extends Component{
                     //     // "pric":this.state.topic};
                     // };
                     data.push(listNumber);
-
                     // console.log("id为"+this.state.list[j].id+"+"+"数量"+ this.state.list[j].addNumber);
                 }
             }
-            console.log(data);
             // console.log(JSON.stringify(data));
             this.id = storage.get("user");
             this.userid=this.id.id;
@@ -176,7 +174,10 @@ class Imdeliver extends Component{
                 const api = window.g.indent;
             Axios.post(api,param).then((res)=>{
                 // console.log(res);
-                storage.set("deliverId",res.data.data)
+                storage.set("deliverId",res.data.data);
+
+
+
             },(err)=>{
                 console.log(err)
             });
@@ -208,6 +209,7 @@ class Imdeliver extends Component{
         // let _id = this.props.match.params.id;
         // console.log(_id);
         document.title = this.state.title;
+        // storage.remove("deliverId"); storage.remove("deliverId");
     }
 }
 
