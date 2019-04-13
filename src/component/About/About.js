@@ -144,6 +144,7 @@ class About extends Component {
         var api =window.g.mcMembers;
         Axios.get(api,param).then((res)=>{
             let credit2=res.data.data.credit2;
+            console.log(res);
             //将余额存的storage
             storage.set("listNumber",res.data.data.credit2);
             this.setState({

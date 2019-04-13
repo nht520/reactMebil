@@ -1,7 +1,7 @@
 import React,{ Component,Fragment } from "react";
 //引用路由
 import {
-    BrowserRouter  as Router,
+    HashRouter  as Router,
     Route,
     // HashRouter
     // Link

@@ -88,7 +88,6 @@ class IndentDateils extends Component{
                            </div>
                         ))
                     }
-
                 </IndentDts>
             </Fragment>
         )
@@ -96,7 +95,6 @@ class IndentDateils extends Component{
     condition=()=>{
         //获取动态路由传值
         const _id = this.props.match.params.id;
-        console.log(this.id+"+++");
         //获取当前点击的状态值
         let param = {
             params:{

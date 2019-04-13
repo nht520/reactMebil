@@ -9,6 +9,7 @@ import { Tabs,
 import CpntOrder from "../List/CpntOrder";
 const tabs = [
     { title: '全部' },
+    { title: '待付款' },
     { title: '待发货' },
     { title: '待收货' },
     { title: '已完成' },

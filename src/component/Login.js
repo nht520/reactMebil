@@ -34,7 +34,7 @@ class Login extends Component{
                     <Button  className="logButton" onClick={this.handChang}>
                         登录
                     </Button>
-                    <h5><span className="register"><Link to="/Register">注册</Link></span>忘记密码？</h5>
+                    <h5><span className="register"><Link to="/Register">注册</Link></span><Link to="/Register">忘记密码？</Link></h5>
                 </LoginWrapper>
             </Fragment>
         )

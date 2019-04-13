@@ -19,7 +19,8 @@ class List extends Component {
         this.userid=this.id.id;
         let param = {
             params:{
-                distributorId:this.userid
+                distributorId:this.userid,
+                logType:0
             }
         };
         Axios.get(api,param).then((res)=>{

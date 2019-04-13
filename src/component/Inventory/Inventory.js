@@ -68,7 +68,7 @@ class Inventory extends Component{
                                   <ImRight>
                                        <Flex.Item>特惠价:￥{item.mealEntity.mealPrice}</Flex.Item>
                                   </ImRight>
-                                  <Button variant="outlined" size="small" color="primary" className="ordering">
+                                  <Button onClick={this.order} variant="outlined" size="small" color="primary" className="ordering">
                                       去订货
                                   </Button>
                               </ImdeAdd>
@@ -85,14 +85,17 @@ class Inventory extends Component{
         this.user = storage.get("user");
         this.usernameId=this.user.id;
         Axios.get(api,{params:{distributorId:this.usernameId}}).then((res)=>{
-            console.log("=====");
-            console.log(res);
             this.setState({
                 list:res.data.records
             })
         },(err)=>{
             console.log(err)
         })
+    };
+    order=()=>{
+        // console.log(key)
+        // console.log(item.id);
+        this.props.history.push(`/Layout`);
     };
     componentDidMount (){
         document.title = this.state.title;

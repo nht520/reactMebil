@@ -29,8 +29,6 @@ class Detail extends Component{
             this.setState({
                 stockList:res.data.records[0],
             });
-            console.log("====stock===");
-            console.log(res.data.records[0]);
             this.getList();
         })
     };
@@ -43,12 +41,22 @@ class Detail extends Component{
                 buyGoods:this.state.stockList.goodsId,
             }
         };
-        console.log(this.state.stockList.goodsId);
+        // console.log(this.state.stockList.goodsId);
         Axios.get(api,param).then((res)=>{
             console.log(res);
+            const dtlist = res.data.records;
+            // if (dtlist.logType===0) {
+            //     dtlist.surplusStock="-"+dtlist.surplusStock
+            // }else if(dtlist.logType===1){
+            //     dtlist.surplusStock="+"+dtlist.surplusStock
+            // }
+            this.setState({
+                list:dtlist
+            });
         }).catch((ex)=>{
             console.log(ex);
         });
+
     };
     componentDidMount(){
         document.title="库存明细";
@@ -57,7 +65,7 @@ class Detail extends Component{
         // let _id = this.props.match.params.id;
     }
     render(){
-        const {stockList}=this.state;
+        const {stockList,list}=this.state;
         return(
             <Fragment>
                 <DetailWrapper>
@@ -68,32 +76,23 @@ class Detail extends Component{
                     </DetailAll>
                     {/**/}
                     <DetailUl>
-                        <DetailLi>
-                            <h3>剩余库存量 : 80</h3>
-                            <Flex>
-                                <Flex.Item className="time">2015-03-16    16:40:15 </Flex.Item>
-                                <Flex.Item className="left">-10 </Flex.Item>
-                            </Flex>
-                        </DetailLi>
-                        <DetailLi>
-                            <h3>剩余库存量 : 80</h3>
-                            <Flex>
-                                <Flex.Item className="time">2015-03-16    16:40:15 </Flex.Item>
-                                <Flex.Item className="left">-10 </Flex.Item>
-                            </Flex>
-                        </DetailLi>
-                        <DetailLi>
-                            <h3>剩余库存量 : 80</h3>
-                            <Flex>
-                                <Flex.Item className="time">2015-03-16    16:40:15 </Flex.Item>
-                                <Flex.Item className="left">-10 </Flex.Item>
-                            </Flex>
-                        </DetailLi>
+                        {
+                            list.map((item,key)=>(
+                            <DetailLi key={key}>
+                                <h3>剩余库存量 : {item.surplusStock}</h3>
+                                    <Flex>
+                                        <Flex.Item className="time">{item.buyTime} </Flex.Item>
+                                        <Flex.Item className="left">
+                                            {item.logType===0?'+'+[item.surplusStock]:'-'+[item.surplusStock]}
+                                        </Flex.Item>
+                                    </Flex>
+                            </DetailLi>
+                            ))
+                        }
                     </DetailUl>
                 </DetailWrapper>
             </Fragment>
         )
     }
 }
-
 export default Detail;

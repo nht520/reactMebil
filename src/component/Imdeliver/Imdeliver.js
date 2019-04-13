@@ -12,6 +12,7 @@ import {
 } from "react-router-dom";
 import storage from "../../statics/storage";
 import Button from "@material-ui/core/Button/Button";
+import Axios from "axios";
 class Imdeliver extends Component{
     constructor(props){
         super(props);
@@ -20,34 +21,7 @@ class Imdeliver extends Component{
             sum:"0",
             listNumber:[],
             topic:0,
-            list:[
-                {
-                    id:1,
-                    addNumber:0,
-                    imgurl:"http://wx.bomao.xyz/attachment/images/1/2018/07/du4046PU9Y8z9w1rL9wprE6L6Lrz3L.png",
-                    title:"炸鸡汉堡王",
-                    details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                    price:22.00,
-                    repertory:"5",
-                }, {
-                    id:2,
-                    addNumber:0,
-                    imgurl:"http://wx.bomao.xyz/attachment/images/1/2018/07/du4046PU9Y8z9w1rL9wprE6L6Lrz3L.png",
-                    title:"草莓汉堡王",
-                    details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                    price:100.00,
-                    repertory:"5",
-                },
-                {
-                    id:3,
-                    addNumber:0,
-                    imgurl:"http://wx.bomao.xyz/attachment/images/1/2018/07/du4046PU9Y8z9w1rL9wprE6L6Lrz3L.png",
-                    title:"汉堡王堡王",
-                    details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                    price:100.00,
-                    repertory:"5",
-                },
-            ]
+            list:[]
         })
     }
     render(){
@@ -61,15 +35,15 @@ class Imdeliver extends Component{
                             <Link to={`/Dateils/${item.id}`}>
                                 <ImdeItem>
                                     <ImdeLeft>
-                                        <img src={item.imgurl} alt="img"/>
+                                        <img src={item.mealEntity.mealImage} alt="img"/>
                                     </ImdeLeft>
                                     <ImdeRight>
                                         <Flex className="title">
-                                            <Flex.Item className="invTitle">{item.title}</Flex.Item>
-                                            <Flex.Item>特惠价:<span>￥{item.price}</span></Flex.Item>
+                                            <Flex.Item className="invTitle">{item.mealEntity.mealName}</Flex.Item>
+                                            <Flex.Item>特惠价:<span>￥{item.mealEntity.mealPrice}</span></Flex.Item>
                                         </Flex>
                                         <h5 className="ordDtels">
-                                            {item.details}
+                                            {item.mealEntity.mealContent}
                                         </h5>
                                     </ImdeRight>
                                 </ImdeItem>
@@ -77,7 +51,7 @@ class Imdeliver extends Component{
                             <ImdeButton>
                                 <ImdeAdd>
                                     <ImLeft>
-                                        <Flex.Item>可用库存（<font className="red">{item.repertory}</font>）</Flex.Item>
+                                        <Flex.Item>可用库存（<font className="red">{item.boxNum}</font>）</Flex.Item>
                                     </ImLeft>
                                     <ImRight>
                                         <ul>
@@ -118,7 +92,7 @@ class Imdeliver extends Component{
     addChange = (key) =>{
         //获取当前点击的key
         let addList=this.state.list;
-        console.log(addList[key]);
+        // console.log(addList[key]);
         // console.log(this.pages)
     };
     //添加
@@ -134,7 +108,8 @@ class Imdeliver extends Component{
             var topicnum =0;
             for( var i = 0;i<this.addList.length;i++){
                 count = count+parseInt(this.addList[i].addNumber);
-                topicnum += this.addList[i].addNumber* this.addList[i].price;
+                //计算总价
+                topicnum += this.addList[i].addNumber * this.addList[i].mealEntity.mealPrice;
                 console.log(topicnum+"++总价");
             }
             this.setState({
@@ -156,7 +131,7 @@ class Imdeliver extends Component{
         }else {
             var minusnum =0;
             for( var i = 0;i<this.addList.length;i++){
-                minusnum += this.addList[i].addNumber * this.addList[i].price;
+                minusnum += this.addList[i].addNumber * this.addList[i].mealEntity.mealPrice;
                 console.log(this.state.topic+"——总价");
             }
             --this.sumone;
@@ -177,16 +152,55 @@ class Imdeliver extends Component{
             var data = new Array();
             for ( var j= 0; j<this.state.list.length; j++){
                 if(this.state.list[j].addNumber>=1){
-                    var listNumber = { "id": this.state.list[j].id, "addNumber": this.state.list[j].addNumber,"pric":this.state.topic};
+                    var listNumber =this.state.list[j];
+                    //     {
+                    //     "list": this.state.list[j],
+                    //     // "id": this.state.list[j].id,
+                    //     // "addNumber": this.state.list[j].addNumber,
+                    //     // "pric":this.state.topic};
+                    // };
                     data.push(listNumber);
                     // console.log("id为"+this.state.list[j].id+"+"+"数量"+ this.state.list[j].addNumber);
                 }
             }
+            // console.log(JSON.stringify(data));
+            this.id = storage.get("user");
+            this.userid=this.id.id;
+            var param = new URLSearchParams();
+                param.append("orderGoods",JSON.stringify(data));
+                param.append("distributorId",this.userid);
+                param.append("orderPrice",this.state.topic);
+            const api = window.g.indent;
+            Axios.post(api,param).then((res)=>{
+                // console.log(res);
+                storage.set("deliverId",res.data.data)
+            },(err)=>{
+                console.log(err)
+            });
             storage.set("listNumber",data);
             this.props.history.push('/SubmitOrder');
         }
+
+    };
+    stock=()=>{
+        const api = window.g.stock;
+        this.id = storage.get("user");
+        this.userid=this.id.id;
+        var param = {
+            params:{
+                distributorId:this.id.id,
+            }
+        };
+        Axios.get(api,param).then((res)=>{
+            this.setState({
+                list:res.data.records
+            })
+        },(err)=>{
+            console.log(err)
+        })
     };
     componentDidMount (){
+        this.stock();
         //获取动态路由传值
         // let _id = this.props.match.params.id;
         // console.log(_id);

@@ -7,6 +7,7 @@ import left from "../../statics/asstas/left.png";
 import { Flex } from "antd-mobile";
 import storage from "../../statics/storage";
 import Button from "@material-ui/core/Button/Button";
+import Axios from "axios";
 class SubmitOrder extends Component{
     constructor(props){
         super(props);
@@ -144,6 +145,23 @@ class SubmitOrder extends Component{
             </Fragment>
         )
     }
+    imdeChange = ()=>{
+        this.id = storage.get("deliverId");
+        this.userid=this.id.id;
+        console.log(this.userid);
+        var param = new URLSearchParams();
+            param.append("distributorId",this.userid);
+            // param.append("orderPrice",this.state.orderPrice);
+            param.append("deliverName",this.state.userName);
+            param.append("deliverPhone",this.state.ipHone);
+            param.append("deliverAddress",this.state.site);
+         const  api = window.g.update;
+         Axios.post(api,param).then((res)=>{
+             console.log(res)
+         },(err)=>{
+             console.log(err)
+         })
+    };
     componentDidMount(){
         document.title="提交订单";
         this.submitOrder();
@@ -151,6 +169,7 @@ class SubmitOrder extends Component{
     submit =()=>{
         this.props.history.push('/Location');
     };
+    //判断是否有地址
     submitOrder=()=>{
         this.site = storage.get("location");
         if (this.site==null || this.site===undefined) {

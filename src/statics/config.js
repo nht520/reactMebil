@@ -1,19 +1,22 @@
+const besurl = "http://192.168.2.105:8899";
+// const besurl = "http://wx.bomao.xyz:8080/distributor";
 window.g = {
   AXIOS_TIMEOUT: 10000,
-  login:"http://wx.bomao.xyz:8080/distributor/distributor/member/login",
-  register:'http://wx.bomao.xyz:8080/distributor/distributor/member/updatePass',
-  mcMembers:'http://wx.bomao.xyz:8080/distributor/distributor/mcMembers/findById',
+  login:besurl+"/distributor/member/login",
+  register:besurl+'/distributor/member/updatePass',
+  mcMembers:besurl+'/distributor/mcMembers/findById',
   //我的库存
-  getBoxNum:"http://192.168.2.104:8899/distributor/stock/getBoxNum",
+  getBoxNum:besurl+"/distributor/stock/getBoxNum",
   //订货订单
-  stockLog:'http://192.168.2.104:8899/distributor/stockLog',
+  stockLog:besurl+'/distributor/stockLog',
     //库存
-  stock:'http://192.168.2.104:8899/distributor/stock',
+  stock:besurl+'/distributor/stock',
     //  套餐
-  meal:"http://wx.bomao.xyz:8080/distributor/distributor/meal",
-  mealDts:"http://wx.bomao.xyz:8080/distributor/distributor/meal/findById?id=",
+  meal:besurl+"/distributor/meal",
+  mealDts:besurl+"/distributor/meal/findById?id=",
   //自己发货订单
-  // indent:"http://192.168.2.104:8899/distributor/order",
+  indent:besurl+"/distributor/order",
+  update:besurl+"/distributor/order/update",
   ParentPage: {
     // http://wx.bomao.xyz:8080/distributor
     // ApiUrl: 'http://www.phonegap100.com/appapi.php?a=getPortalList&catid=20&page=', // 配置服务器地址,
