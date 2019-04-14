@@ -109,6 +109,11 @@ export const HomeList = styled.div`
         white-space:nowrap;
         overflow:hidden
      }
+    .childClass{
+        -webkit-filter: grayscale(1); /* Webkit */
+        filter: gray; /* IE6-9 */
+        filter: grayscale(1); /* W3C */
+    }
 `;
 //
 export const HomeLayout = styled.div`

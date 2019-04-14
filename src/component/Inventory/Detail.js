@@ -83,7 +83,7 @@ class Detail extends Component{
                                     <Flex>
                                         <Flex.Item className="time">{item.buyTime} </Flex.Item>
                                         <Flex.Item className="left">
-                                            {item.logType===0?'+'+[item.surplusStock]:'-'+[item.surplusStock]}
+                                            {item.logType===0?'+'+[item.buyIncrement]:'-'+[item.buyIncrement]}
                                         </Flex.Item>
                                     </Flex>
                             </DetailLi>

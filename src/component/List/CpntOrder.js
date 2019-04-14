@@ -10,8 +10,8 @@ class CpntOrder extends Component{
     constructor(props){
         super(props);
         this.state=({
-            title:"全部订单",
-            list:[ ],
+            title:"发货订单",
+            dtList:[ ],
         })
     }
     datsChange =(key)=>{
@@ -22,68 +22,50 @@ class CpntOrder extends Component{
         console.log(letid[key]);
     };
     listOrder=(key)=>{
-        let letid = this.props.list;
-        // storage.set("lcList",letid[key]);
-        console.log(letid[key]);
-        if (letid[key].states==="待发货"){
+        let orderList = this.state.list;
+        console.log(orderList[key]);
+        if (orderList[key].orderStatus===0){
             console.log("待发货");
-            let id = letid[key].id;
-            this.props.history.push(`/IndentDateils/${id}`);
-        }else if(letid[key].states==="待收货"){
-            console.log("待收货");
-            alert('收货提示！', '是否确认收货 ???', [
-                { text: '取消', onPress: () => console.log('取消') },
-                {text: '确定',
-                    onPress: () =>
-                        new Promise((resolve) => {
-                            Toast.info('onPress Promise', 1);
-                            setTimeout(resolve, 1000);
-                        }),
-                },
-            ])
-        }else if(letid[key].states==="已完成"){
-            console.log("已完成");
-            alert('删除提示！', '是否确认删除 ???', [
-                { text: '取消', onPress: () => console.log('取消') },
-                {text: '确定',
-                    onPress: () =>
-                        new Promise((resolve) => {
-                            Toast.info('onPress Promise', 1);
-                            setTimeout(resolve, 1000);
-                        }),
-                },
-            ])
+            this.setState({
+                button:"待发货"
+            })
+            // this.props.history.push(`/IndentDateils/${id}`);
+        }else if(orderList[key].orderStatus===1){
+            console.log("已发货");
+            this.setState({
+                button:"已发货"
+            })
         }
     };
     render(){
-        const { list } = this.props;
+        const { dtList } = this.state;
         return(
             <Fragment>
                 <OrdeWrapper>
-                    {list.map((item,key)=>(
+                    {dtList.map((item,key)=>(
                         <OrderList key={key} >
                             <Flex className="header">
-                                <Flex.Item>订单编号:<span>{item.number}</span></Flex.Item>
-                                <Flex.Item className="payment">{item.states}</Flex.Item>
+                                <Flex.Item><span>{item.orderNo}</span></Flex.Item>
+                                <Flex.Item className="payment">{item.orderStatus}</Flex.Item>
                             </Flex>
                             <OrdeList>
                                 {
-                                    item.orderList.map((v,key)=>(
+                                    JSON.parse(item.orderGoods).map((v,key)=>(
                                         <Link to={`/IndentDateils/${v.id}`}  key={key} onClick={this.datsChange.bind(this,key)}>
                                             <OrdeItem>
                                                 <OrdeLeft>
-                                                    <img src={v.imgurl} alt="img"/>
+                                                    <img src={v.goodsEntity.goodsImage} alt="img"/>
                                                 </OrdeLeft>
                                                 <OrdeRight>
                                                     <Flex className="title">
-                                                        <Flex.Item>{v.title}</Flex.Item>
-                                                        <Flex.Item className="payment">￥{v.price}</Flex.Item>
+                                                        <Flex.Item>{v.goodsEntity.goodsName}</Flex.Item>
+
                                                     </Flex>
                                                     <OneLeft className="ordDtels">
-                                                        {v.details}
+                                                        {v.goodsEntity.goodsContent}
                                                     </OneLeft>
                                                     <TwoRight>
-                                                        X{v.quantity}
+                                                        X{v.boxNum}
                                                     </TwoRight>
                                                 </OrdeRight>
                                             </OrdeItem>
@@ -92,9 +74,9 @@ class CpntOrder extends Component{
                                 }
                                 <OrdeItem>
                                     <Flex>
-                                        <Flex.Item>
-                                            总价：￥<span>88989</span>
-                                        </Flex.Item>
+                                        {/*<Flex.Item>*/}
+                                        {/*    总价：￥<span>88989</span>*/}
+                                        {/*</Flex.Item>*/}
                                         <Flex.Item>
                                             <Button  size="small" onClick={this.listOrder.bind(this,key)}>
                                                 {item.button}
@@ -118,9 +100,14 @@ class CpntOrder extends Component{
         // this.listOrder();
         // console.log(this.state.list)
     }
-    componentWillReceiveProps(nextProps){
-        // const { list } =nextProps;
-        // console.log(list);
-     }
+    componentWillReceiveProps(nextProps) {
+        let list = nextProps.list;
+        console.log(list);
+        if (list) {
+            this.setState({
+                dtList: list,
+            })
+        }
+    };
 }
 export default withRouter(CpntOrder);

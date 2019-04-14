@@ -1,9 +1,8 @@
 import React,{ Component,Fragment } from "react";
 import { Flex} from "antd-mobile";
-import Button from "@material-ui/core/Button/Button";
 import {
     IndentDts, IntList, Indeslider,
-    IntUl, IntLi, IntConte, DateilsButton,
+    IntUl, IntLi, IntConte,
 } from "../style";
 import banner from "../../statics/asstas/touxiang.png";
 import Carouse from "../Carousel/Carouse";

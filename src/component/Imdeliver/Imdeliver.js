@@ -7,9 +7,9 @@ import {
      ImdeList,ImdeItem,ImdeLeft,ImdeRight,ImdeButton,DateilsButton,ImdeAdd,
     ImLeft,ImRight
 } from "../style";
-import {
-    Link
-} from "react-router-dom";
+// import {
+//     Link
+// } from "react-router-dom";
 import storage from "../../statics/storage";
 import Button from "@material-ui/core/Button/Button";
 import Axios from "axios";
@@ -28,26 +28,24 @@ class Imdeliver extends Component{
         const { list } = this.state;
         return(
             <Fragment>
-                {/*<IndentWrapper>*/}
                 {
                     list.map((item,key)=>(
                         <ImdeList key={key} onClick={this.addChange.bind(this,key)}>
-                            <Link to={`/Dateils/${item.id}`}>
+                            {/*<Link to={`/Dateils/${item.id}`}>*/}
                                 <ImdeItem>
                                     <ImdeLeft>
-                                        <img src={item.mealEntity.mealImage} alt="img"/>
+                                        <img src={item.goodsEntity.goodsImage} alt="img"/>
                                     </ImdeLeft>
                                     <ImdeRight>
                                         <Flex className="title">
-                                            <Flex.Item className="invTitle">{item.mealEntity.mealName}</Flex.Item>
-                                            <Flex.Item>特惠价:<span>￥{item.mealEntity.mealPrice}</span></Flex.Item>
+                                            <Flex.Item className="invTitle">{item.goodsEntity.goodsName}</Flex.Item>
                                         </Flex>
                                         <h5 className="ordDtels">
-                                            {item.mealEntity.mealContent}
+                                            {item.goodsEntity.goodsContent}
                                         </h5>
                                     </ImdeRight>
                                 </ImdeItem>
-                            </Link>
+                            {/*</Link>*/}
                             <ImdeButton>
                                 <ImdeAdd>
                                     <ImLeft>
@@ -92,7 +90,7 @@ class Imdeliver extends Component{
     addChange = (key) =>{
         //获取当前点击的key
         let addList=this.state.list;
-        // console.log(addList[key]);
+        console.log(addList[key]);
         // console.log(this.pages)
     };
     //添加
@@ -117,8 +115,7 @@ class Imdeliver extends Component{
                 sum:count,
                 topic:topicnum
             });
-        };
-
+        }
     };
     // 减少
     plusChange=(key)=>{
@@ -163,21 +160,18 @@ class Imdeliver extends Component{
                     // console.log("id为"+this.state.list[j].id+"+"+"数量"+ this.state.list[j].addNumber);
                 }
             }
-            // console.log(JSON.stringify(data));
-            this.id = storage.get("user");
-            this.userid=this.id.id;
+            storage.set("imdeliverList",data);
             var param = new URLSearchParams();
                 param.append("orderGoods",JSON.stringify(data));
+                // param.append("distributorId",this.userid);
                 param.append("distributorId",this.userid);
                 param.append("orderPrice",this.state.topic);
                 param.append("orderStatus",0);//未付款
                 const api = window.g.indent;
             Axios.post(api,param).then((res)=>{
-                // console.log(res);
+                console.log(res);
+                storage.remove("deliverId");
                 storage.set("deliverId",res.data.data);
-
-
-
             },(err)=>{
                 console.log(err)
             });
@@ -196,9 +190,10 @@ class Imdeliver extends Component{
             }
         };
         Axios.get(api,param).then((res)=>{
+            console.log(res);
             this.setState({
                 list:res.data.records
-            })
+            });
         },(err)=>{
             console.log(err)
         })

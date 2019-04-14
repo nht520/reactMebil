@@ -11,6 +11,7 @@ import banner from "../../statics/asstas/bna1.png"
 import storage from "../../statics/storage";
 // import store from "../../store"
 import Axios from "axios";
+import {Toast} from "antd-mobile";
 class Home extends Component {
     constructor(props){
         super(props);
@@ -19,7 +20,8 @@ class Home extends Component {
             title:"Nai he,tian",
             name:"",
             list:[],
-            banner: [
+            buyClass:"childTwo",
+            banner:[
                 {
                     id:1,
                     src:banner,
@@ -42,6 +44,9 @@ class Home extends Component {
             // src:"https://www.baidu.com/img/bd_logo1.png",
         })
     }
+    showToast = () => {
+        Toast.info(this.state.text);
+    };
     homeDate(){
         //从storage获取数据 判断用户是否登录、如果未登录则返回登录页
         this.user = storage.get("user");
@@ -66,23 +71,80 @@ class Home extends Component {
     // storeMonitor = () =>{
     //     this.setState(store.getState())
     };
+    homeList =()=>{
+        var api =window.g.meal;
+        Axios.get(api).then((res)=>{
+            let homeList=res.data.records;
+            this.setState({
+                list:homeList
+            });
+        },(err)=>{
+            console.log(err);
+        })
+    };
     componentDidMount (){
+        this.homeList();
         this.homeDate();
+        this.unernameId();
         document.title = "健简";
         // this.reduxDate();
         // console.log(this.state.title);
         //获取数据将数据存在store
-        var api =window.g.meal;
-        Axios.get(api).then((res)=>{
-            // console.log(res);
-            let homeList=res.data.records;
-            this.setState({
-                list:homeList
-            })
-        },(err)=>{
-            console.log(err);
-        })
     }
+    ipClass=(id,buyLevel)=>{
+        this.memberLevel = storage.get("user");
+        this.buyLevel=buyLevel;
+        // console.log(this.memberLevel.memberLevel);
+        // this.props.history.push(`/IndentDateils/${id}`);
+        if (this.memberLevel.memberLevel === 0 && (this.buyLevel === 0) ){
+            this.props.history.push(`/Dateils/${id}`);
+        }else{
+            this.setState({
+                text:"亲 请尽快提升等级吧！",
+            },()=>this.showToast())
+        }
+        if ((this.memberLevel.memberLevel === 1 && (this.buyLevel === 1 || this.buyLevel === 2)) || this.buyLevel === 0 ){
+            this.props.history.push(`/Dateils/${id}`);
+        }else{
+            this.setState({
+                text:"亲 请尽快提升等级吧！",
+            },()=>this.showToast())
+        }
+        if ((this.memberLevel.memberLevel === 2 && (this.buyLevel === 2)) ||  this.buyLevel === 0 ){
+            this.props.history.push(`/Dateils/${id}`);
+        }else{
+            this.setState({
+                text:"亲 请尽快提升等级吧！",
+            },()=>this.showToast())
+        }
+        if ((this.memberLevel.memberLevel === 3 && (this.buyLevel === 3  )) || this.buyLevel === 0 ){
+            this.props.history.push(`/Dateils/${id}`);
+        }else{
+            this.setState({
+                text:"亲 请尽快提升等级吧！",
+            },()=>this.showToast())
+        }
+        if ((this.memberLevel.memberLevel === 4 && (this.buyLevel === 4)) || this.buyLevel === 0 ){
+            this.props.history.push(`/Dateils/${id}`);
+        }else{
+            this.setState({
+                text:"亲 请尽快提升等级吧！",
+            },()=>this.showToast())
+        }
+    };
+    unernameId=()=>{
+        const api = window.g.findById;
+        this.id = storage.get("user");
+        this.Uid=this.id.id;
+        let param = {
+            params:{
+                id:this.Uid,
+            }
+        };
+        Axios.get(api,param).then((res)=>{
+            storage.set("user",res.data.data)
+        })
+    };
 
     render(){
         const { list,banner } = this.state;
@@ -102,22 +164,24 @@ class Home extends Component {
                 </HomeWrapper>
                 <HomeList>
                     {/*套餐列表*/}
-                    <ul>
-                        {/*{list.map((item,key)=>(*/}
-                            {/*<li className="childTwo" key={key}>*/}
-                                {/*<Link to={`/Dateils/${item.id}`} >*/}
-                                    {/*<img src={item.mealImage} alt="我是图片">*/}
-                                    {/*</img>*/}
-                                    {/*<h3>{item.mealName}</h3>*/}
-                                    {/*<h5>{item.mealContent}</h5>*/}
-                                {/*</Link>*/}
-                            {/*</li>*/}
-                            {/*))*/}
-                        {/*}*/}
-                    </ul>
+                {/*    <ul>*/}
+                {/*    {list.map((item,key)=>(*/}
+                {/*        <li className={this.state.buyClass} key={key} onClick={this.ipClass.bind(this,item.id,item.buyLevel)}>*/}
+                {/*            /!*{item.id}*!/*/}
+                {/*            /!*<Link to={`/Dateils/${item.id}`} >*!/*/}
+                {/*            <img src={item.mealImage} alt="我是图片">*/}
+                {/*            </img>*/}
+                {/*            <h3>{item.mealName}</h3>*/}
+                {/*            <h5>{item.mealContent}</h5>*/}
+                {/*            /!*</Link>*!/*/}
+                {/*        </li>*/}
+                {/*    ))*/}
+                {/*    }*/}
+                {/*</ul>*/}
                 </HomeList>
             </Fragment>
         )
     }
 }
+
 export default Home;

@@ -12,24 +12,6 @@ class SubmitOrder extends Component{
     constructor(props){
         super(props);
         this.state=({
-            orderList:[
-                {
-                    id:1,
-                    imgurl:"https://www.baidu.com/img/bd_logo1.png",
-                    title:"炸鸡汉堡王",
-                    price:"352.00",
-                    details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                    quantity:"1",
-                },
-                {
-                    id:2,
-                    imgurl:"https://www.baidu.com/img/bd_logo1.png",
-                    title:"炸鸡汉堡王",
-                    price:"352.00",
-                    details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                    quantity:"1",
-                },
-            ],
             sum:"9999.00",
             displayName:"none",
             displaysite:"block",
@@ -40,7 +22,8 @@ class SubmitOrder extends Component{
             orderGoods:[],
             deliverFreight:100,
             orderNum:0,
-        })
+            idOrder:0,
+        });
     }
     render(){
         const {orderNum,orderInfo,orderGoods,userName,ipHone,site,displayName,displaysite,deliverFreight } = this.state;
@@ -94,15 +77,14 @@ class SubmitOrder extends Component{
                                 orderGoods.map((v,key)=>(
                                     <OrdeItem key={key}>
                                         <OrdeLeft>
-                                            <img src={v.mealEntity.mealImage} alt="img"/>
+                                            <img src={v.goodsEntity.goodsImage} alt="img"/>
                                         </OrdeLeft>
                                         <OrdeRight>
                                             <Flex className="title">
-                                                <Flex.Item className="left">{v.mealEntity.mealName}</Flex.Item>
-                                                <Flex.Item className="payment">￥{v.mealEntity.mealPrice}</Flex.Item>
+                                                <Flex.Item className="left">{v.goodsEntity.goodsName}</Flex.Item>
                                             </Flex>
                                             <OneLeft className="ordDtels">
-                                                {v.mealEntity.mealContent}
+                                                {v.goodsEntity.goodsContent}
                                             </OneLeft>
                                             <TwoRight>
                                                 X{v.addNumber}
@@ -116,11 +98,9 @@ class SubmitOrder extends Component{
                             <ul>
                                 <li>
                                     <span className="left">商品数量</span>
-                                    <span className="right">{orderNum}</span>
-                                </li>
-                                <li>
-                                    <span className="left">商品总额</span>
-                                    <span className="right">￥{orderInfo.orderPrice}</span>
+                                    <span className="right">
+                                        {orderNum}
+                                    </span>
                                 </li>
                                 <li>
                                     <span className="left">运费</span>
@@ -128,7 +108,7 @@ class SubmitOrder extends Component{
                                 </li>
                                 <li className="subsolid">
                                     <span className="left">实付款</span>
-                                    <span className="right">￥{orderInfo.orderPrice+deliverFreight}</span>
+                                    <span className="right">￥{deliverFreight}</span>
                                 </li>
                             </ul>
                         </Commodity>
@@ -138,7 +118,7 @@ class SubmitOrder extends Component{
                 <DateilsButton>
                     <Flex className="title">
                         <Flex.Item></Flex.Item>
-                        <Flex.Item className="shipments">￥{orderInfo.orderPrice+deliverFreight}</Flex.Item>
+                        <Flex.Item className="shipments">￥{deliverFreight}</Flex.Item>
                         <Flex.Item>
                             <Button variant="outlined" size="medium" color="primary" className="ordering"onClick={this.imdeChange}>
                                 提交订单
@@ -148,7 +128,19 @@ class SubmitOrder extends Component{
                 </DateilsButton>
             </Fragment>
         )
-    }
+    };
+
+    //获取订单信息
+    imdeliverList = () =>{
+        this.orderDetils = storage.get("imdeliverList");
+        console.log(this.orderDetils);
+        this.setState({
+            orderGoods:this.orderDetils
+        })
+        for(var i =0;i<this.orderDetils.length;i++){
+            this.state.orderNum=this.state.orderNum+this.orderDetils[i].addNumber;
+        }
+    };
     imdeChange = ()=>{
         this.id = storage.get("deliverId");
         this.orderId=this.id.id;
@@ -175,7 +167,7 @@ class SubmitOrder extends Component{
     componentDidMount(){
         document.title="提交订单";
         this.submitOrder();
-        this.getOrderInfo();
+        this.imdeliverList();
     }
     submit =()=>{
         this.props.history.push('/Location');
@@ -198,36 +190,35 @@ class SubmitOrder extends Component{
             });
             // storage.remove("location");
         }
-    }
-    //得到订单信息
-    getOrderInfo=()=>{
-        var api = window.g.indent;
-        this.orderId = storage.get("deliverId");
-        // if(!this.orderId){
-        //    window.location.reload();
-        // }
-        this.idOrder=this.orderId.id;
-        console.log(this.orderId.id);
-        // this.orderId=this.id.id;
-        var param = {
-            params:{
-                id:this.idOrder,
-            }
-        };
-        Axios.get(api,param).then((res)=>{
-            console.log("订单");
-            let orderData = res.data.records[0];
-            let num = 0;
-            console.log(orderData);
-            JSON.parse(orderData.orderGoods).forEach((list)=>{
-               num = num+list.addNumber;
-            });
-            console.log(num);
-            this.setState({orderNum:num,orderInfo:orderData,orderGoods:JSON.parse(orderData.orderGoods)});
-        }).catch((err)=>{
-            console.log(err);
-        })
     };
+    // orderId=()=>{
+    //     this.orderId = storage.get("deliverId").id;
+    // };
+    //得到订单信息
+    // getOrderInfo=()=>{
+    //     var api = window.g.indent;
+    //     // if(!this.orderId){
+    //     //    window.location.reload();
+    //     // }
+    //     var param = {
+    //         params:{
+    //             id:this.orderId,
+    //         }
+    //     };
+    //     Axios.get(api,param).then((res)=>{
+    //         // console.log("订单");
+    //         let orderData = res.data.records[0];
+    //         let num = 0;
+    //         // console.log(orderData);
+    //         JSON.parse(orderData.orderGoods).forEach((list)=>{
+    //            num = num+list.addNumber;
+    //         });
+    //         // console.log(num);
+    //         this.setState({orderNum:num,orderInfo:orderData,orderGoods:JSON.parse(orderData.orderGoods)});
+    //     }).catch((err)=>{
+    //         console.log(err);
+    //     })
+    // };
 
 }
 

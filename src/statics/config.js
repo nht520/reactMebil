@@ -1,8 +1,13 @@
-const besurl = "http://192.168.2.105:8899";
+const besurl = "http://192.168.10.119:8899";
 // const besurl = "http://wx.bomao.xyz:8080/distributor";
 window.g = {
   AXIOS_TIMEOUT: 10000,
   login:besurl+"/distributor/member/login",
+
+ findById:besurl+"/distributor/member/findById",
+
+
+
   register:besurl+'/distributor/member/updatePass',
   mcMembers:besurl+'/distributor/mcMembers/findById',
   //我的库存
@@ -18,7 +23,7 @@ window.g = {
   indent:besurl+"/distributor/order",
   update:besurl+"/distributor/order/update",
   //发货订单列表
-  originalPrice:besurl+"/distributor/order/originalPrice",
+  // originalPrice:besurl+"/distributor/order/originalPrice",
   ParentPage: {
     // http://wx.bomao.xyz:8080/distributor
     // ApiUrl: 'http://www.phonegap100.com/appapi.php?a=getPortalList&catid=20&page=', // 配置服务器地址,

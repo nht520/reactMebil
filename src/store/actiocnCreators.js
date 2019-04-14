@@ -1,10 +1,15 @@
-import {INIT_LIST_ACTION} from "./actionTypes";
+import {INIT_LIST_ACTION,IMDEL_IVER} from "./actionTypes";
 
 //派发数据
 export const initListAction = (data) => ({
     type:INIT_LIST_ACTION,
     data
 });
+//存储id
+export const imdeliver = (dataId)=>({
+    type:IMDEL_IVER,
+    dataId
+})
 //用redux-thunk的话请求放在action里面  方法2
 // export const getList = () =>{
 //      return (dispatch) =>{

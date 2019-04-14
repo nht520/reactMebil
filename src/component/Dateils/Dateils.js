@@ -133,6 +133,28 @@ class Dateils extends Component{
             });
         };
     };
+    //获取余额
+    mcMembers =()=>{
+        this.id = storage.get("user");
+        this.Uid=this.id.memberUid;
+        let param = {
+            params:{
+                uid:this.Uid,
+            }
+        };
+        var api =window.g.mcMembers;
+        Axios.get(api,param).then((res)=>{
+            let credit2=res.data.data.credit2;
+            console.log(res);
+            //将余额存的storage
+            storage.set("pricerNumber",res.data.data);
+            this.setState({
+                pric:credit2
+            })
+        },(err)=>{
+            console.log(err)
+        })
+    };
     affIrm = () => {
         if (this.state.sum < 1) {
             this.setState({
@@ -147,12 +169,14 @@ class Dateils extends Component{
                 //goodsId  商品编号   stockNum 份数  distributorId 当前用户id   boxNum  总份数
                 // mealNum盒数
                 this.user = storage.get("user");
+                this.dgsId = this.state.list.goodsId;
                 this.usernameId=this.user.id;
                 const _param = new URLSearchParams();
-                      _param.append("goodsId",this.state.list.id);
+                      _param.append("mealId",this.state.list.id);
                       _param.append("stockNum",this.state.sum);
                       _param.append("distributorId",this.usernameId);
                       _param.append("boxNum",this.state.topic);
+                      _param.append("goodsId",this.dgsId);
                 var api =window.g.stock;
                 Axios.post(api,_param).then((res)=>{
                     // console.log(res);
@@ -201,6 +225,7 @@ class Dateils extends Component{
     };
     componentDidMount (){
        this.details();
+       this.mcMembers();
     }
 }
 
