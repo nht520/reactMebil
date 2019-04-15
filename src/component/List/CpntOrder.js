@@ -23,7 +23,6 @@ class CpntOrder extends Component{
     };
     listOrder=(key)=>{
         let orderList = this.state.list;
-        console.log(orderList[key]);
         if (orderList[key].orderStatus===0){
             console.log("待发货");
             this.setState({
@@ -45,8 +44,8 @@ class CpntOrder extends Component{
                     {dtList.map((item,key)=>(
                         <OrderList key={key} >
                             <Flex className="header">
-                                <Flex.Item><span>{item.orderNo}</span></Flex.Item>
-                                <Flex.Item className="payment">{item.orderStatus}</Flex.Item>
+                                <div className="paymentleft">订单编号：<span>{item.orderNo}</span></div>
+                                <div className="payment">收货人：{item.deliverName}</div>
                             </Flex>
                             <OrdeList>
                                 {

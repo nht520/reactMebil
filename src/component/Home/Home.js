@@ -100,35 +100,35 @@ class Home extends Component {
             this.props.history.push(`/Dateils/${id}`);
         }else{
             this.setState({
-                text:"亲 请尽快提升等级吧！",
+                text:"亲 你不能购买此套餐哦！",
             },()=>this.showToast())
         }
         if ((this.memberLevel.memberLevel === 1 && (this.buyLevel === 1 || this.buyLevel === 2)) || this.buyLevel === 0 ){
             this.props.history.push(`/Dateils/${id}`);
         }else{
             this.setState({
-                text:"亲 请尽快提升等级吧！",
+                text:"亲 你不能购买此套餐哦！",
             },()=>this.showToast())
         }
         if ((this.memberLevel.memberLevel === 2 && (this.buyLevel === 2)) ||  this.buyLevel === 0 ){
             this.props.history.push(`/Dateils/${id}`);
         }else{
             this.setState({
-                text:"亲 请尽快提升等级吧！",
+                text:"亲 你不能购买此套餐哦！",
             },()=>this.showToast())
         }
         if ((this.memberLevel.memberLevel === 3 && (this.buyLevel === 3  )) || this.buyLevel === 0 ){
             this.props.history.push(`/Dateils/${id}`);
         }else{
             this.setState({
-                text:"亲 请尽快提升等级吧！",
+                text:"亲 你不能购买此套餐哦！",
             },()=>this.showToast())
         }
         if ((this.memberLevel.memberLevel === 4 && (this.buyLevel === 4)) || this.buyLevel === 0 ){
             this.props.history.push(`/Dateils/${id}`);
         }else{
             this.setState({
-                text:"亲 请尽快提升等级吧！",
+                text:"亲 你不能购买此套餐哦！",
             },()=>this.showToast())
         }
     };

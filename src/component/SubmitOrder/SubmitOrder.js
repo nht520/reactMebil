@@ -4,10 +4,11 @@ import {
     OrdeItem, OrdeLeft, OrdeRight, OneLeft, TwoRight, OrdeList,DateilsButton
 } from "../style";
 import left from "../../statics/asstas/left.png";
-import { Flex } from "antd-mobile";
+import {Flex, Toast,Modal} from "antd-mobile";
 import storage from "../../statics/storage";
 import Button from "@material-ui/core/Button/Button";
 import Axios from "axios";
+const alert = Modal.alert;
 class SubmitOrder extends Component{
     constructor(props){
         super(props);
@@ -15,9 +16,9 @@ class SubmitOrder extends Component{
             sum:"9999.00",
             displayName:"none",
             displaysite:"block",
-            userName:"奈何天",
-            ipHone:"15803614645",
-            site:"重庆市，城口县，巴山，高楠，8组6号。",
+            userName:"",
+            ipHone:"",
+            site:"",
             orderInfo:[],
             orderGoods:[],
             deliverFreight:100,
@@ -129,7 +130,9 @@ class SubmitOrder extends Component{
             </Fragment>
         )
     };
-
+    showToast = () => {
+        Toast.info(this.state.text);
+    };
     //获取订单信息
     imdeliverList = () =>{
         this.orderDetils = storage.get("imdeliverList");
@@ -159,7 +162,12 @@ class SubmitOrder extends Component{
             // param.append("orderPrice",this.state.orderInfo.orderPrice+this.state.deliverFreight);
          const  api = window.g.update;
          Axios.post(api,param).then((res)=>{
-             console.log(res)
+             // console.log(res)
+             // this.props.history.push('/Layout');
+             alert('发货成功', '是否返回首页?', [
+                 { text: '取消', onPress: () => console.log('cancel') },
+                 { text: '确定', onPress: () => this.props.history.push('/Layout')},
+             ])
          },(err)=>{
              console.log(err)
          })

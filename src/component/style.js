@@ -290,6 +290,12 @@ export const OrderList= styled.div`
         height: 20px;
          line-height: 20px;
     }
+    .paymentleft{
+        width:70%;
+    }
+    .payment{
+         width:30%;
+    }
     .header{
         margin-bottom:5%;
         font-size: 13px;

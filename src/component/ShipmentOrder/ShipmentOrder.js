@@ -8,9 +8,18 @@ import { Tabs,
 import Axios from "axios";
 import CpntOrder from "../List/CpntOrder";
 const tabs = [
-    { title: '全部' },
-    { title: '待发货' },
-    { title: '已发货' },
+    {
+        id:"",
+        title: '全部'
+    },
+    {
+        id:0,
+        title: '待发货'
+    },
+    {
+        id:1,
+        title: '已发货'
+    },
 ];
 class ShipmentOrder extends Component {
     constructor(props){
@@ -19,34 +28,49 @@ class ShipmentOrder extends Component {
             name:"我的订单",
             odList:[],
             List:[],
+            ListOne:[],
+            ListTwo:[],
+            orderTitle:"全部",
         })
     }
-    // tabsChange=(e)=>{
-    //     const listId = e.id;
-    //     this.setState({
-    //         id:listId
-    //     });
-    //     if (listId===0){
-    //         this.indent();
-    //     } else if(listId===1){
-    //         this.listOne();
-    //     }else if(listId===2){
-    //         // this.ListTwo();
+    // console.log(e.title);
+    // var param = {
+    //     param:{
+    //         orderStatus:this.stus
     //     }
     // };
-    shipMent=()=>{
-      const api = window.g.indent;
-      Axios.get(api).then((res)=>{
-          // this.state.List = res.data.records;
-          this.setState({
-              List:res.data.records
-          })
-      },(err)=>{
-          console.log(err)
-      })
+    tabsChange=(e)=>{
+        console.log(e.id);
+        var param = {
+            params:{
+                orderStatus:e.id
+            }
+        };
+        const api = window.g.indent;
+        Axios.get(api,param).then((res)=>{
+            // this.state.List = res.data.records;
+            console.log("+++++++++++00000");
+            this.setState({
+                List:res.data.records
+            })
+        },(err)=>{
+            console.log(err)
+        })
+    };
+    stnsChange=()=>{
+        const api = window.g.indent;
+        Axios.get(api).then((res)=>{
+            // this.state.List = res.data.records;
+            console.log("-----------00000");
+            this.setState({
+                List:res.data.records
+            })
+        },(err)=>{
+            console.log(err)
+        })
     };
     componentDidMount (){
-        this.shipMent();
+        this.stnsChange();
     }
     render(){
         const { List} = this.state;
