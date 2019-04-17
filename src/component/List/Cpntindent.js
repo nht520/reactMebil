@@ -54,7 +54,7 @@ class Cpntindent extends Component{
                                                 {/*<Button  size="small" onClick={this.listOrder.bind(this,key)}>*/}
                                                     {/*查看详情*/}
                                                 {/*</Button>*/}
-                                                <Link to={`/IndentDateils/${item.id}`} >
+                                                <Link to={`/IndentDateils/${item.mealEntity.id}`} >
                                                     <span className="linkSkip">查看详情</span>
                                                 </Link>
                                             </Flex.Item>
