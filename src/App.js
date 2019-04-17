@@ -33,6 +33,10 @@ import FxDateils from "./component/Dateils/FxDateils";
 import SubmitOrder from "./component/SubmitOrder/SubmitOrder";
 //设置
 import Setting from "./component/Setting/Setting";
+//
+// 发货订单
+import ShipmentOrder from "./component/ShipmentOrder/ShipmentOrder";
+import Shipdetails from "./component/ShipmentOrder/Shipdetails";
 class App extends Component {
     render(){
         return(
@@ -63,6 +67,7 @@ class App extends Component {
                                 <Route path='/FxDateils/:id' exact component={FxDateils}/>
                                 <Route path='/SubmitOrder' exact component={SubmitOrder}/>
                                 <Route path='/Setting' exact component={Setting}/>
+                                <Route path='/Shipdetails/:id' exact component={Shipdetails}/>
                             </div>
                         </Router>
                 </Fragment>

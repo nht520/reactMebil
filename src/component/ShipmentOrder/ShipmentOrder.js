@@ -33,12 +33,6 @@ class ShipmentOrder extends Component {
             orderTitle:"全部",
         })
     }
-    // console.log(e.title);
-    // var param = {
-    //     param:{
-    //         orderStatus:this.stus
-    //     }
-    // };
     tabsChange=(e)=>{
         console.log(e.id);
         var param = {

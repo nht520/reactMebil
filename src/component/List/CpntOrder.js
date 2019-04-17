@@ -1,11 +1,10 @@
 import React, {Component, Fragment} from "react";
 import {OneLeft, OrdeItem, OrdeLeft, OrdeList, OrdeRight, OrderList, OrdeWrapper, TwoRight} from "../style";
 import {
-    Button,Toast,Modal,
+    Button,
     Flex} from "antd-mobile";
 import {withRouter,Link} from "react-router-dom";
 import storage from "../../statics/storage";
-const alert = Modal.alert;
 class CpntOrder extends Component{
     constructor(props){
         super(props);
@@ -50,7 +49,7 @@ class CpntOrder extends Component{
                             <OrdeList>
                                 {
                                     JSON.parse(item.orderGoods).map((v,key)=>(
-                                        <Link to={`/IndentDateils/${v.id}`}  key={key} onClick={this.datsChange.bind(this,key)}>
+                                        <Link to={`/Shipdetails/${item.id}`}  key={key} onClick={this.datsChange.bind(this,key)}>
                                             <OrdeItem>
                                                 <OrdeLeft>
                                                     <img src={v.goodsEntity.goodsImage} alt="img"/>
@@ -73,16 +72,13 @@ class CpntOrder extends Component{
                                 }
                                 <OrdeItem>
                                     <Flex>
-                                        {/*<Flex.Item>*/}
-                                        {/*    总价：￥<span>88989</span>*/}
-                                        {/*</Flex.Item>*/}
                                         <Flex.Item>
-                                            <Button  size="small" onClick={this.listOrder.bind(this,key)}>
-                                                {item.button}
-                                            </Button>
-                                            {/*<Link to={`/IndentDateils/${item.id}`}  style={{ display:displayNone }}>*/}
-                                            {/*    <span className="linkSkip">{item.button}</span>*/}
-                                            {/*</Link>*/}
+                                            {/*<Button  size="small" onClick={this.listOrder.bind(this,key)}>*/}
+                                            {/*    {item.button}*/}
+                                            {/*</Button>*/}
+                                            <Link to={`/Shipdetails/${item.id}`}  >
+                                                <span className="linkSkip">{item.button}</span>
+                                            </Link>
                                         </Flex.Item>
                                     </Flex>
                                     {/*点击跳转*/}

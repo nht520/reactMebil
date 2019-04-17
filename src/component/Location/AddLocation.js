@@ -182,7 +182,7 @@ class AddLocation extends Component {
         )
     }
     addChange=()=>{
-        console.log(this.state.value)
+        console.log(this.state.label)
     };
     //提示
     showToast = () => {
