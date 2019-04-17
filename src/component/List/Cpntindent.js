@@ -26,7 +26,7 @@ class Cpntindent extends Component{
                                     <Flex.Item className="payment">{item.buyTime}</Flex.Item>
                                 </Flex>
                                 <OrdeList>
-                                    <Link to={`/IndentDateils/${item.mealEntity.id}`}  key={key} onClick={this.datsChange.bind(this,key)}>
+                                    <Link to={`/IndentDateils/${item.id}`}  key={key} onClick={this.datsChange.bind(this,key)}>
                                         <OrdeItem>
                                             <OrdeLeft>
                                                 <img src={item.mealEntity.mealImage} alt="img"/>
@@ -54,7 +54,7 @@ class Cpntindent extends Component{
                                                 {/*<Button  size="small" onClick={this.listOrder.bind(this,key)}>*/}
                                                     {/*查看详情*/}
                                                 {/*</Button>*/}
-                                                <Link to={`/IndentDateils/${item.mealEntity.id}`} >
+                                                <Link to={`/IndentDateils/${item.id}`} >
                                                     <span className="linkSkip">查看详情</span>
                                                 </Link>
                                             </Flex.Item>

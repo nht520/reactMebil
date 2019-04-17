@@ -8,6 +8,7 @@ import Button from "@material-ui/core/Button/Button";
 import {Toast,
     List,Picker
 } from "antd-mobile";
+import Axios from  "axios";
 class AddLocation extends Component {
     constructor(props){
         super(props);
@@ -224,7 +225,17 @@ class AddLocation extends Component {
            },()=>this.showToast())
        }
     };
+    //    获取地址
+    getProvince =()=>{
+        const api = window.g.getProvince;
+        Axios.get(api).then((res)=>{
+            console.log(res)
+        },(err)=>{
+            console.log(err)
+        })
+    }
     componentDidMount(){
+        this.getProvince()
         document.title="添加发货地址";
     }
 }

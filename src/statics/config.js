@@ -3,11 +3,7 @@ const besurl = "http://wx.bomao.xyz:8080/distributor";
 window.g = {
   AXIOS_TIMEOUT: 10000,
   login:besurl+"/distributor/member/login",
-
- findById:besurl+"/distributor/member/findById",
-
-
-
+  findById:besurl+"/distributor/member/findById",
   register:besurl+'/distributor/member/updatePass',
   mcMembers:besurl+'/distributor/mcMembers/findById',
   //我的库存
@@ -22,6 +18,14 @@ window.g = {
   //自己发货订单
   indent:besurl+"/distributor/order",
   update:besurl+"/distributor/order/update",
+  //地址
+  // 省
+   getProvince:besurl+"/distributor/systemAddress/getProvince",
+  //市province
+  getCity:besurl+"/distributor/systemAddress/getCity",
+  //区city
+  getCity:besurl+"/distributor/systemAddress/getCity",
+
   //发货订单列表
   // originalPrice:besurl+"/distributor/order/originalPrice",
   ParentPage: {
