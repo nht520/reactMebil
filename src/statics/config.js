@@ -27,6 +27,8 @@ window.g = {
   getCounty:besurl+"/distributor/systemAddress/getCounty",
   //添加地址
   addressadd:besurl+"/distributor/address/add",
+//  修改地址
+  adsupdate:besurl+"/distributor/address/update",
 //发货订单列表
   // originalPrice:besurl+"/distributor/order/originalPrice",
   ParentPage: {

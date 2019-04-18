@@ -149,14 +149,12 @@ class AddLocation extends Component {
                text:"请输入详细地址",
            },()=>this.showToast())
        }else {
-           const userId = storage.get("user");
            const api = window.g.addressadd;
            const lcxvalue =this.state.value;
            const provinceAddress =lcxvalue[0];
            const cityAddress =lcxvalue[1];
            const countyAddress =lcxvalue[2];
            const prame =new URLSearchParams();
-                 prame.append("distributorId",userId.id);
                  prame.append("userName",this.state.username);
                  prame.append("userMobile",this.state.iphone);
                  prame.append("provinceAddress",provinceAddress);
