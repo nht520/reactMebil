@@ -25,8 +25,9 @@ window.g = {
   getCity:besurl+"/distributor/systemAddress/getCity",
   //区city
   getCounty:besurl+"/distributor/systemAddress/getCounty",
-
-  //发货订单列表
+  //添加地址
+  addressadd:besurl+"/distributor/address/add",
+//发货订单列表
   // originalPrice:besurl+"/distributor/order/originalPrice",
   ParentPage: {
     // http://wx.bomao.xyz:8080/distributor

@@ -9,6 +9,7 @@ import {Toast,
     List,Picker
 } from "antd-mobile";
 import Axios from  "axios";
+import storage from "../../statics/storage";
 class AddLocation extends Component {
     constructor(props){
         super(props);
@@ -16,86 +17,6 @@ class AddLocation extends Component {
             username:"",
             iphone:"",
             priker: [
-                {
-                    label: '北京',
-                    value: '北京',
-                    // children: [
-                    //     {
-                    //         label: '东城区',
-                    //         value: '东城区',
-                    //     },
-                    //     {
-                    //         label: '西城区',
-                    //         value: '西城区',
-                    //     },
-                    //     {
-                    //         label: '崇文区',
-                    //         value: '崇文区',
-                    //     },
-                    //     {
-                    //         label: '宣武区',
-                    //         value: '宣武区',
-                    //     },
-                    // ],
-                },
-                {
-                label: '浙江',
-                value: '02',
-              //   children: [
-              //   {
-              //       label: '杭州',
-              //       value: '02-1',
-              //       children: [
-              //           {
-              //               label: '西湖区',
-              //               value: '02-1-1',
-              //           },
-              //           {
-              //               label: '上城区',
-              //               value: '02-1-2',
-              //           },
-              //           {
-              //               label: '江干区',
-              //               value: '02-1-3',
-              //           },
-              //           {
-              //               label: '下城区',
-              //               value: '02-1-4',
-              //           },
-              //       ],
-              //   },
-              //   {
-              //       label: '宁波',
-              //       value: '02-2',
-              //       children: [
-              //           {
-              //               label: 'xx区',
-              //               value: '02-2-1',
-              //           },
-              //           {
-              //               label: 'yy区',
-              //               value: '02-2-2',
-              //           },
-              //       ],
-              //   },
-              //   {
-              //       label: '温州',
-              //       value: '02-3',
-              //   },
-              //   {
-              //       label: '嘉兴',
-              //       value: '02-4',
-              //   },
-              //   {
-              //       label: '湖州',
-              //       value: '02-5',
-              //   },
-              //   {
-              //       label: '绍兴',
-              //       value: '02-6',
-              //   },
-              // ],
-            }
             ],
             site:"",
             checkedA: false,
@@ -205,12 +126,8 @@ class AddLocation extends Component {
             site:e.target.value
         })
     };
-
-
-
     addSave=()=>{
         //保存并返回地址页面
-        console.log(this.state);
        if (this.state.username === "" || this.state.username === undefined){
            this.setState({
                text:"请输入收获人姓名",
@@ -218,6 +135,10 @@ class AddLocation extends Component {
        }else if(this.state.iphone === "" || this.state.iphone === undefined){
            this.setState({
                text:"请输入收获人电话",
+           },()=>this.showToast())
+       }else if( this.state.iphone.length <11 || this.state.iphone.length >11){
+           this.setState({
+               text:"电话号码位数错误",
            },()=>this.showToast())
        }else if(this.state.value === "" || this.state.value === undefined){
            this.setState({
@@ -227,15 +148,32 @@ class AddLocation extends Component {
            this.setState({
                text:"请输入详细地址",
            },()=>this.showToast())
+       }else {
+           const userId = storage.get("user");
+           const api = window.g.addressadd;
+           const lcxvalue =this.state.value;
+           const provinceAddress =lcxvalue[0];
+           const cityAddress =lcxvalue[1];
+           const countyAddress =lcxvalue[2];
+           const prame =new URLSearchParams();
+                 prame.append("distributorId",userId.id);
+                 prame.append("userName",this.state.username);
+                 prame.append("userMobile",this.state.iphone);
+                 prame.append("provinceAddress",provinceAddress);
+                 prame.append("cityAddress",cityAddress);
+                 prame.append("countyAddress",countyAddress);
+                 prame.append("userAddress",this.state.site);
+           Axios.post(api,prame).then((res)=>{
+               console.log(res)
+           }).catch((err)=>{
+               console.log(err)
+           })
        }
     };
-
     getProvince=()=>{
         var url = window.g.getProvince;
         var province = [];
         Axios.get(url).then((res)=>{
-            console.log(res);
-
             var data = res.data.data;
             for(var i =0;i<data.length;i++){
                 var json = {};
@@ -244,10 +182,7 @@ class AddLocation extends Component {
                 json['children'] = this.getCity(data[i]);
                 province.push(json);
             }
-            console.log(province);
-
             this.setState({priker:province});
-
         }).catch((err)=>{
             console.log(err);
         })
@@ -274,7 +209,6 @@ class AddLocation extends Component {
         });
         return city;
     };
-
     getCounty=(city)=>{
         var url = window.g.getCounty;
         var param = {
@@ -296,7 +230,6 @@ class AddLocation extends Component {
         });
         return county;
     };
-
     componentDidMount(){
         this.getProvince();
         document.title="添加发货地址";
