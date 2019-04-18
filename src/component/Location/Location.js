@@ -98,7 +98,7 @@ class Location extends Component{
         const param = {
               params:{
                   size:"10000",
-                  id:user.id
+                  distributorId:user.id
               }
         };
         Axios.get(api,param).then((res)=>{

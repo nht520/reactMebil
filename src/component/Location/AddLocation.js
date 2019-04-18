@@ -23,10 +23,11 @@ class AddLocation extends Component {
             checkedA: false,
             locUsernm:"请输入收获人姓名",
             locIphone:"请输入收获人电话",
+            locAddress:"请输入详细地址"
         })
     }
     render(){
-        const { locUsernm,locIphone } =  this.state;
+        const { locUsernm,locIphone,locAddress } =  this.state;
         return(
             <Fragment>
                 <AddWrapper>
@@ -80,7 +81,7 @@ class AddLocation extends Component {
                                 <Input
                                     onChange={this.site}
                                     className="adlcwidth"
-                                    placeholder="请输入详细地址"
+                                    placeholder={locAddress}
                                 />
                             </Addright>
                         </li>
@@ -247,10 +248,11 @@ class AddLocation extends Component {
     };
     compileLocation=()=>{
         const locinads = storage.get("compileLocation");
-        if ( locinads !== "" || locinads !== undefined){
+        if( locinads.locinads==null ||  locinads.locinads===undefined){
             this.setState({
                 locUsernm:locinads.userName,
                 locIphone:locinads.userMobile,
+                locAddress:locinads.userAddress,
             })
         }
         // storage.remove("compileLocation");
