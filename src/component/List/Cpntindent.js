@@ -112,7 +112,6 @@ class Cpntindent extends Component{
     // };
     componentWillReceiveProps(nextProps) {
         let list = nextProps.list;
-        console.log(list);
         if (list) {
             this.setState({
                 dtList: list,

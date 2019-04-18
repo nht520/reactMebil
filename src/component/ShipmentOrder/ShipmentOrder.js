@@ -34,7 +34,6 @@ class ShipmentOrder extends Component {
         })
     }
     tabsChange=(e)=>{
-        console.log(e.id);
         var param = {
             params:{
                 orderStatus:e.id
@@ -42,8 +41,6 @@ class ShipmentOrder extends Component {
         };
         const api = window.g.indent;
         Axios.get(api,param).then((res)=>{
-            // this.state.List = res.data.records;
-            console.log("+++++++++++00000");
             this.setState({
                 List:res.data.records
             })
@@ -54,8 +51,6 @@ class ShipmentOrder extends Component {
     stnsChange=()=>{
         const api = window.g.indent;
         Axios.get(api).then((res)=>{
-            // this.state.List = res.data.records;
-            console.log("-----------00000");
             this.setState({
                 List:res.data.records
             })

@@ -73,19 +73,9 @@ class CpntOrder extends Component{
                                 <OrdeItem>
                                     <Flex>
                                         <Flex.Item>
-                                            {/*<Button  size="small" onClick={this.listOrder.bind(this,key)}>*/}
-                                            {/*    {item.button}*/}
-                                            {/*</Button>*/}
-                                            {
-                                                JSON.parse(item.orderGoods).map((v,key)=>(
-                                                    <Link to={`/Shipdetails/${item.id}`}  >
-                                                        <span className="linkSkip">
-                                                            {item.button}
-                                                        </span>
-                                                    </Link>
-                                                 ))
-                                            }
-
+                                            <Button  size="small" onClick={this.listOrder.bind(this,key)}>
+                                                {this.state.button}
+                                            </Button>
                                         </Flex.Item>
                                     </Flex>
                                     {/*点击跳转*/}
@@ -105,11 +95,24 @@ class CpntOrder extends Component{
     componentWillReceiveProps(nextProps) {
         let list = nextProps.list;
         console.log(list);
-        if (list) {
+        this.setState({
+            dtList: list,
+        });
+        if (list.orderStatus === undefined || list.orderStatus === ""){
+            // this.state.button
             this.setState({
-                dtList: list,
+                button:"查看详情"
+            })
+        }else if(list.orderStatus === 0){
+            this.setState({
+                button:"去发货"
+            })
+        }else if (list.orderStatus === 1) {
+            this.setState({
+                button:"查看详情"
             })
         }
+
     };
 }
 export default withRouter(CpntOrder);

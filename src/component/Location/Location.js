@@ -9,7 +9,7 @@ import {
 } from "antd-mobile";
 import storage from "../../statics/storage";
 import Button from "@material-ui/core/Button/Button";
-
+import Axios from "axios";
 class Location extends Component{
     constructor(props){
         super(props);
@@ -17,24 +17,7 @@ class Location extends Component{
             title:"123",
             checkedA: false,
             checkedB: true,
-            list:[
-                {
-                    id:1,
-                    user:"奈何天",
-                    iphone:"158****1345",
-                    location:"四川省 泸州市  九龙坡区  杨家坪步行街四川省 泸州市  九龙坡区  杨家坪步行街",
-                    lcStatus:"默认",
-                    checked:"checkedA",
-                },
-                {
-                    id:2,
-                    user:"别经年",
-                    iphone:"158****1345",
-                    location:"四川省 泸州市  渝中区 泸州市 解放碑步行街",
-                    lcStatus:"普通",
-                    checked:"checkedB",
-                }
-            ]
+            list:[ ]
         })
     }
     render(){
@@ -47,10 +30,10 @@ class Location extends Component{
                             <ul key={key} >
                                 <div onClick={this.locationChange.bind(this,key)}>
                                     <li>
-                                        <h3>{item.user}<span>{item.iphone}</span></h3>
+                                        <h3>{item.userName}<span>{item.userMobile}</span></h3>
                                     </li>
                                     <li>
-                                        <h5>{item.location}</h5>
+                                        <h5>{item.userAddress}</h5>
                                     </li>
                                     <li>
                                         <div className="hr">
@@ -70,7 +53,7 @@ class Location extends Component{
                                         </Flex.Item>
                                         <Flex.Item>
                                             <Flex>
-                                                <Flex.Item onClick={this.compileChang}>
+                                                <Flex.Item onClick={this.compileChang.bind(this,key)}>
                                                     <img src={del} alt="编辑"/>
                                                     <span> 编辑</span>
                                                 </Flex.Item>
@@ -102,9 +85,32 @@ class Location extends Component{
         storage.set("location",this.locList[key]);
         this.props.history.go(-1)
     };
-    compileChang = () =>{
+    compileChang = (key) =>{
+        this.locList=this.state.list;
+        console.log(this.locList[key]);
+        storage.set("compileLocation",this.locList[key]);
         this.props.history.push('/AddLocation');
     };
+    //获取地址列表
+    addressadd =()=>{
+        const api = window.g.addressadd;
+        const user = storage.get("user");
+        const param = {
+              params:{
+                  size:"10000",
+                  id:user.id
+              }
+        };
+        Axios.get(api,param).then((res)=>{
+            console.log(res);
+            this.setState({
+                list:res.data.records
+            })
+        }).catch((err)=>{
+            console.log(err)
+        })
+    };
+    //编辑地址
     delChang = (key) =>{
         //console.log("删除");
         //console.log(this.locList[key].id);
@@ -117,6 +123,7 @@ class Location extends Component{
     };
     componentDidMount(){
         document.title="我的地址";
+        this.addressadd();
     }
 }
 export default Location;

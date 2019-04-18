@@ -16,16 +16,17 @@ class AddLocation extends Component {
         this.state=({
             username:"",
             iphone:"",
+            compile:[],
             priker: [
             ],
             site:"",
             checkedA: false,
+            locUsernm:"请输入收获人姓名",
+            locIphone:"请输入收获人电话",
         })
     }
-    handleChange = name => event => {
-        this.setState({ [name]: event.target.checked });
-    };
     render(){
+        const { locUsernm,locIphone } =  this.state;
         return(
             <Fragment>
                 <AddWrapper>
@@ -38,7 +39,7 @@ class AddLocation extends Component {
                                 <Input
                                     onChange={this.username}
                                     className="adlcwidth"
-                                    placeholder="请输入收货人姓名"
+                                    placeholder={locUsernm}
                                 />
                             </Addright>
                         </li>
@@ -50,7 +51,7 @@ class AddLocation extends Component {
                                 <Input
                                     onChange={this.iphone}
                                     className="adlcwidth"
-                                    placeholder="请输入联系电话"
+                                    placeholder={locIphone}
                                 />
                             </Addright>
                         </li>
@@ -126,43 +127,59 @@ class AddLocation extends Component {
             site:e.target.value
         })
     };
+    handleChange = name => event => {
+        this.setState({ [name]: event.target.checked });
+        if ( this.state.checkedA === false ){
+            this.chack=1;
+            console.log(this.chack)
+        }else if ( this.state.checkedA === true ){
+            this.chack=0;
+            console.log(this.chack)
+        }
+    };
     addSave=()=>{
+        const that =this;
+        console.log(this.state);
         //保存并返回地址页面
-       if (this.state.username === "" || this.state.username === undefined){
-           this.setState({
+       if (that.state.username === "" || that.state.username === undefined){
+           that.setState({
                text:"请输入收获人姓名",
-           },()=>this.showToast())
-       }else if(this.state.iphone === "" || this.state.iphone === undefined){
-           this.setState({
+           },()=>that.showToast())
+       }else if(that.state.iphone === "" || that.state.iphone === undefined){
+           that.setState({
                text:"请输入收获人电话",
-           },()=>this.showToast())
-       }else if( this.state.iphone.length <11 || this.state.iphone.length >11){
-           this.setState({
+           },()=>that.showToast())
+       }else if( that.state.iphone.length <11 || that.state.iphone.length >11){
+           that.setState({
                text:"电话号码位数错误",
-           },()=>this.showToast())
-       }else if(this.state.value === "" || this.state.value === undefined){
+           },()=>that.showToast())
+       }else if(that.state.value === "" || that.state.value === undefined){
            this.setState({
                text:"请选择区域",
-           },()=>this.showToast())
-       } else if(this.state.site === "" || this.state.site === undefined){
-           this.setState({
+           },()=>that.showToast())
+       } else if(that.state.site === "" || that.state.site === undefined){
+           that.setState({
                text:"请输入详细地址",
-           },()=>this.showToast())
+           },()=>that.showToast())
        }else {
            const api = window.g.addressadd;
            const lcxvalue =this.state.value;
            const provinceAddress =lcxvalue[0];
            const cityAddress =lcxvalue[1];
            const countyAddress =lcxvalue[2];
+           const adresId = storage.get("user");
            const prame =new URLSearchParams();
-                 prame.append("userName",this.state.username);
-                 prame.append("userMobile",this.state.iphone);
+                 prame.append("distributorId",adresId.id);
+                 prame.append("userName",that.state.username);
+                 prame.append("userMobile",that.state.iphone);
                  prame.append("provinceAddress",provinceAddress);
                  prame.append("cityAddress",cityAddress);
                  prame.append("countyAddress",countyAddress);
-                 prame.append("userAddress",this.state.site);
+                 prame.append("userAddress",that.state.site);
+                 prame.append("isDefault",that.chack);
            Axios.post(api,prame).then((res)=>{
-               console.log(res)
+               console.log(res);
+                // this.props.history.push("/Location");
            }).catch((err)=>{
                console.log(err)
            })
@@ -228,9 +245,20 @@ class AddLocation extends Component {
         });
         return county;
     };
+    compileLocation=()=>{
+        const locinads = storage.get("compileLocation");
+        if ( locinads !== "" || locinads !== undefined){
+            this.setState({
+                locUsernm:locinads.userName,
+                locIphone:locinads.userMobile,
+            })
+        }
+        // storage.remove("compileLocation");
+    };
     componentDidMount(){
         this.getProvince();
         document.title="添加发货地址";
+        // this.compileLocation();
     }
 }
 
