@@ -24,7 +24,7 @@ window.g = {
   //市province
   getCity:besurl+"/distributor/systemAddress/getCity",
   //区city
-  getCity:besurl+"/distributor/systemAddress/getCity",
+  getCounty:besurl+"/distributor/systemAddress/getCounty",
 
   //发货订单列表
   // originalPrice:besurl+"/distributor/order/originalPrice",

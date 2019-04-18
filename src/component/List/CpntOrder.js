@@ -76,9 +76,16 @@ class CpntOrder extends Component{
                                             {/*<Button  size="small" onClick={this.listOrder.bind(this,key)}>*/}
                                             {/*    {item.button}*/}
                                             {/*</Button>*/}
-                                            <Link to={`/Shipdetails/${item.id}`}  >
-                                                <span className="linkSkip">{item.button}</span>
-                                            </Link>
+                                            {
+                                                JSON.parse(item.orderGoods).map((v,key)=>(
+                                                    <Link to={`/Shipdetails/${item.id}`}  >
+                                                        <span className="linkSkip">
+                                                            {item.button}
+                                                        </span>
+                                                    </Link>
+                                                 ))
+                                            }
+
                                         </Flex.Item>
                                     </Flex>
                                     {/*点击跳转*/}
