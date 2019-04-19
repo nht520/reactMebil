@@ -32,9 +32,9 @@ class CpntOrder extends Component{
         Axios.get(host,param).then((res)=>{
             if(res.data.records[0].orderStatus==0){
                 console.log("去发货");
-                // const orderObj = JSON.parse(res.data.records[0].orderGoods);
-                // const shpName = orderObj[0].mealEntity;
-                // console.log(shpName);
+                const orderObj = JSON.parse(res.data.records[0].orderGoods);
+                const shpName = orderObj[0].mealEntity;
+                console.log(shpName);
                 // this.props.history.push(`/SubmitOrder`);
             }else if(res.data.records[0].orderStatus==1){
                 // console.log("查看详情");
