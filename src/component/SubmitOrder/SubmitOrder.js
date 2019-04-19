@@ -136,7 +136,6 @@ class SubmitOrder extends Component{
     //获取订单信息
     imdeliverList = () =>{
         this.orderDetils = storage.get("imdeliverList");
-        console.log(this.orderDetils);
         this.setState({
             orderGoods:this.orderDetils
         })
@@ -144,6 +143,7 @@ class SubmitOrder extends Component{
             this.state.orderNum=this.state.orderNum+this.orderDetils[i].addNumber;
         }
     };
+    //提交订单
     imdeChange = ()=>{
         this.id = storage.get("deliverId");
         this.orderId=this.id.id;
@@ -192,9 +192,9 @@ class SubmitOrder extends Component{
             this.setState({
                 displayName:"block",
                 displaysite:"none",
-                userName:this.site.user,
-                ipHone:this.site.iphone,
-                site:this.site.location,
+                userName:this.site.userName,
+                ipHone:this.site.userMobile,
+                site:this.site.userAddress,
             });
             // storage.remove("location");
         }

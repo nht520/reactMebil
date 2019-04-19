@@ -15,6 +15,7 @@ class Shipdetails extends Component{
             show:true,
             id:0,
             list:[],
+            shpDetails:[],
             bannerOne: [
                 {
                     id:1,
@@ -35,7 +36,7 @@ class Shipdetails extends Component{
         })
     }
     render(){
-        const {bannerOne,list} = this.state;
+        const {bannerOne,list,shpDetails} = this.state;
         return(
             <Fragment>
                 {/*<IndentWrapper>*/}
@@ -46,9 +47,9 @@ class Shipdetails extends Component{
                     {
                         list.map((item,key)=>(
                             <div key={key}>
-                                <h5>{item.deliverAddress}</h5>
+                                <h5>{shpDetails.mealName}</h5>
                                 <IntList>
-                                    <p> {item.deliverAddress}</p>
+                                    <p> {shpDetails.mealContent}</p>
                                 </IntList>
                                 {/**/}
                                 <IntConte>
@@ -56,19 +57,19 @@ class Shipdetails extends Component{
                                         <IntLi>
                                             <Flex>
                                                 <Flex.Item>数量</Flex.Item>
-                                                <Flex.Item className="left">{item.buyNum}</Flex.Item>
+                                                <Flex.Item className="left">{shpDetails.mealNum}</Flex.Item>
                                             </Flex>
                                         </IntLi>
                                         <IntLi>
                                             <Flex>
                                                 <Flex.Item>价格</Flex.Item>
-                                                <Flex.Item className="left">￥{item.buyPrice}</Flex.Item>
+                                                <Flex.Item className="left">￥{shpDetails.mealPrice}</Flex.Item>
                                             </Flex>
                                         </IntLi>
                                         <IntLi>
                                             <Flex className="titDts">
                                                 <Flex.Item>实付款</Flex.Item>
-                                                <Flex.Item className="left">￥{(item.buyNum*item.buyPrice).toFixed(2)}</Flex.Item>
+                                                <Flex.Item className="left">￥{(shpDetails.mealNum*shpDetails.mealPrice).toFixed(2)}</Flex.Item>
                                             </Flex>
                                         </IntLi>
                                         <IntLi>
@@ -89,6 +90,11 @@ class Shipdetails extends Component{
                                         <IntLi>
                                             <div className="site">
                                                 收货人地址: <span>{item.deliverAddress}</span>
+                                            </div>
+                                        </IntLi>
+                                        <IntLi>
+                                            <div className="site">
+                                                订单编号: <span>{item.orderNo}</span>
                                             </div>
                                         </IntLi>
                                         <IntLi>
@@ -115,13 +121,16 @@ class Shipdetails extends Component{
                 id:_id
             }
         };
-        console.log(_id+"----");
         let api = window.g.indent;
         Axios.get(api,param).then((res)=>{
             console.log(res);
             let data = res.data.records;
+            var obj=JSON.parse(res.data.records[0].orderGoods);
+            const shpName = obj[0].mealEntity;
+            console.log(shpName);
             this.setState({
                 list:data,
+                shpDetails:shpName
             });
             // console.log(this.state.list.mealEntity.mealName);
         },(err)=>{

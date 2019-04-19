@@ -90,7 +90,7 @@ class Imdeliver extends Component{
     addChange = (key) =>{
         //获取当前点击的key
         let addList=this.state.list;
-        console.log(addList[key]);
+        // console.log(addList[key]);
         // console.log(this.pages)
     };
     //添加
@@ -160,6 +160,7 @@ class Imdeliver extends Component{
                     // console.log("id为"+this.state.list[j].id+"+"+"数量"+ this.state.list[j].addNumber);
                 }
             }
+            //存所选订单数据
             storage.set("imdeliverList",data);
             var param = new URLSearchParams();
                 param.append("orderGoods",JSON.stringify(data));
@@ -169,8 +170,8 @@ class Imdeliver extends Component{
                 param.append("orderStatus",0);//未付款
                 const api = window.g.indent;
             Axios.post(api,param).then((res)=>{
-                console.log(res);
                 storage.remove("deliverId");
+                //存h获取订单数据
                 storage.set("deliverId",res.data.data);
             },(err)=>{
                 console.log(err)
@@ -190,7 +191,6 @@ class Imdeliver extends Component{
             }
         };
         Axios.get(api,param).then((res)=>{
-            console.log(res);
             this.setState({
                 list:res.data.records
             });

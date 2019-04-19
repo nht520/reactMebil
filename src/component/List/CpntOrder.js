@@ -5,6 +5,7 @@ import {
     Flex} from "antd-mobile";
 import {withRouter,Link} from "react-router-dom";
 import storage from "../../statics/storage";
+import Axios from "axios";
 class CpntOrder extends Component{
     constructor(props){
         super(props);
@@ -21,19 +22,28 @@ class CpntOrder extends Component{
         console.log(letid[key]);
     };
     listOrder=(key)=>{
-        let orderList = this.state.list;
-        if (orderList[key].orderStatus===0){
-            console.log("待发货");
-            this.setState({
-                button:"待发货"
-            })
-            // this.props.history.push(`/IndentDateils/${id}`);
-        }else if(orderList[key].orderStatus===1){
-            console.log("已发货");
-            this.setState({
-                button:"已发货"
-            })
-        }
+        console.log(key);
+        var host = window.g.indent;
+        var param = {
+            params:{
+                id:key,
+            }
+        };
+        Axios.get(host,param).then((res)=>{
+            if(res.data.records[0].orderStatus==0){
+                console.log("去发货");
+                // const orderObj = JSON.parse(res.data.records[0].orderGoods);
+                // const shpName = orderObj[0].mealEntity;
+                // console.log(shpName);
+                // this.props.history.push(`/SubmitOrder`);
+            }else if(res.data.records[0].orderStatus==1){
+                // console.log("查看详情");
+                const list = res.data.records[0];
+                this.props.history.push(`/Shipdetails/${list.id}`);
+            }
+        }).catch((err)=>{
+            console.log(err);
+        });
     };
     render(){
         const { dtList } = this.state;
@@ -73,8 +83,8 @@ class CpntOrder extends Component{
                                 <OrdeItem>
                                     <Flex>
                                         <Flex.Item>
-                                            <Button  size="small" onClick={this.listOrder.bind(this,key)}>
-                                                {this.state.button}
+                                            <Button  size="small" onClick={this.listOrder.bind(this,item.id)}>
+                                                {item.button}
                                             </Button>
                                         </Flex.Item>
                                     </Flex>
@@ -94,25 +104,30 @@ class CpntOrder extends Component{
     }
     componentWillReceiveProps(nextProps) {
         let list = nextProps.list;
+        var orderList = [];
         console.log(list);
-        this.setState({
-            dtList: list,
-        });
-        if (list.orderStatus === undefined || list.orderStatus === ""){
-            // this.state.button
-            this.setState({
-                button:"查看详情"
-            })
-        }else if(list.orderStatus === 0){
-            this.setState({
-                button:"去发货"
-            })
-        }else if (list.orderStatus === 1) {
-            this.setState({
-                button:"查看详情"
-            })
+        for(var i = 0;i<list.length;i++){
+            if (list[i].orderStatus === undefined || list[i].orderStatus === ""){
+                this.setState({
+                    button:"查看详情"
+                });
+                list[i]['button'] = '查看详情';
+            }else if(list[i].orderStatus === 0){
+                this.setState({
+                    button:"去发货"
+                })
+                list[i]['button'] = '去发货';
+            }else if (list[i].orderStatus === 1) {
+                this.setState({
+                    button:"查看详情"
+                })
+                list[i]['button'] = '查看详情';
+            }
+            orderList.push(list[i]);
         }
-
+        this.setState({
+            dtList: orderList,
+        });
     };
 }
 export default withRouter(CpntOrder);

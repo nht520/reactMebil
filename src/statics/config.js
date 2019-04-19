@@ -28,9 +28,8 @@ window.g = {
   //添加地址
   addressadd:besurl+"/distributor/address",
 //  修改地址
-  adsupdate:besurl+"/distributor/address/update",
-//发货订单列表
-  // originalPrice:besurl+"/distributor/order/originalPrice",
+   adsupdate:besurl+"/distributor/address/update",
+  //
   ParentPage: {
     // http://wx.bomao.xyz:8080/distributor
     // ApiUrl: 'http://www.phonegap100.com/appapi.php?a=getPortalList&catid=20&page=', // 配置服务器地址,

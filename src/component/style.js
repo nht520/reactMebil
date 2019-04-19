@@ -825,6 +825,9 @@ export const LoactionWrapper = styled.div`
       color:#8f8f8f;
       font-weight:400;  
       font-size: 14px;
+      word-wrap: break-word;
+        word-break: break-all;
+        overflow: hidden;
     }
     .my-radio .am-radio {
       padding: 2.5px;

@@ -17,10 +17,10 @@ class AddLocation extends Component {
             username:"",
             iphone:"",
             compile:[],
-            priker: [
-            ],
+            priker: [],
             site:"",
             checkedA: false,
+            chack:"0",
             locUsernm:"请输入收获人姓名",
             locIphone:"请输入收获人电话",
             locAddress:"请输入详细地址"
@@ -141,6 +141,7 @@ class AddLocation extends Component {
     addSave=()=>{
         const that =this;
         console.log(this.state);
+        console.log(this.state.chack);
         //保存并返回地址页面
        if (that.state.username === "" || that.state.username === undefined){
            that.setState({
@@ -177,10 +178,10 @@ class AddLocation extends Component {
                  prame.append("cityAddress",cityAddress);
                  prame.append("countyAddress",countyAddress);
                  prame.append("userAddress",that.state.site);
-                 prame.append("isDefault",that.chack);
+                 prame.append("isDefault",that.state.chack);
            Axios.post(api,prame).then((res)=>{
                console.log(res);
-                // this.props.history.push("/Location");
+                this.props.history.push("/Location");
            }).catch((err)=>{
                console.log(err)
            })
@@ -246,9 +247,13 @@ class AddLocation extends Component {
         });
         return county;
     };
+    //编辑
     compileLocation=()=>{
+        console.log("====");
         const locinads = storage.get("compileLocation");
-        if( locinads.locinads==null ||  locinads.locinads===undefined){
+        if( locinads === null ||  locinads === undefined){
+            console.log("空")
+        }else if( locinads !== null || locinads !== undefined ){
             this.setState({
                 locUsernm:locinads.userName,
                 locIphone:locinads.userMobile,
@@ -260,7 +265,7 @@ class AddLocation extends Component {
     componentDidMount(){
         this.getProvince();
         document.title="添加发货地址";
-        // this.compileLocation();
+        this.compileLocation();
     }
 }
 

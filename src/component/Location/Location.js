@@ -58,7 +58,7 @@ class Location extends Component{
                                                     <span> 编辑</span>
                                                 </Flex.Item>
                                                 <Flex.Item
-                                                    onClick={this.delChang.bind(this,key)}
+                                                    onClick={this.delChang.bind(this,item.id)}
                                                 >
                                                     <img src={compile} alt="删除"/>
                                                     <span> 删除</span>
@@ -70,25 +70,30 @@ class Location extends Component{
                             </ul>
                         ))
                     }
-                    <Button variant="contained" size="large" color="primary" className="addlcinButton" onClick={this.compileChang}>
+                    <Button variant="contained" size="large" color="primary" className="addlcinButton" onClick={this.compileAdd}>
                         添加发货地址
                     </Button>
                 </LoactionWrapper>
             </Fragment>
         )
     }
+    compileAdd = ()=>{
+        this.props.history.push('/AddLocation');
+    };
     locationChange = (key) =>{
         //获取当前点击的key
         this.locList=this.state.list;
-        console.log(this.locList[key]);
         //将数据存储在storage
         storage.set("location",this.locList[key]);
         this.props.history.go(-1)
     };
+    //编辑
     compileChang = (key) =>{
         this.locList=this.state.list;
-        console.log(this.locList[key]);
         storage.set("compileLocation",this.locList[key]);
+        // if(this.locList[key]){
+        //     storage.set("compileLocation",this.locList[key]);
+        // }
         this.props.history.push('/AddLocation');
     };
     //获取地址列表
@@ -98,7 +103,8 @@ class Location extends Component{
         const param = {
               params:{
                   size:"10000",
-                  distributorId:user.id
+                  distributorId:user.id,
+                  isDelete:0,
               }
         };
         Axios.get(api,param).then((res)=>{
@@ -110,18 +116,37 @@ class Location extends Component{
             console.log(err)
         })
     };
-    //编辑地址
+    //删除地址
     delChang = (key) =>{
-        //console.log("删除");
-        //console.log(this.locList[key].id);
-        let tempList=this.state.list;
-        tempList.splice(key,1);
-        this.setState({
-            list:tempList
+        console.log("删除");
+        console.log(key);
+        const api = window.g.adsupdate;
+        // const pranm = {
+        //       pranms:{
+        //           isDelete:1,
+        //           id:key
+        //       }
+        // };
+        var param = new URLSearchParams();
+        param.append("id",key);
+        param.append("isDelete",1);
+        Axios.post(api,param).then((res)=>{
+            console.log(res);
+            this.addressadd();
+        }).catch((err)=>{
+            console.log(err)
         })
+        //console.log(this.locList[key].id);
+        // let tempList=this.state.list;
+        // tempList.splice(key,1);
+        // this.setState({
+        //     list:tempList
+        // })
         //console.log(this.state.list);
     };
+    //删除
     componentDidMount(){
+        storage.remove("compileLocation");
         document.title="我的地址";
         this.addressadd();
     }
