@@ -33,6 +33,8 @@ import FxDateils from "./component/Dateils/FxDateils";
 import SubmitOrder from "./component/SubmitOrder/SubmitOrder";
 //设置
 import Setting from "./component/Setting/Setting";
+//个人信息
+import Personal from "./component/About/Personal";
 //
 // 发货订单
 import ShipmentOrder from "./component/ShipmentOrder/ShipmentOrder";
@@ -68,6 +70,7 @@ class App extends Component {
                                 <Route path='/SubmitOrder' exact component={SubmitOrder}/>
                                 <Route path='/Setting' exact component={Setting}/>
                                 <Route path='/Shipdetails/:id' exact component={Shipdetails}/>
+                                <Route path='/Personal' exact component={Personal}/>
                             </div>
                         </Router>
                 </Fragment>

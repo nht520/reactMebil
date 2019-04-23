@@ -27,32 +27,32 @@ class About extends Component {
             getBoxNum:0,
             stock:"",
             list:[
+                // {
+                //     id:1,
+                //     title:"商城零售记录",
+                //     thumb:scan,
+                //     path:"/Retail",
+                // },
                 {
                     id:1,
-                    title:"商城零售记录",
-                    thumb:scan,
-                    path:"/Retail",
-                },
-                {
-                    id:2,
                     title:"分销客户订单",
                     thumb:yhujua,
                     path:"/Dstribution",
                 },
                 {
-                    id:3,
+                    id:2,
                     title:"我要发货",
                     thumb:dindan,
                     path:"/Imdeliver",
                 },
                 {
-                    id:4,
+                    id:3,
                     title:"我的地址",
                     thumb:site,
                     path:"/Location",
                 },
                 {
-                    id:5,
+                    id:4,
                     title:"设置",
                     thumb:laxi,
                     path:"/Setting",
@@ -90,7 +90,7 @@ class About extends Component {
                                    </Link>
                                </Flex.Item>
                                <Flex.Item>
-                                   <Link to="/Rullt">
+                                   <Link to="/Personal">
                                        <span className="message">个人信息</span>
                                    </Link>
                                </Flex.Item>

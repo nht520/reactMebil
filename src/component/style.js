@@ -194,7 +194,7 @@ export const CarouseWrapper = styled.div`
  // }
  img{
     width:100%;
-    height:160px;
+    height:180px;
     border-radius: 5px;
  }
  .slider-decorator-0{
@@ -241,7 +241,28 @@ export const AboutList =styled.div`
 `;
 export const SettingWropr = styled.div`
     padding:5%;
-    
+`;
+//中人中心
+export const PersonalWrapper = styled.div`
+    padding:5%;
+    margin-top:5%;
+    .am-image-picker-item-content{
+        border-radius: 100% !important;
+        width: 110px !important;
+        height: 110px  !important;
+       margin: 0 auto;
+       box-shadow: 1px 4px 9px #0000003b;
+    }
+    .am-flexbox{
+        border-radius: 100% !important;
+        width: 110px !important;
+        height: 110px  !important;
+            margin: 0 auto;
+    }
+    h5{
+        text-align: center;
+        color: #252433;
+    }
 `;
 //全部订单
 export const OrdeWrapper = styled.div`
