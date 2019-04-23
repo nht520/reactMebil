@@ -6,6 +6,7 @@ import { Tabs,
     // WhiteSpace
 } from 'antd-mobile';
 import CpntDistribution from "../List/CpntDistribution";
+import Axios from "axios";
 const tabs = [
     { title: '全部' },
     { title: '待付款' },
@@ -274,7 +275,16 @@ class Dstribution extends Component {
             ],
         })
     }
+    dstributon=()=>{
+      const api = window.g.subordinate;
+      Axios.get(api).then((res)=>{
+          console.log(res);
+      }).catch((err)=>{
+          console.log(err);
+      })
+    }
     componentDidMount (){
+        this.dstributon();
         document.title="分销订单";
     }
     render(){

@@ -67,7 +67,6 @@ class CpntOrder extends Component{
                                                 <OrdeRight>
                                                     <Flex className="title">
                                                         <Flex.Item>{v.goodsEntity.goodsName}</Flex.Item>
-
                                                     </Flex>
                                                     <OneLeft className="ordDtels">
                                                         {v.goodsEntity.goodsContent}

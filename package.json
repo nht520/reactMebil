@@ -6,7 +6,7 @@
   "dependencies": {
     "@material-ui/core": "^3.9.3",
     "@material-ui/icons": "^3.0.2",
-    "antd": "^3.16.4",
+    "antd": "^3.16.5",
     "antd-mobile": "^2.2.5",
     "axios": "^0.18.0",
     "bee-mobile": "^0.4.3",

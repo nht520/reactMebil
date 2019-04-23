@@ -262,6 +262,32 @@ export const PersonalWrapper = styled.div`
     h5{
         text-align: center;
         color: #252433;
+        margin-top: 5%;
+    }
+    button{
+        width: 100% !important;
+        background: #292b33 !important;
+        color: #ffffff;
+        width:100%;
+        margin-top: 15%;
+        height: 50px;
+        border-radius: 3px;
+        text-align: center;
+    }
+    button:hover{
+        background-color: #292b33;
+    }
+    .ant-upload{
+        border:none !important;
+        width:0px !important;
+        height:0px !important;
+        margin: 0% auto !important;
+        border-radius: 100% !important;
+    }
+    .imgProfile img{
+        width:100px;
+        height:100px;
+        border-radius: 100%;
     }
 `;
 //全部订单

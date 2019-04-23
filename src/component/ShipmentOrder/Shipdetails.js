@@ -19,17 +19,22 @@ class Shipdetails extends Component{
             bannerOne: [
                 {
                     id:1,
-                    src:banner,
+                    src:"http://wx.bomao.xyz/attachment/images/1/2018/07/FZRf1WisfasuF69EWwI9Uib6r6ewLD.png",
                     alt:"1",
                 },
                 {
                     id:2,
-                    src:banner,
+                    src:"http://wx.bomao.xyz/attachment/images/1/2018/07/st1BSZ2t9Sz6gEMsQz91u29xUDe6dr.png",
                     alt:"2",
                 },
                 {
-                    id:10,
-                    src:banner,
+                    id:3,
+                    src:"http://wx.bomao.xyz/attachment/images/1/2018/07/WzfhaSnNFfhhs7FFjASNFZvjjhNNNF.png",
+                    alt:"6",
+                },
+                {
+                    id:4,
+                    src:"http://wx.bomao.xyz/attachment/images/1/2018/07/y678u07FUc00qRm7m6m8RFVdQ5rR87.png",
                     alt:"6",
                 },
             ],

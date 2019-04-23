@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from "react";
 import {OneLeft, OrdeItem, OrdeLeft, OrdeList, OrdeRight, OrderList, OrdeWrapper, TwoRight} from "../style";
-import {
+import {Button,
     Flex} from "antd-mobile";
 import {withRouter,Link} from "react-router-dom";
 import storage from "../../statics/storage";
@@ -51,12 +51,12 @@ class Cpntindent extends Component{
                                                 单价：￥<span>{(item.buyPrice).toFixed(2)}</span>
                                             </Flex.Item>
                                             <Flex.Item>
-                                                {/*<Button  size="small" onClick={this.listOrder.bind(this,key)}>*/}
-                                                    {/*查看详情*/}
-                                                {/*</Button>*/}
-                                                <Link to={`/IndentDateils/${item.id}`} >
-                                                    <span className="linkSkip">查看详情</span>
-                                                </Link>
+                                                <Button  size="small" onClick={this.listOrder.bind(this,item.id)}>
+                                                    查看详情
+                                                </Button>
+                                                {/*<Link to={`/IndentDateils/${item.id}`} >*/}
+                                                {/*    <span className="linkSkip">查看详情</span>*/}
+                                                {/*</Link>*/}
                                             </Flex.Item>
                                         </Flex>
                                         {/*点击跳转*/}
@@ -75,6 +75,9 @@ class Cpntindent extends Component{
         storage.set("lcList",letid[key]);
         // this.props.history.push('/IndentDateils');
         // console.log(letid[key]);
+    };
+    listOrder=(id)=>{
+        this.props.history.push(`/IndentDateils/${id}`);
     };
     // listOrder=(key)=>{
     //     let letid = this.state.dtList;

@@ -21,24 +21,26 @@ class Home extends Component {
             name:"",
             list:[],
             buyClass:"childTwo",
-            banner:[
+            banner: [
                 {
                     id:1,
-                    src:banner,
+                    src:"http://wx.bomao.xyz/attachment/images/1/2018/07/FZRf1WisfasuF69EWwI9Uib6r6ewLD.png",
                     alt:"1",
-                    path:"CarouseDts/",
                 },
                 {
                     id:2,
-                    src:banner,
+                    src:"http://wx.bomao.xyz/attachment/images/1/2018/07/st1BSZ2t9Sz6gEMsQz91u29xUDe6dr.png",
                     alt:"2",
-                    path:"CarouseDts/",
                 },
                 {
-                    id:10,
-                    src:banner,
+                    id:3,
+                    src:"http://wx.bomao.xyz/attachment/images/1/2018/07/WzfhaSnNFfhhs7FFjASNFZvjjhNNNF.png",
                     alt:"6",
-                    path:"CarouseDts/",
+                },
+                {
+                    id:4,
+                    src:"http://wx.bomao.xyz/attachment/images/1/2018/07/y678u07FUc00qRm7m6m8RFVdQ5rR87.png",
+                    alt:"6",
                 },
             ],
             // src:"https://www.baidu.com/img/bd_logo1.png",
@@ -92,39 +94,32 @@ class Home extends Component {
         //获取数据将数据存在store
     }
     ipClass=(id,buyLevel)=>{
-        this.memberLevel = storage.get("user");
+        this.mbid = storage.get("user");
         this.buyLevel=buyLevel;
         // console.log(this.memberLevel.memberLevel);
         // this.props.history.push(`/IndentDateils/${id}`);
-        if (this.memberLevel.memberLevel === 0 && (this.buyLevel === 0) ){
+        if ((this.mbid.memberLevel === 1 && (this.buyLevel === 1 || this.buyLevel === 1)) || this.buyLevel === 0 ){
             this.props.history.push(`/Dateils/${id}`);
         }else{
             this.setState({
                 text:"亲 你不能购买此套餐哦！",
             },()=>this.showToast())
         }
-        if ((this.memberLevel.memberLevel === 1 && (this.buyLevel === 1 || this.buyLevel === 2)) || this.buyLevel === 0 ){
+        if  ((this.mbid.memberLevel === 2 && (this.buyLevel === 2 || this.buyLevel === 2)) || this.buyLevel === 0 ){
             this.props.history.push(`/Dateils/${id}`);
         }else{
             this.setState({
                 text:"亲 你不能购买此套餐哦！",
             },()=>this.showToast())
         }
-        if ((this.memberLevel.memberLevel === 2 && (this.buyLevel === 2)) ||  this.buyLevel === 0 ){
+        if ((this.mbid.memberLevel === 3 && (this.buyLevel === 3 || this.buyLevel === 3)) || this.buyLevel === 0 ){
             this.props.history.push(`/Dateils/${id}`);
         }else{
             this.setState({
                 text:"亲 你不能购买此套餐哦！",
             },()=>this.showToast())
         }
-        if ((this.memberLevel.memberLevel === 3 && (this.buyLevel === 3  )) || this.buyLevel === 0 ){
-            this.props.history.push(`/Dateils/${id}`);
-        }else{
-            this.setState({
-                text:"亲 你不能购买此套餐哦！",
-            },()=>this.showToast())
-        }
-        if ((this.memberLevel.memberLevel === 4 && (this.buyLevel === 4)) || this.buyLevel === 0 ){
+        if ((this.mbid.memberLevel === 4 && (this.buyLevel === 4)) || this.buyLevel === 0 ){
             this.props.history.push(`/Dateils/${id}`);
         }else{
             this.setState({
@@ -168,12 +163,10 @@ class Home extends Component {
                         {list.map((item,key)=>(
                             <li className={this.state.buyClass} key={key} onClick={this.ipClass.bind(this,item.id,item.buyLevel)}>
                                 {/*{item.id}*/}
-                                {/*<Link to={`/Dateils/${item.id}`} >*/}
                                 <img src={item.mealImage} alt="我是图片">
                                 </img>
                                 <h3>{item.mealName}</h3>
                                 <h5>{item.mealContent}</h5>
-                                {/*</Link>*/}
                             </li>
                         ))
                         }
