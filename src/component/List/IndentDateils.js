@@ -61,13 +61,13 @@ class IndentDateils extends Component{
                                        <IntLi>
                                            <Flex>
                                                <Flex.Item>份数</Flex.Item>
-                                               <Flex.Item className="left">{item.mealEntity.mealNum}</Flex.Item>
+                                               <Flex.Item className="left">{item.buyNum}</Flex.Item>
                                            </Flex>
                                        </IntLi>
                                        <IntLi>
                                            <Flex>
                                                <Flex.Item>盒数</Flex.Item>
-                                               <Flex.Item className="left">{item.buyNum}</Flex.Item>
+                                               <Flex.Item className="left">{item.buyIncrement}</Flex.Item>
                                            </Flex>
                                        </IntLi>
                                        <IntLi>

@@ -65,18 +65,18 @@ class Shipdetails extends Component{
                                                 <Flex.Item className="left">{shpDetails.mealNum}</Flex.Item>
                                             </Flex>
                                         </IntLi>
-                                        <IntLi>
-                                            <Flex>
-                                                <Flex.Item>价格</Flex.Item>
-                                                <Flex.Item className="left">￥{shpDetails.mealPrice}</Flex.Item>
-                                            </Flex>
-                                        </IntLi>
-                                        <IntLi>
-                                            <Flex className="titDts">
-                                                <Flex.Item>实付款</Flex.Item>
-                                                <Flex.Item className="left">￥{(shpDetails.mealNum*shpDetails.mealPrice).toFixed(2)}</Flex.Item>
-                                            </Flex>
-                                        </IntLi>
+                                        {/*<IntLi>*/}
+                                        {/*    <Flex>*/}
+                                        {/*        <Flex.Item>价格</Flex.Item>*/}
+                                        {/*        <Flex.Item className="left">￥{shpDetails.mealPrice}</Flex.Item>*/}
+                                        {/*    </Flex>*/}
+                                        {/*</IntLi>*/}
+                                        {/*<IntLi>*/}
+                                        {/*    <Flex className="titDts">*/}
+                                        {/*        <Flex.Item>实付款</Flex.Item>*/}
+                                        {/*        <Flex.Item className="left">￥{(shpDetails.mealNum*shpDetails.mealPrice).toFixed(2)}</Flex.Item>*/}
+                                        {/*    </Flex>*/}
+                                        {/*</IntLi>*/}
                                         <IntLi>
                                             <div className="site">
                                                 供货商: <span>{item.memberEntity==null?'公司':item.memberEntity.memberName}</span>
