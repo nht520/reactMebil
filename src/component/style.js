@@ -1047,6 +1047,9 @@ export const Delivery = styled.div`
     .left{
         text-align: right;
     }
+    .detsAdss{
+        overflow: hidden;
+    }
 `;
 export const Take = styled.div`
     margin-top:5%;

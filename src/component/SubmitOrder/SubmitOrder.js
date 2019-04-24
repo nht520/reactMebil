@@ -24,10 +24,11 @@ class SubmitOrder extends Component{
             deliverFreight:100,
             orderNum:0,
             idOrder:0,
+            postage:"",
         });
     }
     render(){
-        const {orderNum,orderInfo,orderGoods,userName,ipHone,site,displayName,displaysite,deliverFreight } = this.state;
+        const {orderNum,orderInfo,orderGoods,userName,ipHone,site,displayName,displaysite,deliverFreight,postage } = this.state;
         return(
             <Fragment>
                 <SubmitWrapper>
@@ -55,7 +56,7 @@ class SubmitOrder extends Component{
                                 <img src={ left } alt="我是图片">
                                 </img></span>
                                 </li>
-                                <li>
+                                <li className="detsAdss">
                                     地址：{site}
                                 </li>
                             </ul>
@@ -105,7 +106,7 @@ class SubmitOrder extends Component{
                                 </li>
                                 <li>
                                     <span className="left">运费</span>
-                                    <span className="right">￥{deliverFreight}</span>
+                                    <span className="right">￥{postage}</span>
                                 </li>
                                 <li className="subsolid">
                                     <span className="left">实付款</span>
@@ -176,6 +177,7 @@ class SubmitOrder extends Component{
         document.title="提交订单";
         this.submitOrder();
         this.imdeliverList();
+        this.findCost();
     }
     submit =()=>{
         this.props.history.push('/Location');
@@ -198,6 +200,29 @@ class SubmitOrder extends Component{
             });
             // storage.remove("location");
         }
+    };
+    //得到地址邮费
+    findCost=()=>{
+      const api =window.g.findCost;
+      const provinceAddress = storage.get("location").provinceAddress;
+      const cityAddress = storage.get("location").cityAddress;
+      const countyAddress = storage.get("location").countyAddress;
+      let param = {
+        params:{
+            provine:provinceAddress,
+            city:cityAddress,
+            county:countyAddress,
+            price:this.state.postage,
+        }
+     };
+      Axios.get(api,param).then((res)=>{
+          this.postage=res.data.data.price;
+          this.setState({
+              postage:this.postage,
+          })
+      }).catch((err)=>{
+          console.log(err)
+      })
     };
     // orderId=()=>{
     //     this.orderId = storage.get("deliverId").id;

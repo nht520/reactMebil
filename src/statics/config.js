@@ -32,6 +32,8 @@ window.g = {
   //
   //分销订单
    subordinate:besurl+"/distributor/subordinate",
+  //查询邮费
+   findCost:besurl+"/distributor/addressCost/findCost",
   ParentPage: {
     // http://wx.bomao.xyz:8080/distributor
     // ApiUrl: 'http://www.phonegap100.com/appapi.php?a=getPortalList&catid=20&page=', // 配置服务器地址,

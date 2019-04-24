@@ -60,20 +60,27 @@ class IndentDateils extends Component{
                                    <IntUl>
                                        <IntLi>
                                            <Flex>
-                                               <Flex.Item>数量</Flex.Item>
+                                               <Flex.Item>份数</Flex.Item>
+                                               <Flex.Item className="left">{item.mealEntity.mealNum}</Flex.Item>
+                                           </Flex>
+                                       </IntLi>
+                                       <IntLi>
+                                           <Flex>
+                                               <Flex.Item>盒数</Flex.Item>
                                                <Flex.Item className="left">{item.buyNum}</Flex.Item>
                                            </Flex>
                                        </IntLi>
                                        <IntLi>
                                            <Flex>
-                                               <Flex.Item>价格</Flex.Item>
-                                               <Flex.Item className="left">￥{item.buyPrice}</Flex.Item>
+                                               <Flex.Item>单价</Flex.Item>
+                                               <Flex.Item className="left">￥{item.mealEntity.mealPrice}</Flex.Item>
                                            </Flex>
                                        </IntLi>
                                        <IntLi>
                                            <Flex className="titDts">
                                                <Flex.Item>实付款</Flex.Item>
                                                <Flex.Item className="left">￥{(item.buyNum*item.buyPrice).toFixed(2)}</Flex.Item>
+                                               {/*<Flex.Item className="left">￥{(item.buyNum*item.buyPrice).toFixed(2)}</Flex.Item>*/}
                                            </Flex>
                                        </IntLi>
                                        <IntLi>
