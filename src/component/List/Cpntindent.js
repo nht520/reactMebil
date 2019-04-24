@@ -48,8 +48,10 @@ class Cpntindent extends Component{
                                     <OrdeItem>
                                         <Flex>
                                             <Flex.Item>
-                                                单价：￥<span>{(item.buyPrice).toFixed(2)}</span>
+                                                {/*单价：￥<span>{(item.buyPrice).toFixed(2)}</span>*/}
+                                                单价：￥<span>{(item.mealEntity.mealPrice).toFixed(2)}</span>
                                             </Flex.Item>
+
                                             <Flex.Item>
                                                 <Button  size="small" onClick={this.listOrder.bind(this,item.id)}>
                                                     查看详情
