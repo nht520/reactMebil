@@ -79,7 +79,7 @@ class IndentDateils extends Component{
                                        <IntLi>
                                            <Flex className="titDts">
                                                <Flex.Item>实付款</Flex.Item>
-                                               <Flex.Item className="left">￥{(item.buyNum*item.buyPrice).toFixed(2)}</Flex.Item>
+                                               <Flex.Item className="left">￥{(item.buyNum*item.mealEntity.mealPrice).toFixed(2)}</Flex.Item>
                                                {/*<Flex.Item className="left">￥{(item.buyNum*item.buyPrice).toFixed(2)}</Flex.Item>*/}
                                            </Flex>
                                        </IntLi>

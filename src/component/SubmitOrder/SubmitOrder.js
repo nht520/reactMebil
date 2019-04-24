@@ -110,7 +110,7 @@ class SubmitOrder extends Component{
                                 </li>
                                 <li className="subsolid">
                                     <span className="left">实付款</span>
-                                    <span className="right">￥{deliverFreight}</span>
+                                    <span className="right">￥{postage}</span>
                                 </li>
                             </ul>
                         </Commodity>
@@ -217,6 +217,7 @@ class SubmitOrder extends Component{
      };
       Axios.get(api,param).then((res)=>{
           this.postage=res.data.data.price;
+          console.log(res);
           this.setState({
               postage:this.postage,
           })
