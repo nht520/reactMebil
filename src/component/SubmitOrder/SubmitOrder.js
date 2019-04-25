@@ -177,7 +177,13 @@ class SubmitOrder extends Component{
         document.title="提交订单";
         this.submitOrder();
         this.imdeliverList();
-        this.findCost();
+        //判断用户是否选择地址
+        this.siteLOcation = storage.get("location");
+        if(this.siteLOcation === null || this.siteLOcation === undefined){
+            console.log("请选择地址")
+        }else {
+            this.findCost();
+        }
     }
     submit =()=>{
         this.props.history.push('/Location');
