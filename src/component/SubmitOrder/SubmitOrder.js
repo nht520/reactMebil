@@ -120,7 +120,7 @@ class SubmitOrder extends Component{
                 <DateilsButton>
                     <Flex className="title">
                         <Flex.Item></Flex.Item>
-                        <Flex.Item className="shipments">￥{deliverFreight}</Flex.Item>
+                        <Flex.Item className="shipments">￥{postage}</Flex.Item>
                         <Flex.Item>
                             <Button variant="outlined" size="medium" color="primary" className="ordering"onClick={this.imdeChange}>
                                 提交订单
@@ -180,7 +180,9 @@ class SubmitOrder extends Component{
         //判断用户是否选择地址
         this.siteLOcation = storage.get("location");
         if(this.siteLOcation === null || this.siteLOcation === undefined){
-            console.log("请选择地址")
+            this.setState({
+                text:"请选择地址",
+            },()=>this.showToast())
         }else {
             this.findCost();
         }
