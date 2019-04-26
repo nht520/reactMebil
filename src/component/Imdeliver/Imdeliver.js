@@ -168,7 +168,7 @@ class Imdeliver extends Component{
                 param.append("distributorId",this.userid);
                 param.append("orderPrice",this.state.topic);
                 param.append("orderStatus",0);//未付款
-                const api = window.g.indent;
+            const api = window.g.indent;
             Axios.post(api,param).then((res)=>{
                 storage.remove("deliverId");
                 //存h获取订单数据

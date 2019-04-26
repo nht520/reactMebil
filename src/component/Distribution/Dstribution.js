@@ -7,278 +7,27 @@ import { Tabs,
 } from 'antd-mobile';
 import CpntDistribution from "../List/CpntDistribution";
 import Axios from "axios";
-const tabs = [
-    { title: '全部' },
-    { title: '待付款' },
-    { title: '待发货' },
-    { title: '待收货' },
-];
+import storage from "../../statics/storage";
 class Dstribution extends Component {
     constructor(props){
         super(props);
         this.state=({
-            List:[
-                {
-                    id:1,
-                    number:"123456",
-                    states:"待付款",
-                    freight:"9999",
-                    totalprices:"8989",
-                    button:"查看详情",
-                    orderList:[
-                        {
-                            id:1,
-                            imgurl:"https://www.baidu.com/img/bd_logo1.png",
-                            title:"炸鸡汉堡王",
-                            price:"352.00",
-                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                            quantity:"1",
-                        },
-                        {
-                            id:2,
-                            imgurl:"https://www.baidu.com/img/bd_logo1.png",
-                            title:"炸鸡汉堡王",
-                            price:"352.00",
-                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                            quantity:"1",
-                        },
-                    ]
-                },
-                {
-                    id:2,
-                    number:"16546454",
-                    states:"待发货",
-                    freight:"9999",
-                    totalprices:"8989",
-                    button:"查看详情",
-                    orderList:[
-                        {
-                            id:1,
-                            imgurl:"https://www.baidu.com/img/bd_logo1.png",
-                            title:"炸鸡汉堡王",
-                            price:"352.00",
-                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                            quantity:"1",
-                        }
-                    ]
-                },
-                {
-                    id:3,
-                    number:"16546454",
-                    states:"已完成",
-                    freight:"9999",
-                    totalprices:"8989",
-                    button:"查看详情",
-                    orderList:[
-                        {
-                            id:1,
-                            imgurl:"https://www.baidu.com/img/bd_logo1.png",
-                            title:"炸鸡汉堡王",
-                            price:"352.00",
-                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                            quantity:"1",
-                        }
-                    ]
-                }
-            ],
-            OtionList:[
-                {
-                    id:1,
-                    number:"123456",
-                    states:"待付款",
-                    freight:"9999",
-                    totalprices:"8989",
-                    button:"查看详情",
-                    orderList:[
-                        {
-                            id:1,
-                            imgurl:"https://www.baidu.com/img/bd_logo1.png",
-                            title:"炸鸡汉堡王",
-                            price:"352.00",
-                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                            quantity:"1",
-                        },
-                        {
-                            id:2,
-                            imgurl:"https://www.baidu.com/img/bd_logo1.png",
-                            title:"炸鸡汉堡王",
-                            price:"352.00",
-                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                            quantity:"1",
-                        },
-                    ]
-                },
-                {
-                    id:2,
-                    number:"16546454",
-                    states:"待付款",
-                    freight:"9999",
-                    totalprices:"8989",
-                    button:"查看详情",
-                    orderList:[
-                        {
-                            id:1,
-                            imgurl:"https://www.baidu.com/img/bd_logo1.png",
-                            title:"炸鸡汉堡王",
-                            price:"352.00",
-                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                            quantity:"1",
-                        }
-                    ]
-                },
-                {
-                    id:3,
-                    number:"16546454",
-                    states:"待付款",
-                    freight:"9999",
-                    totalprices:"8989",
-                    button:"查看详情",
-                    orderList:[
-                        {
-                            id:1,
-                            imgurl:"https://www.baidu.com/img/bd_logo1.png",
-                            title:"炸鸡汉堡王",
-                            price:"352.00",
-                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                            quantity:"1",
-                        }
-                    ]
-                }
-            ],
-            shmentsList:[
-                {
-                    id:1,
-                    number:"123456",
-                    states:"待发货",
-                    freight:"9999",
-                    totalprices:"8989",
-                    button:"查看详情",
-                    orderList:[
-                        {
-                            id:1,
-                            imgurl:"https://www.baidu.com/img/bd_logo1.png",
-                            title:"炸鸡汉堡王",
-                            price:"352.00",
-                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                            quantity:"1",
-                        },
-                        {
-                            id:2,
-                            imgurl:"https://www.baidu.com/img/bd_logo1.png",
-                            title:"炸鸡汉堡王",
-                            price:"352.00",
-                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                            quantity:"1",
-                        },
-                    ]
-                },
-                {
-                    id:2,
-                    number:"16546454",
-                    states:"待发货",
-                    freight:"9999",
-                    totalprices:"8989",
-                    button:"查看详情",
-                    orderList:[
-                        {
-                            id:1,
-                            imgurl:"https://www.baidu.com/img/bd_logo1.png",
-                            title:"炸鸡汉堡王",
-                            price:"352.00",
-                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                            quantity:"1",
-                        }
-                    ]
-                },
-                {
-                    id:3,
-                    number:"16546454",
-                    states:"待发货",
-                    freight:"9999",
-                    totalprices:"8989",
-                    button:"查看详情",
-                    orderList:[
-                        {
-                            id:1,
-                            imgurl:"https://www.baidu.com/img/bd_logo1.png",
-                            title:"炸鸡汉堡王",
-                            price:"352.00",
-                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                            quantity:"1",
-                        }
-                    ]
-                }
-            ],
-            Delivery:[
-                {
-                    id:1,
-                    number:"123456",
-                    states:"待收货",
-                    freight:"9999",
-                    totalprices:"8989",
-                    button:"查看详情",
-                    orderList:[
-                        {
-                            id:1,
-                            imgurl:"http://wx.bomao.xyz/attachment/images/1/2018/07/du4046PU9Y8z9w1rL9wprE6L6Lrz3L.png",
-                            title:"炸鸡汉堡王",
-                            price:"352.00",
-                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                            quantity:"1",
-                        },
-                        {
-                            id:2,
-                            imgurl:"http://wx.bomao.xyz/attachment/images/1/2018/07/du4046PU9Y8z9w1rL9wprE6L6Lrz3L.png",
-                            title:"炸鸡汉堡王",
-                            price:"352.00",
-                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                            quantity:"1",
-                        },
-                    ]
-                },
-                {
-                    id:2,
-                    number:"16546454",
-                    states:"待收货",
-                    freight:"9999",
-                    totalprices:"8989",
-                    button:"查看详情",
-                    orderList:[
-                        {
-                            id:1,
-                            imgurl:"http://wx.bomao.xyz/attachment/images/1/2018/07/du4046PU9Y8z9w1rL9wprE6L6Lrz3L.png",
-                            title:"炸鸡汉堡王",
-                            price:"352.00",
-                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                            quantity:"1",
-                        }
-                    ]
-                },
-                {
-                    id:3,
-                    number:"16546454",
-                    states:"待收货",
-                    freight:"9999",
-                    totalprices:"8989",
-                    button:"查看详情",
-                    orderList:[
-                        {
-                            id:1,
-                            imgurl:"http://wx.bomao.xyz/attachment/images/1/2018/07/du4046PU9Y8z9w1rL9wprE6L6Lrz3L.png",
-                            title:"炸鸡汉堡王",
-                            price:"352.00",
-                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                            quantity:"1",
-                        }
-                    ]
-                }
-            ],
+            List:[],
         })
     }
     dstributon=()=>{
-      const api = window.g.subordinate;
-      Axios.get(api).then((res)=>{
-          console.log(res);
+        const api = window.g.subordinate;
+        const id =storage.get("user");
+        const param ={
+            params:{
+                memberUid:id.memberUid
+            }
+        };
+      Axios.get(api,param).then((res)=>{
+          // console.log(res.data.records);
+          this.setState({
+              List:res.data.records,
+          })
       }).catch((err)=>{
           console.log(err);
       })
@@ -288,25 +37,13 @@ class Dstribution extends Component {
         document.title="分销订单";
     }
     render(){
-        const { List,OtionList,shmentsList,Delivery } = this.state;
+        const { List } = this.state;
         return(
             <Fragment>
                 <ListWaper>
-                    <Tabs tabs={tabs} initialPage={0} animated={true} useOnPan={false}>
-                        <ListItem >
-                            <CpntDistribution list={List} />
-                        </ListItem>
-                        <ListItem >
-                            <CpntDistribution list={OtionList} />
-                            {/*<Refresh/>*/}
-                        </ListItem>
-                        <ListItem >
-                            <CpntDistribution list={shmentsList} />
-                        </ListItem>
-                        <ListItem >
-                            <CpntDistribution list={Delivery} />
-                        </ListItem>
-                    </Tabs>
+                    <ListItem >
+                        <CpntDistribution list={List} />
+                    </ListItem>
                 </ListWaper>
             </Fragment>
         )

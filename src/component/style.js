@@ -393,6 +393,9 @@ export const OrdeRight = styled.div`
     line-height:20px;
    }
    font-size: 13px;
+   .fenxiao{
+    width:100%;
+   }
 `;
 export const OneLeft = styled.div`
     width: 85%;

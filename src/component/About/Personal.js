@@ -9,7 +9,6 @@ function getBase64(img, callback) {
     reader.addEventListener('load', () => callback(reader.result));
     reader.readAsDataURL(img);
 }
-
 function beforeUpload(file) {
     const isJPG = file.type === 'image/jpeg';
     if (!isJPG) {
@@ -28,7 +27,7 @@ class Personal extends Component {
             preac:"个人中心",
             loading: false,
             username:"",
-            url:require("../../statics/asstas/banner.png"),
+            imgUrl:"",
             files:[
                 {
                     url:require("../../statics/asstas/banner.png"),
@@ -55,6 +54,7 @@ class Personal extends Component {
       this.setState({
           username:user.memberName,
           iphone:user.memberPhone,
+          imgUrl:user.memberHead,
       })
       console.log(user)
     };
@@ -63,10 +63,10 @@ class Personal extends Component {
     };
 
     render() {
-        const { url } = this.state;
+        const { imgUrl } = this.state;
         const uploadButton = (
             <div className="imgProfile">
-                <img src={url}></img>
+                <img src={imgUrl}></img>
             </div>
         );
         const imageUrl = this.state.imageUrl;
@@ -92,7 +92,7 @@ class Personal extends Component {
                         moneyKeyboardAlign="left"
                     >昵称：</InputItem>
                     <Button variant="contained" size="large" color="primary" className="addlcinButton" onClick={this.addSave}>
-                        保存
+                        提交
                     </Button>
                 </PersonalWrapper>
             </Fragment>

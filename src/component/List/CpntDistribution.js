@@ -12,107 +12,41 @@ class CpntDistribution extends Component{
         super(props);
         this.state=({
             title:"全部订单",
-            list:[
-                {
-                    id:1,
-                    number:"16546454",
-                    states:"待付款",
-                    freight:"9999",
-                    totalprices:"8989",
-                    button:"去付款",
-                    orderList:[
-                        {
-                            id:1,
-                            path:"",
-                            imgurl:"https://www.baidu.com/img/bd_logo1.png",
-                            title:"炸鸡汉堡王",
-                            price:"352.00",
-                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                            quantity:"1",
-                        },
-                        {
-                            id:2,
-                            path:"",
-                            imgurl:"https://www.baidu.com/img/bd_logo1.png",
-                            title:"炸鸡汉堡王",
-                            price:"352.00",
-                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                            quantity:"1",
-                        },
-                    ]
-                },
-                {
-                    id:2,
-                    number:"16546454",
-                    states:"已完成",
-                    freight:"9999",
-                    totalprices:"8989",
-                    button:"删除订单",
-                    orderList:[
-                        {
-                            id:1,
-                            path:"",
-                            imgurl:"https://www.baidu.com/img/bd_logo1.png",
-                            title:"炸鸡汉堡王",
-                            price:"352.00",
-                            details:"鸡肉肉质细嫩，滋味鲜美，由于其味较淡，因此可使用于各种料理中的..",
-                            quantity:"1",
-                        }
-                    ]
-                }
-            ]
+            dtList:[],
+            button:"查看详情",
         })
     }
     render(){
-        const { list } = this.props;
+        const { dtList } = this.state;
         // const { number,states,id,imgurl,title,price,details,quantity,button } = this.state;
         return(
             <Fragment>
                 <OrdeWrapper>
                     {/*{params}*/}
                     {
-                        list.map(item=>(
+                        dtList.map(item=>(
                             <OrderList key={item.id}>
                                 <Flex className="header">
-                                    <Flex.Item>订单编号:<span>{item.number}</span></Flex.Item>
-                                    <Flex.Item className="payment">{item.states}</Flex.Item>
+                                    <Flex.Item>收货人:<span>{item.memberEntity.memberName}</span></Flex.Item>
+                                    <Flex.Item className="payment">电话：{item.memberEntity.memberPhone}</Flex.Item>
                                 </Flex>
                                 <OrdeList>
-                                    {
-                                        item.orderList.map((v,key)=>(
-                                            <Link to={`/FxDateils/${v.id}`}  key={key}>
-                                                <OrdeItem>
-                                                    <OrdeLeft>
-                                                        <img src={v.imgurl} alt="img"/>
-                                                    </OrdeLeft>
-                                                    <OrdeRight>
-                                                        <Flex className="title">
-                                                            <Flex.Item>{v.title}</Flex.Item>
-                                                            <Flex.Item className="payment">￥{v.price}</Flex.Item>
-                                                        </Flex>
-                                                        <OneLeft className="ordDtels">
-                                                            {v.details}
-                                                        </OneLeft>
-                                                        <TwoRight>
-                                                            X{v.quantity}
-                                                        </TwoRight>
-                                                    </OrdeRight>
-                                                </OrdeItem>
-                                            </Link>
-                                        ))
-                                    }
-                                    <OrdeItem>
-                                        <Flex>
-                                            <Flex.Item>
-                                                总价：￥<span>88989</span>
-                                            </Flex.Item>
-                                            <Flex.Item>
-                                                <Button size="small">
-                                                    {item.button}
-                                                </Button>
-                                            </Flex.Item>
-                                        </Flex>
-                                    </OrdeItem>
+                                    {/*<Link to={`/FxDateils/${item.id}`}  >*/}
+                                        <OrdeItem>
+                                            <OrdeLeft>
+                                                <img src={item.mealEntity.mealImage} alt="img"/>
+                                            </OrdeLeft>
+                                            <OrdeRight>
+                                                <Flex className="title">
+                                                    <Flex.Item>{item.mealEntity.mealName}</Flex.Item>
+                                                    {/*<Flex.Item className="payment">￥{}</Flex.Item>*/}
+                                                </Flex>
+                                                <OneLeft className="fenxiao">
+                                                    {item.mealEntity.mealDetail+item.mealEntity.mealContent}
+                                                </OneLeft>
+                                            </OrdeRight>
+                                        </OrdeItem>
+                                    {/*</Link>*/}
                                 </OrdeList>
                             </OrderList>
                         ))
@@ -120,7 +54,16 @@ class CpntDistribution extends Component{
                 </OrdeWrapper>
             </Fragment>
         )
-    }
+    };
+    componentWillReceiveProps(nextProps) {
+        const List = nextProps.list;
+        console.log(List);
+        if (List) {
+            this.setState({
+                dtList: List,
+            })
+        }
+    };
 
 }
 
