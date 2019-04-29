@@ -350,6 +350,11 @@ export const OrderList= styled.div`
         line-height: 20px;
         font-weight: bold;
     }
+    .pricer{
+        float: left;
+        width: 100%;
+        text-align: right;
+    }
 `;
 export const OrdeItem  = styled.li`
     list-style: none;

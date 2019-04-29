@@ -24,8 +24,8 @@ class CpntDistribution extends Component{
                 <OrdeWrapper>
                     {/*{params}*/}
                     {
-                        dtList.map(item=>(
-                            <OrderList key={item.id}>
+                        dtList.map((item,key)=>(
+                            <OrderList key={key}>
                                 <Flex className="header">
                                     <Flex.Item>收货人:<span>{item.memberEntity.memberName}</span></Flex.Item>
                                     <Flex.Item className="payment">电话：{item.memberEntity.memberPhone}</Flex.Item>
@@ -48,6 +48,10 @@ class CpntDistribution extends Component{
                                         </OrdeItem>
                                     {/*</Link>*/}
                                 </OrdeList>
+                                <Flex className="pricer" >
+                                    <Flex.Item>数量:<span>{item.mealEntity.mealNum}</span></Flex.Item>
+                                    <Flex.Item>价格：{item.mealEntity.mealPrice}</Flex.Item>
+                                </Flex>
                             </OrderList>
                         ))
                     }
