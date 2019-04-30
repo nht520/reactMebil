@@ -21,7 +21,6 @@ class SubmitOrder extends Component{
             site:"",
             orderInfo:[],
             orderGoods:[],
-            deliverFreight:100,
             orderNum:0,
             idOrder:0,
             postage:"",
@@ -153,7 +152,7 @@ class SubmitOrder extends Component{
             param.append("id",this.orderId);
             param.append("distributorId",this.userid);
             param.append("orderGoods",JSON.stringify(this.state.orderGoods));
-            param.append("deliverFreight",this.state.deliverFreight);
+            param.append("deliverFreight",this.state.postage);
             param.append("deliverName",this.state.userName);
             param.append("deliverPhone",this.state.ipHone);
             param.append("deliverAddress",this.state.site);

@@ -199,7 +199,9 @@ class AddLocation extends Component {
                 json['children'] = this.getCity(data[i]);
                 province.push(json);
             }
-            this.setState({priker:province});
+            this.setState({
+                priker:province
+            });
         }).catch((err)=>{
             console.log(err);
         })
