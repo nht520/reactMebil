@@ -52,9 +52,9 @@ class Shipdetails extends Component{
                     {
                         list.map((item,key)=>(
                             <div key={key}>
-                                <h5>{shpDetails.mealName}</h5>
+                                <h5>{shpDetails.goodsEntity.goodsName}</h5>
                                 <IntList>
-                                    <p> {shpDetails.mealContent}</p>
+                                    <p> {shpDetails.goodsEntity.goodsContent}</p>
                                 </IntList>
                                 {/**/}
                                 <IntConte>
@@ -62,7 +62,7 @@ class Shipdetails extends Component{
                                         <IntLi>
                                             <Flex>
                                                 <Flex.Item>数量</Flex.Item>
-                                                <Flex.Item className="left">{shpDetails.mealNum}</Flex.Item>
+                                                <Flex.Item className="left">{shpDetails.addNumber}</Flex.Item>
                                             </Flex>
                                         </IntLi>
                                         {/*<IntLi>*/}
@@ -128,14 +128,12 @@ class Shipdetails extends Component{
         };
         let api = window.g.indent;
         Axios.get(api,param).then((res)=>{
-            console.log(res);
             let data = res.data.records;
             var obj=JSON.parse(res.data.records[0].orderGoods);
-            const shpName = obj[0].mealEntity;
-            console.log(shpName);
+            const shpName = obj[0];
             this.setState({
                 list:data,
-                shpDetails:shpName
+                shpDetails:shpName,
             });
             // console.log(this.state.list.mealEntity.mealName);
         },(err)=>{

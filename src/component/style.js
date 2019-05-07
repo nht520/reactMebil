@@ -346,7 +346,7 @@ export const OrderList= styled.div`
     .header{
         margin-bottom:5%;
         font-size: 13px;
-        height: 20px;
+        // height: 20px;
         line-height: 20px;
         font-weight: bold;
     }

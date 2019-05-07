@@ -21,6 +21,7 @@ class CpntOrder extends Component{
         // this.props.history.push('/IndentDateils');
         console.log(letid[key]);
     };
+    //存h获取订单数据
     listOrder=(key)=>{
         console.log(key);
         var host = window.g.indent;

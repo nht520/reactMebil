@@ -67,28 +67,29 @@ class Register extends Component{
     };
     handChang =() => {
         const that = this;
-        if (that.state.username === '' || that.state.username === null) {
+        const { username,password,affirmPassword, } =this.state;
+        if (username === '' || username === null) {
             this.setState({
                 text:"请输入手机号",
             },()=>that.showToast())
         }
-        else if (that.state.password === '' || that.state.password === null) {
+        else if (password === '' ||password === null) {
             this.setState({
                 text:"请输入密码",
             },()=>that.showToast());
-        }else if(that.state.affirmPassword !== that.state.password){
+        }else if(affirmPassword !== password){
             this.setState({
                 text:"请确认两次密码相同",
             },()=>that.showToast());
-        } else if (/^[\d\D]{6,12}$/.test(that.state.password) === false) {
+        } else if (/^[\d\D]{6,12}$/.test(password) === false) {
             this.setState({
                 text:"密码在6-12位英文数字之间",
             },()=>that.showToast());
         }else {
             //把用户名  密码统一存在_param里面  把_param提交到后台
             const _param = new URLSearchParams();
-            _param.append("memberPhone",that.state.username);
-            _param.append("memberPassword",that.state.affirmPassword);
+            _param.append("memberPhone",username);
+            _param.append("memberPassword",affirmPassword);
             //获取数据将数据存在store
             var api =window.g.register;
             Axios.post(api,_param).then((res)=>{
