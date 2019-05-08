@@ -74,7 +74,7 @@ class CpntOrder extends Component{
                                                         {v.goodsEntity.goodsContent}
                                                     </OneLeft>
                                                     <TwoRight>
-                                                        X{v.boxNum}
+                                                        X{v.addNumber}
                                                     </TwoRight>
                                                 </OrdeRight>
                                             </OrdeItem>

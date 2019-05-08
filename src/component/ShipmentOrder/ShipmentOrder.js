@@ -41,6 +41,7 @@ class ShipmentOrder extends Component {
         };
         const api = window.g.indent;
         Axios.get(api,param).then((res)=>{
+            console.log(res);
             this.setState({
                 List:res.data.records
             })
