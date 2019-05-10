@@ -163,10 +163,10 @@ class Home extends Component {
                         {list.map((item,key)=>(
                             <li className={this.state.buyClass} key={key} onClick={this.ipClass.bind(this,item.id,item.buyLevel)}>
                                 {/*{item.id}*/}
-                                <img src={item.mealImage} alt="我是图片">
+                                <img src={item.mealImage}  alt="我是图片">
                                 </img>
                                 <h3>{item.mealName}</h3>
-                                <h5>{item.mealContent}</h5>
+                                <h5>{item.mealContent} </h5>
                             </li>
                         ))
                         }
